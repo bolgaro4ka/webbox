@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+    
+    <title>Webbox</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="{% static "/webbox/css/index.css" %}"/>
+    <link rel="icon" type="image/x-icon" href="{% static "favicon.ico" %}">
+
+</head>
+<body>
+    {% if success %}
+        <p>Успешно</p>
+    {% else %}
+        <p>Ан лаки</p>
+    {% endif%}
+</body>
+</html>

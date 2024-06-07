@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+    
+    <title>Webbox</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static "favicon.ico" %}">
+
+    <link rel="stylesheet" href="{% static "webbox/css/index.css" %}"/>
+</head>
+<body>
+    <header>    
+        <span class="logo">Some header</span>
+        {% if user.is_authenticated %}
+            <a href='/a/u'>Выйти</a>
+        {% else %}
+            <a href='/a'>Войти</a>
+        {% endif %}
+    </header>
+    <main>
+        <div>
+            
+            <h2>{{course.title}}</h2>
+            
+            <img src={% static course.picture %} width="300" alt="BigImg"/>
+            <p>{{course.long_description}}</p>
+            <p>Создан: {{course.created_at}}</p>
+            <p>Последнее обновление: {{course.updated_at}}</p>
+            <p>На этом курсе обучается уже <b>{{number_of_users}}</b> человек(а)</p>
+
+            
+            {% if user.usercourses.course.short_name == sh and user.usercourses.course.short_name == 'none' or not user.is_authenticated%}
+                <p>Вы не зачислины на этот курс.</p>
+                <a href='/u'>Зачислиться</a>
+            {% elif user.usercourses.course.short_name == sh and user.usercourses.course.short_name != 'none'%}
+                <p>Вы уже зачислины на этот курс.</p>
+                <a href='/u'>Перейти в личный кабинет</a>
+            {% elif user.usercourses.course.short_name != sh and user.usercourses.course.short_name != 'none' %}
+                <p>Вы не зачислины на этот курс. Но уже обучаетесь на курсе "{{user.usercourses.course.title}}"</p>
+                <a href='/u'>Перейти в личный кабинет</a>
+            {% endif %}
+        </div>
+    </main>
+    <footer>
+        Some footer
+    </footer>
+</body>
+</html>

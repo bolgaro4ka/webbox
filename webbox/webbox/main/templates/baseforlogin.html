@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link href="{% static "webbox/css/baseforlogin.css" %}" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static "favicon.ico" %}">
+
+</head>
+<body>
+<header>    
+    <span class="logo">Some header</span>
+    <a href='/a'>Войти</a>
+</header>
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+<footer>
+    Some footer
+</footer>
+</body>
+</html>

@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Webbox</title>
+    <link href="{% static "webbox/css/base.css" %}" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static "favicon.ico" %}">
+</head>
+<body>
+<header>    
+    <span class="logo">Some header</span>
+    {% if user.is_authenticated %}
+        <a href='/a/u'>Выйти</a>
+    {% else %}
+        <a href='/a'>Войти</a>
+    {% endif %}
+</header>
+<main>
+
+    
+    <div>
+        {% if user.usercourses.course.short_name == 'none' %}
+            <p>Судя по всему вы ещё не зачислины ни на один из наших курсов. Вы можете купить понравившийся курс через</p>
+            <a href="https://google.com">Телеграм бота</a>
+            <a href="/p">Через сайт</a>
+        {% else %}
+            <h2>{{user.usercourses.course.title}}</h2>
+            <p>{{user.usercourses.course.description}}</p>
+            <p>{{user.username}}</p>
+        {% endif%}
+    {% if listofCourses %}
+            {% for cousre in listofCourses %}
+                <div class="card">
+                    <a href='/u/course/{{cousre.short_name}}/{{ cousre.cid }}'>{{ cousre.cid }}.{{cousre.name}}</a>
+                </div>
+            {% endfor %}
+    {% else %}
+        <p>No courses published</p>
+    {% endif %}
+    {% if homeworks %}
+            {% for homework in homeworks %}
+                <div class="card">
+                    <a href='/u/homework/{{user.usercourses.course.short_name}}/{{ homework.cid }}'>{{ homework.cid }}.{{homework.name}}</a>
+                </div>
+            {% endfor %}
+    {% else %}
+        <p>No courses published</p>
+    {% endif %}
+    </div> 
+</main>
+<footer>
+    Some footer
+</footer>
+</body>
+</html>

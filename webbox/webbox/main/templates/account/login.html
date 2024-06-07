@@ -1,0 +1,12 @@
+{% extends "baseforlogin.html" %}
+{% block title %}Вход - Webbox{% endblock %}
+{% block content %}
+    <h1>Вход</h1>
+    <p>Заполните форму:</p>
+    <form action="." method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="Log-in"></p>
+    </form>
+    <p>Если у вас нету аккаунта, то добро пожаловать <a href="/a/r">сюда</a>.</p>
+{% endblock %}

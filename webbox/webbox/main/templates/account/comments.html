@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+    
+    <title>Webbox</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="{% static "/webbox/css/index.css" %}"/>
+</head>
+<body>
+    <div class="card-body">
+      {% if user.is_authenticated %}
+        {% if new_comment%}
+        <div class="alert alert-success" role="alert">
+          Your comment is awaiting moderation
+        </div>
+        {% else %}
+        <h3>Оставьте комеентарий</h3>
+        <form method="post" style="margin-top: 1.3em;">
+          {{ comment_form.as_p }}
+          {% csrf_token %}
+          <button type="submit" class="btn btn-primary  btn-lg">Отправить</button>
+        </form>
+        {%endif%}
+        {% else %}
+            <p>Войдите в аккаунт, чтобы оставлять коментарии</p>
+        {% endif %}
+        
+      </div>
+      
+</body>
+</html>

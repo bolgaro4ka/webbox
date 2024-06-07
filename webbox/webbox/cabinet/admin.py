@@ -1,0 +1,28 @@
+from django.contrib import admin
+from .models import ContentCourses, Homework, Answer
+
+# Register your models here.
+class ContentCoursesAdmin(admin.ModelAdmin):
+    list_display = ('name', 'short_name', 'file', 'cid')
+    list_display_links = ()
+    search_fields = ['name', 'short_name', 'file',]
+    list_editable = ()
+
+admin.site.register(ContentCourses, ContentCoursesAdmin)
+
+
+class HomeworkAdmin(admin.ModelAdmin):
+    list_display = ('name', 'file', 'cid', 'points')
+    list_display_links = ()
+    search_fields = ['name', 'file', 'points', 'cid']
+    list_editable = ()
+
+admin.site.register(Homework, HomeworkAdmin)
+
+class AnswerAdmin(admin.ModelAdmin):
+    list_display = ('answer', 'homework', 'checked', 'correct')
+    list_display_links = ()
+    search_fields = ['answer', 'homework', 'checked', 'correct']
+    list_editable = ()
+
+admin.site.register(Answer, AnswerAdmin)

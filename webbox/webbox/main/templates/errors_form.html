@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+    
+    <title>Webbox</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="{% static "/webbox/css/index.css" %}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static "favicon.ico" %}">
+
+</head>
+<body>
+    <header>    
+        <span class="logo">Some header</span>
+    </header>
+    <main>
+        <h1>{{error.name}}</h1>
+        <p>{{error.description}}</p>
+        <a href="/a">Вход</a>
+        <a href="/">Главная страница</a>
+    </main>
+    <footer>
+    </footer>
+</body>
+</html>

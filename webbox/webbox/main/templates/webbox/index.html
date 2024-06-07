@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+    
+    <title>Webbox</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static "favicon.ico" %}">
+    <link rel="stylesheet" href="{% static "/webbox/css/index.css" %}"/>
+
+    <style>
+        
+
+    </style>
+</head>
+<body>
+    <header>    
+        <span class="logo">Webbox</span>
+
+        <div class="headerMenu">
+            <a href="">Компаниям</a>
+            <a href="">Медиа</a>
+            <a href="#about">О нас</a>
+
+            {% if user.is_authenticated %}
+                <a href='/u'>Личный кабинет</a>
+                <a href='/a/u'>Выйти</a>
+            {% else %}
+                <a href='/a'>Войти</a>
+            {% endif %}
+        </div>
+    </header>
+    <main>
+        <section class="heroSection">
+            <div class="wrapper">
+                <div class="hero">
+                    <div class="textBlockinHeader">
+                        <h2>Найди себя и свою новую проффесию в Webbox</h2>
+                        <p>Новую проффесию уже получили {{len_users}} человек(а)!</p>
+                    </div>
+                    <div class="imageBlockinHeader">
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="cardsSection">
+            <div class="wrapper">
+                <h2>Чему мы можем обучить</h2>
+                <form method="post">
+                    {{ form.as_p }}
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary  btn-lg">Применить</button>
+                </form>   
+                <div class="cards">
+                    {% if courses_list %}
+                        {% for cousre in courses_list %}
+                            {% if cousre.is_published %}
+                            <div class="card">
+                                <img src="{% static cousre.picture_preview %}" width="300"/>
+                                <h3>{{cousre.title}}</h3>
+                                <p>{{cousre.description}}</p>
+                                <p>{{cousre.price | safe }}</p>
+                                <a href="/c/{{cousre.short_name}}">Перейти</a>
+                            </div>
+                            {% else %}
+                            
+                            {% endif%}
+                        {% endfor %}
+                    {% else %}
+                        <p>Курсов удолетворяющим условиям поиска не найдено! :(</p>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="wrapper"><iframe src='/a/comment' id="commentForm"></iframe></div>
+        </section>
+        <section>
+            <div class="wrapper">
+                {% for comment in comments %}
+                {%if comment.active%}
+                <div class="comments" style="padding: 10px;"> 
+                <p class="font-weight-bold"> 
+                    {{ comment.name }} 
+                    <span class=" text-muted font-weight-normal"> 
+                    {{ comment.created_on }}
+                    </span>
+                    </p>
+                    {{ comment.body | linebreaks }}
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+    
+    
+    <footer>    
+        <span class="logo">Webbox</span>
+
+        <div class="headerMenu">
+            <a href="">Компаниям</a>
+            <a href="">Медиа</a>
+            <a href="#about">О нас</a>
+
+            {% if user.is_authenticated %}
+                <a href='/u'>Личный кабинет</a>
+                <a href='/a/u'>Выйти</a>
+            {% else %}
+                <a href='/a'>Войти</a>
+            {% endif %}
+        </div>
+    </footer>
+</body>
+</html>

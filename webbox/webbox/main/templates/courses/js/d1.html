@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Webbox</title>
+    <link href="{% static "webbox/css/base.css" %}" rel="stylesheet">
+    <script src="{% static "webbox/js/hw.js" %}" defer></script>
+</head>
+<body>
+<main>
+    <h2>ДЗS</h2>
+    <p>{% lorem 1 b random %}</p>
+
+    {% if form %}
+        <form action="." method="post" allow-script-access="always">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <p><input type="submit" value="Отправить"></p>
+        </form>
+    {% endif %}
+</main>
+<script src="{% static "webbox/js/hw-a.js" %}"></script>
+<script>
+    connect_hw('{{lang}}', `{{code|safe}}`)
+</script>
+</body>
+</html>

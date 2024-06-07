@@ -1,0 +1,256 @@
+/* /static/webbox/css/index.css */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.cards {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+h1,
+h2 {
+  background-color: green;
+  color: white;
+}
+
+#leftListOfCourses {
+  width: 20vw;
+  border: 1px solid black;
+  padding: 0;
+  padding: 10px;
+}
+#leftListOfCourses li {
+  border-bottom: 1px solid black;
+  list-style: none;
+}
+#leftListOfCourses ul {
+  padding-inline-start: 0px;
+}
+#rightCourse {
+  width: 80vw;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid black;
+  border-left: none;
+}
+#rightCourse iframe {
+  border: none;
+
+  scroll-margin-bottom: 0;
+  scroll-padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#course {
+  display: flex;
+  padding-left: 0px;
+}
+
+#commentForm {
+  width: 100%;
+  height: 280px;
+  border: none;
+}
+
+@media screen and (max-width: 500px) {
+  #leftListOfCourses {
+    width: 100vw;
+  }
+  #rightCourse {
+    width: 100vw;
+    padding: 0;
+  }
+  #course {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  #rightCourse iframe {
+    height: 100vh;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .cardsSection #id_field_search {
+    width: auto !important;
+  }
+  
+}
+
+@media screen and (max-width: 666px) {
+  .hero {
+    flex-direction: column;
+  }
+  .textBlockinHeader h2 {
+    font-size: 20px !important;
+  }
+
+  .imageBlockinHeader {
+    width: 100% !important;
+  }
+
+  
+}
+
+.headerMenu {
+  display: flex;
+  gap: 10px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px;
+  align-items: center;
+}
+
+.logo {
+  font-size: 30px;
+}
+
+header a {
+  text-decoration: none;
+  color: black;
+}
+
+header a:hover {
+  color: green;
+}
+
+.wrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.textBlockinHeader {
+  background-color: green;
+  color: white;
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.imageBlockinHeader {
+  background-color: gray;
+  border-radius: 10px;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 300px;
+}
+
+.textBlockinHeader h2 {
+  font-size: 50px;
+}
+.hero {
+  display: flex;
+  height: 200px;
+}
+
+.heroSection {
+  padding-bottom: 20px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px;
+  align-items: center;
+  background-color: black;
+}
+
+footer * {
+  color: white;
+}
+
+.logo {
+  font-size: 30px;
+}
+
+footer a {
+  text-decoration: none;
+  color: white;
+}
+
+footer a:hover {
+  color: green;
+}
+
+.card {
+  border: 1px solid black;
+  padding: 10px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  border-radius: 10px;
+}
+
+.cards {
+  padding: 10px 0px;
+}
+
+.cardsSection {
+  padding-bottom: 20px;
+}
+
+.cardsSection h2 {
+  background-color: white;
+  text-align: center;
+  color: black;
+}
+
+.cardsSection form {
+  border: 1px solid black;
+  padding: 10px 0px;
+  align-items: center;
+  gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cardsSection button {
+  background-color: green;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  width: 110px;
+  height: 100%;
+}
+
+.cardsSection #id_field_search {
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 10px;
+  width: 850px;
+  font-size: 100%;
+}
+
+.cardsSection #id_price_from {
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 10px;
+  width: 150px;
+  font-size: 100%;
+}
+
+.cardsSection #id_price_to {
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 10px;
+  width: 150px;
+  font-size: 100%;
+}
+

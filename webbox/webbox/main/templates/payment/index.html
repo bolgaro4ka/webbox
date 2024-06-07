@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+    
+    <title>Webbox</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="{% static "/webbox/css/index.css" %}"/>
+    <link rel="icon" type="image/x-icon" href="{% static "favicon.ico" %}">
+
+</head>
+<body>
+    <div class="card-body">
+        <form method="post" style="margin-top: 1.3em;">
+          {{ payment_form.as_p }}
+          {% csrf_token %}
+          <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+        </form>   
+      </div> 
+</body>
+</html>
