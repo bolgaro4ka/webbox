@@ -4,7 +4,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 # Create your models here.
 
-class CoursesList(models.Model):
+class Course(models.Model):
     title = models.CharField(max_length=255, verbose_name="Название курса")
     description = models.TextField(verbose_name="Описание курса")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания курса")
@@ -27,7 +27,7 @@ class CoursesList(models.Model):
 
 class UserCourses(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="Пользователь")
-    course = models.ForeignKey(CoursesList, on_delete=models.CASCADE, default=4, verbose_name="Курс")
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, default=4, verbose_name="Курс")
 
     @receiver(post_save, sender=User)
     def create_user_usercourses(sender, instance, created, **kwargs):
