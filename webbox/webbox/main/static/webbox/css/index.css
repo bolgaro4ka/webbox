@@ -28,7 +28,7 @@ a {
 }
 
 .wrapper {
-    width: 1100px;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
@@ -408,10 +408,30 @@ ul.errorlist li {
 }
 
 .card a {
-    color: var(--background-color);
+    display: block;
+    color: var(--black);
+    border-radius: 10px;
     font-family: 'Lato', sans-serif;
-    font-size: 18px;
-    text-decoration: underline;
+    font-size: 16px;
+    padding: 4px 8px;
+    margin: 3px;
+    background-color: var(--background-color);
+    transition: all 50ms;
+}
+
+.card a:hover {
+    margin: 0;
+    color: var(--background-color);
+    background-color: var(--black);
+    border: 3px solid var(--background-color);
+}
+
+.card {
+    width: 500px;
+}
+
+.card:last-child {
+    width: auto;
 }
 
 .homework {
@@ -419,4 +439,12 @@ ul.errorlist li {
     font-family: 'Dela Gothic One', sans-serif;
     font-size: 24px;
     margin-top: 16px;
+}
+
+.courseslist {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    list-style: none;
 }

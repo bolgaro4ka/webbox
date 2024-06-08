@@ -45,21 +45,23 @@
             <p class="coursedesc">{{user.usercourses.course.description}}</p>
         {% endif%}
         {% if listofCourses %}
+            <ul class="courseslist">
             {% for cousre in listofCourses %}
-                <div class="card">
+                <li class="card">
                     <a href='/u/course/{{cousre.short_name}}/{{ cousre.cid }}'>{{ cousre.cid }}. {{cousre.name}}</a>
-                </div>
+                </li>
             {% endfor %}
-        {% else %}
+            </ul>
         {% endif %}
         {% if homeworks %}
             <div class="homework">Ваши домашние задания</div>
+            <ul class="courseslist">
             {% for homework in homeworks %}
                 <div class="card">
                     <a href='/u/homework/{{user.usercourses.course.short_name}}/{{ homework.cid }}'>{{ homework.cid }}. {{homework.name}}</a>
                 </div>
             {% endfor %}
-        {% else %}
+            </ul>
         {% endif %}
     </main>
 
