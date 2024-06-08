@@ -1,13 +1,12 @@
 {% extends "baseforlogin.html" %}
 
-{% block title %}Create an account{% endblock %}
+{% block title %}Регистрация ~ WebBox{% endblock %}
 
 {% block content %}
-    <h1>Create an account</h1>
-    <p>Please, sign up using the following form:</p>
-    <form action="." method="post">
+    <h1 class="login-h1">Регистрация</h1>
+    <form action="." method="post" class="login-form">
         {{ user_form.as_p }}
         {% csrf_token %}
-        <p><input type="submit" value="Create my account"></p>
+        <p><input type="submit" class="login-btn" value="Создать аккаунт"></p>
     </form>
 {% endblock %}

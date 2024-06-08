@@ -2,55 +2,70 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Webbox</title>
-    <link href="{% static "webbox/css/base.css" %}" rel="stylesheet">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="{% static "webbox/css/index.css" %}" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="{% static "favicon.ico" %}">
 </head>
 <body>
-<header>    
-    <span class="logo">Some header</span>
-    {% if user.is_authenticated %}
-        <a href='/a/u'>Выйти</a>
-    {% else %}
-        <a href='/a'>Войти</a>
-    {% endif %}
-</header>
-<main>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__logo">
+                <p>WebBox</p>
+            </div>
+            <div class="header__nav">
+                <nav>
+                    <ul>
 
-    
-    <div>
+                        <li><a href="">Компаниям</a></li>
+                        <li><a href="">Медиа</a></li>
+                        <li><a href="#about">О нас</a></li>
+                        {% if user.is_authenticated %}
+                            <li><a href='/u'>Личный кабинет</a></li>
+                            <li><a href='/a/u'>Выйти</a></li>
+                        {% else %}
+                        <li><a href='/a'>Войти</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+    <main class="cabinet">
         {% if user.usercourses.course.short_name == 'none' %}
-            <p>Судя по всему вы ещё не зачислины ни на один из наших курсов. Вы можете купить понравившийся курс через</p>
-            <a href="https://google.com">Телеграм бота</a>
-            <a href="/p">Через сайт</a>
+            <h3 class="nocurses">У вас нету курсов!</h3>
+            <p class="nocursessmall">Приобрести их можно тут:</p>
+            <ul class="nocursesli">
+                <li><a class="nocurses2" href="https://google.com">Телеграм бот</a></li>
+                <li><a class="nocurses3" href="/p">Через сайт</a></li>
+            </ul>
         {% else %}
-            <h2>{{user.usercourses.course.title}}</h2>
-            <p>{{user.usercourses.course.description}}</p>
-            <p>{{user.username}}</p>
+            <p class="username">Текущий курс пользователя {{user.username}}:</p>
+            <h2 class="coursetitle">{{user.usercourses.course.title}}</h2>
+            <p class="coursedesc">{{user.usercourses.course.description}}</p>
         {% endif%}
-    {% if listofCourses %}
+        {% if listofCourses %}
             {% for cousre in listofCourses %}
                 <div class="card">
-                    <a href='/u/course/{{cousre.short_name}}/{{ cousre.cid }}'>{{ cousre.cid }}.{{cousre.name}}</a>
+                    <a href='/u/course/{{cousre.short_name}}/{{ cousre.cid }}'>{{ cousre.cid }}. {{cousre.name}}</a>
                 </div>
             {% endfor %}
-    {% else %}
-        <p>No courses published</p>
-    {% endif %}
-    {% if homeworks %}
+        {% else %}
+        {% endif %}
+        {% if homeworks %}
+            <div class="homework">Ваши домашние задания</div>
             {% for homework in homeworks %}
                 <div class="card">
-                    <a href='/u/homework/{{user.usercourses.course.short_name}}/{{ homework.cid }}'>{{ homework.cid }}.{{homework.name}}</a>
+                    <a href='/u/homework/{{user.usercourses.course.short_name}}/{{ homework.cid }}'>{{ homework.cid }}. {{homework.name}}</a>
                 </div>
             {% endfor %}
-    {% else %}
-        <p>No courses published</p>
-    {% endif %}
-    </div> 
-</main>
-<footer>
-    Some footer
-</footer>
+        {% else %}
+        {% endif %}
+    </main>
+
+    <footer class="footer">
+        <h5>WebBox</h5>
+        <p>Проект Егора Горгуна и Федосова Никиты.<br>:sunglassses:</p>
+    </footer>
 </body>
 </html>
