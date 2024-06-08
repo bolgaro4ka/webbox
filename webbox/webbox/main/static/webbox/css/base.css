@@ -2,7 +2,8 @@ h1,h2 {background-color: green; color: white}
 
 body {margin: 0; padding: 2px; }
 
-* {box-sizing: border-box;}
+* {box-sizing: border-box;
+font-family: monospace;}
 
 #id_answer {
     width: 100%;

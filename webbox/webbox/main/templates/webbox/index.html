@@ -1,118 +1,91 @@
-
-<!DOCTYPE html>
-<html>
 {% load static %}
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    
-    <title>Webbox</title>
-    <meta charset="utf-8"/>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="{% static "favicon.ico" %}">
-    <link rel="stylesheet" href="{% static "/webbox/css/index.css" %}"/>
-
-    <style>
-        
-
-    </style>
+    <link rel="stylesheet" href="static/webbox/css/index.css">
+    <title>WebBox ~ Главная страница</title>
 </head>
 <body>
-    <header>    
-        <span class="logo">Webbox</span>
-
-        <div class="headerMenu">
-            <a href="">Компаниям</a>
-            <a href="">Медиа</a>
-            <a href="#about">О нас</a>
-
-            {% if user.is_authenticated %}
-                <a href='/u'>Личный кабинет</a>
-                <a href='/a/u'>Выйти</a>
-            {% else %}
-                <a href='/a'>Войти</a>
-            {% endif %}
-        </div>
-    </header>
-    <main>
-        <section class="heroSection">
-            <div class="wrapper">
-                <div class="hero">
-                    <div class="textBlockinHeader">
-                        <h2>Найди себя и свою новую проффесию в Webbox</h2>
-                        <p>Новую проффесию уже получили {{len_users}} человек(а)!</p>
-                    </div>
-                    <div class="imageBlockinHeader">
-
-                    </div>
-                </div>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__logo">
+                <p>WebBox</p>
             </div>
-        </section>
-        <section class="cardsSection">
-            <div class="wrapper">
-                <h2>Чему мы можем обучить</h2>
-                <form method="post">
-                    {{ form.as_p }}
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-primary  btn-lg">Применить</button>
-                </form>   
-                <div class="cards">
+            <div class="header__nav">
+                <nav>
+                    <ul>
+
+                        <li><a href="">Компаниям</a></li>
+                        <li><a href="">Медиа</a></li>
+                        <li><a href="#about">О нас</a></li>
+                        <li><a href='/u'>Личный кабинет</a></li>
+                        {% if user.is_authenticated %}
+                            <li><a href='/u'>Личный кабинет</a></li>
+                            <li><a href='/a/u'>Выйти</a></li>
+                        {% else %}
+                        <li><a href='/a'>Войти</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero">
+                <h1>WebBox</h1>
+                <h2>Реально учим.</h2>
+                <p>Мы выпустили уже {{len_users}} человек(-а). Ждём и тебя!</p>
+            </section>
+            <section class="courses">
+                <h3>Курсы которые мы предоставляем</h3>
+                <ul class="courses__list">
                     {% if courses_list %}
                         {% for cousre in courses_list %}
                             {% if cousre.is_published %}
-                            <div class="card">
-                                <img src="{% static cousre.picture_preview %}" width="300"/>
-                                <h3>{{cousre.title}}</h3>
-                                <p>{{cousre.description}}</p>
-                                <p>{{cousre.price | safe }}</p>
-                                <a href="/c/{{cousre.short_name}}">Перейти</a>
-                            </div>
-                            {% else %}
+                                <li class="courses__card">
+                                    <img class="courses__card_img" src="{% static cousre.picture_preview %}" width="200" height="200"/>
+                                    <div class="courses__card_text">
+                                        <h4>{{cousre.title}}</h4>
+                                        <p>{{cousre.description}}</p>
+                                        <p>{{cousre.price | safe }}</p>
+                                        <a href="/c/{{cousre.short_name}}">Перейти</a>
+                                    </div>
+                                </li>
+                                {% else %}
                             
-                            {% endif%}
-                        {% endfor %}
-                    {% else %}
-                        <p>Курсов удолетворяющим условиям поиска не найдено! :(</p>
-                    {% endif %}
-                </div>
-            </div>
-        </section>
-        <section>
-            <div class="wrapper"><iframe src='/a/comment' id="commentForm"></iframe></div>
-        </section>
-        <section>
-            <div class="wrapper">
+                                {% endif%}
+                            {% endfor %}
+                        {% else %}
+                            <p>Курсов удолетворяющим условиям поиска не найдено! :(</p>
+                        {% endif %}
+                
+                </ul>
+            </section>
+            <section>
+                <div class="wrapper"><iframe src='/a/comment' id="commentForm"></iframe></div>
+            </section>
+            <section class="comments">
+                <h3>Комментарии</h3>
                 {% for comment in comments %}
-                {%if comment.active%}
-                <div class="comments" style="padding: 10px;"> 
-                <p class="font-weight-bold"> 
-                    {{ comment.name }} 
-                    <span class=" text-muted font-weight-normal"> 
-                    {{ comment.created_on }}
-                    </span>
-                    </p>
-                    {{ comment.body | linebreaks }}
-                </div>
-                {% endif %}
+                    {%if comment.active%}
+                        <div class="comments__comment"> 
+                            <div class="comments__comment_info">
+                                <p>{{ comment.name }}</p>
+                                <p>{{ comment.created_on }}</p>
+                            </div>
+                            <p>{{ comment.body | linebreaks }}</p>
+                        </div>
+                    {% endif %}
                 {% endfor %}
-            </div>
-        </section>
-    </main>
-    
-    
-    <footer>    
-        <span class="logo">Webbox</span>
+            </section>
+        </main>
 
-        <div class="headerMenu">
-            <a href="">Компаниям</a>
-            <a href="">Медиа</a>
-            <a href="#about">О нас</a>
-
-            {% if user.is_authenticated %}
-                <a href='/u'>Личный кабинет</a>
-                <a href='/a/u'>Выйти</a>
-            {% else %}
-                <a href='/a'>Войти</a>
-            {% endif %}
-        </div>
-    </footer>
+        <footer class="footer">
+            <h5>WebBox</h5>
+            <p>Проект Егора Горгуна и Федосова Никиты.<br>:sunglassses:</p>
+        </footer>
+    </div>
 </body>
 </html>
