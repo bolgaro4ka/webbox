@@ -6,7 +6,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from main.models import Course
 
-class ContentCourses(models.Model):
+class Lession(models.Model):
     name = models.CharField(max_length=255, verbose_name="Название контента")
     short_name = models.CharField(max_length=20, default="none", verbose_name="Сокращенное название контента")
     file = models.CharField(max_length=255, verbose_name="Файл контента")

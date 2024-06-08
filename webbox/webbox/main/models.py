@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+#from lessions.models import Lession
 # Create your models here.
 
 class Course(models.Model):
@@ -16,6 +17,7 @@ class Course(models.Model):
     price=models.CharField(max_length=255, default="none рублей", verbose_name="Цена курса с указанием единиц", help_text="Можно использовать html")
     clear_price=models.BigIntegerField(default=0, verbose_name="Цена (только число)")
     long_description = models.TextField(default="nn", help_text="Полное описание курса. Отображается на странице курса", verbose_name="Описание курса")
+    #themes = models.ManyToManyField(Lession, verbose_name="Темы курса", default=)
 
     class Meta:
         verbose_name = 'Курс'

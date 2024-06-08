@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'cabinet.apps.CabinetConfig',
     'payment.apps.PaymentConfig',
+    'lessions.apps.LessionsConfig',
 ]
 
 MIDDLEWARE = [

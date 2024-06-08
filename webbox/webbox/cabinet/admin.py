@@ -1,14 +1,14 @@
 from django.contrib import admin
-from .models import ContentCourses, Homework, Answer
+from .models import Lession, Homework, Answer
 
 # Register your models here.
-class ContentCoursesAdmin(admin.ModelAdmin):
+class LessionAdmin(admin.ModelAdmin):
     list_display = ('name', 'short_name', 'file', 'cid')
     list_display_links = ()
     search_fields = ['name', 'short_name', 'file',]
     list_editable = ()
 
-admin.site.register(ContentCourses, ContentCoursesAdmin)
+admin.site.register(Lession, LessionAdmin)
 
 
 class HomeworkAdmin(admin.ModelAdmin):

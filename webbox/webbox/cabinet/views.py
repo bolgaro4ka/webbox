@@ -8,7 +8,7 @@ from django.urls import reverse
 from cabinet.forms import HomeworkForm
 from cabinet.models import Answer
 
-from .models import ContentCourses
+from .models import Lession
 from django.views.decorators.clickjacking import xframe_options_exempt
 from django.db import connection
 
@@ -22,7 +22,7 @@ def cabinet(request):
         text_button_enter = 'Выход'
     else:
         text_button_enter = 'Вход'
-    listofCourses = ContentCourses.objects.all().filter(short_name=request.user.usercourses.course.short_name).order_by('cid')
+    listofCourses = Lession.objects.all().filter(short_name=request.user.usercourses.course.short_name).order_by('cid')
     homeworks = Homework.objects.all().filter(course=request.user.usercourses.course).order_by('cid')
     return render(request, 'cabinet/cabinet.html', {'text_button_enter': text_button_enter, 'listofCourses': listofCourses, 'homeworks': homeworks})
 
@@ -32,7 +32,7 @@ def course(request, short_name, cid):
 
     url = (request.path)
     error={}
-    if ContentCourses.objects.all().filter(short_name=request.user.usercourses.course.short_name).filter(cid=cid) and short_name==request.user.usercourses.course.short_name:
+    if Lession.objects.all().filter(short_name=request.user.usercourses.course.short_name).filter(cid=cid) and short_name==request.user.usercourses.course.short_name:
         pass
     
     else:
@@ -41,9 +41,9 @@ def course(request, short_name, cid):
         return render(request, 'errors_form.html', {'error': error})
     
     all_homeworks = Homework.objects.all().filter(course=request.user.usercourses.course).order_by('cid')
-    all_courses = ContentCourses.objects.all().filter(short_name=request.user.usercourses.course.short_name).order_by('cid')
+    all_courses = Lession.objects.all().filter(short_name=request.user.usercourses.course.short_name).order_by('cid')
     if 'course' in url:
-        listofCourses = ContentCourses.objects.all().filter(short_name=request.user.usercourses.course.short_name).filter(cid=cid)[0]
+        listofCourses = Lession.objects.all().filter(short_name=request.user.usercourses.course.short_name).filter(cid=cid)[0]
         listofHomeworks = False
     else:
         
@@ -60,7 +60,7 @@ def course_raw(request, short_name, cid):
     #Answer.save()
     url = (request.path)
     error={}
-    if ContentCourses.objects.all().filter(short_name=request.user.usercourses.course.short_name).filter(cid=cid):
+    if Lession.objects.all().filter(short_name=request.user.usercourses.course.short_name).filter(cid=cid):
         pass
     else:
         error['name'] = "Курс не существует"
@@ -68,7 +68,7 @@ def course_raw(request, short_name, cid):
         return render(request, 'errors_form.html', {'error': error})
     
     if 'course' in url:
-        listofCourses = ContentCourses.objects.all().filter(short_name=request.user.usercourses.course.short_name, cid=cid)
+        listofCourses = Lession.objects.all().filter(short_name=request.user.usercourses.course.short_name, cid=cid)
         form = False
         code = ''
     else:
