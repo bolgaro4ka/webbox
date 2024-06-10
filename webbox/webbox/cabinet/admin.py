@@ -1,5 +1,16 @@
 from django.contrib import admin
-from .models import Lession, Homework, Answer
+from .models import Homework, Answer
+from lessions.models import Lession, Theme
+
+
+class ThemeAdmin(admin.ModelAdmin):
+    list_display = ('name', )
+    list_display_links = ()
+    search_fields = ['name', 'lessions']
+    list_editable = ()
+    filter_horizontal = ('lessions', )
+
+admin.site.register(Theme, ThemeAdmin)
 
 # Register your models here.
 class LessionAdmin(admin.ModelAdmin):
@@ -7,6 +18,7 @@ class LessionAdmin(admin.ModelAdmin):
     list_display_links = ()
     search_fields = ['name', 'short_name', 'file',]
     list_editable = ()
+    
 
 admin.site.register(Lession, LessionAdmin)
 

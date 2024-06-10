@@ -6,18 +6,6 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from main.models import Course
 
-class Lession(models.Model):
-    name = models.CharField(max_length=255, verbose_name="Название контента")
-    short_name = models.CharField(max_length=20, default="none", verbose_name="Сокращенное название контента")
-    file = models.CharField(max_length=255, verbose_name="Файл контента")
-    cid = models.IntegerField(verbose_name="CID курса")
-
-    def __str__(self):
-        return self.name
-    
-    class Meta:
-        verbose_name = 'Контент курса'
-        verbose_name_plural = 'Контент курсов'
 
 class Homework(models.Model):
     name = models.CharField(max_length=255, verbose_name="Название домашнего задания")

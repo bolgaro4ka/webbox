@@ -8,7 +8,7 @@ from django.urls import reverse
 from cabinet.forms import HomeworkForm
 from cabinet.models import Answer
 
-from .models import Lession
+from lessions.models import Lession
 from django.views.decorators.clickjacking import xframe_options_exempt
 from django.db import connection
 
