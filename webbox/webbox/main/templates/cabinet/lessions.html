@@ -43,6 +43,7 @@
             <p class="username">Текущий курс пользователя {{user.username}}:</p>
             <h2 class="coursetitle">{{user.usercourses.course.title}}</h2>
             <p class="coursedesc">{{user.usercourses.course.description}}</p>
+            <div class="homework">Уроки в теме "{{theme.name}}"</div>
         {% endif%}
         {% if lessions %}
             <ul class="courseslist">

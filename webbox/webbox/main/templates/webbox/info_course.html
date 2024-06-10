@@ -33,8 +33,30 @@
         </header>
 
         <main>
-            {% block content %}
-            {% endblock %}
+            <main>
+                <div>
+                    
+                    <h2>{{course.title}}</h2>
+                    
+                    <img src="{{ course.picture.url }}" width="300" alt="BigImg"/>
+                    <p>{{course.long_description}}</p>
+                    <p>Создан: {{course.created_at}}</p>
+                    <p>Последнее обновление: {{course.updated_at}}</p>
+                    <p>На этом курсе обучается уже <b>{{number_of_users}}</b> человек(а)</p>
+        
+                    
+                    {% if user.usercourses.course.short_name == sh and user.usercourses.course.short_name == 'none' or not user.is_authenticated%}
+                        <p>Вы не зачислины на этот курс.</p>
+                        <a href='/u'>Зачислиться</a>
+                    {% elif user.usercourses.course.short_name == sh and user.usercourses.course.short_name != 'none'%}
+                        <p>Вы уже зачислины на этот курс.</p>
+                        <a href='/u'>Перейти в личный кабинет</a>
+                    {% elif user.usercourses.course.short_name != sh and user.usercourses.course.short_name != 'none' %}
+                        <p>Вы не зачислины на этот курс. Но уже обучаетесь на курсе "{{user.usercourses.course.title}}"</p>
+                        <a href='/u'>Перейти в личный кабинет</a>
+                    {% endif %}
+                </div>
+            </main>
         </main>
 
         <footer class="footer">

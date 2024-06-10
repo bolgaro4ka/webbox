@@ -33,6 +33,7 @@ def cabinet(request):
 def course(request, short_name, cid):
 
     url = (request.path)
+    print(Lession.objects.all().filter(short_name=request.user.usercourses.course.short_name).filter(cid=cid), request.user.usercourses.course.short_name)
     error={}
     if Lession.objects.all().filter(short_name=request.user.usercourses.course.short_name).filter(cid=cid) and short_name==request.user.usercourses.course.short_name:
         pass
@@ -100,6 +101,7 @@ def course_raw(request, short_name, cid):
 
 
 def lessions(request,  cid ):
-    lessions = Theme.objects.all().filter(short_name=request.user.usercourses.course.short_name).filter(cid=cid)[0]
+    theme = Theme.objects.all().filter(short_name=request.user.usercourses.course.short_name).filter(cid=cid)[0]
+    lessions = theme.lessions.all().order_by('cid')
     print(lessions)
-    return render(request, 'cabinet/lessions.html', {'lessions': lessions})
+    return render(request, 'cabinet/lessions.html', {'lessions': lessions, 'theme': theme})

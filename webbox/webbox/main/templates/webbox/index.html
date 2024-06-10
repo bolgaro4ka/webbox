@@ -45,7 +45,7 @@
                         {% for cousre in courses_list %}
                             {% if cousre.is_published %}
                                 <li class="courses__card">
-                                    <img class="courses__card_img" src="{% static cousre.picture_preview %}" width="200" height="200"/>
+                                    <img class="courses__card_img" src="{{ cousre.picture_preview.url }}" width="200" height="200" alt="{{ cousre.picture_preview.url }}"/>
                                     <div class="courses__card_text">
                                         <h4>{{cousre.title}}</h4>
                                         <p>{{cousre.description}}</p>

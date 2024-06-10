@@ -25,13 +25,13 @@
         <ul>
         {% for item in all_courses%}
             
-                <li><a href="/u/course/{{item.short_name}}/{{item.cid}}">{{ item.cid }}. {{item.name}}</a></li>
+                <li><a href="/u/course/{{item.short_name}}/{{item.cid}}">{{item.name}}</a></li>
         {% endfor%}
         </ul>
         <h2>ДЗ</h2>
         <ul>
         {% for item in homeworks%}
-            <li><a href='/u/homework/{{user.usercourses.course.short_name}}/{{ item.cid }}'>{{ item.cid }}.{{item.name}}</a></li>
+            <li><a href='/u/homework/{{user.usercourses.course.short_name}}/{{ item.cid }}'>{{item.name}}</a></li>
         </ul>
         {% endfor%}
     </div>

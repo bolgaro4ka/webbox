@@ -40,9 +40,10 @@
                 <li><a class="nocurses3" href="/p">Через сайт</a></li>
             </ul>
         {% else %}
-            <p class="username">Текущий курс пользователя {{user.username}}:</p>
+            <p class="username">Текущий курс пользователя {{user.username}}</p>
             <h2 class="coursetitle">{{user.usercourses.course.title}}</h2>
             <p class="coursedesc">{{user.usercourses.course.description}}</p>
+            <div class="homework">Темы</div>
         {% endif%}
         {% if themes %}
             <ul class="courseslist">
@@ -58,7 +59,7 @@
             <ul class="courseslist">
             {% for homework in homeworks %}
                 <div class="card">
-                    <a href='/u/homework/{{user.usercourses.course.short_name}}/{{ homework.cid }}'>{{ homework.cid }}. {{homework.name}}</a>
+                    <a href='/u/homework/{{user.usercourses.course.short_name}}/{{ homework.cid }}'>{{homework.name}}</a>
                 </div>
             {% endfor %}
             </ul>
