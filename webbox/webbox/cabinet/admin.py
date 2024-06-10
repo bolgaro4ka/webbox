@@ -14,7 +14,7 @@ admin.site.register(Theme, ThemeAdmin)
 
 # Register your models here.
 class LessionAdmin(admin.ModelAdmin):
-    list_display = ('name', 'short_name', 'file', 'cid')
+    list_display = ('name', 'short_name', 'file',)
     list_display_links = ()
     search_fields = ['name', 'short_name', 'file',]
     list_editable = ()

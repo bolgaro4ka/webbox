@@ -44,22 +44,12 @@
             <h2 class="coursetitle">{{user.usercourses.course.title}}</h2>
             <p class="coursedesc">{{user.usercourses.course.description}}</p>
         {% endif%}
-        {% if themes %}
+        {% if lessions %}
             <ul class="courseslist">
-            {% for theme in themes %}
+            {% for lession in lessions %}
                 <li class="card">
-                    <a href='/u/course/lessions/{{ theme.cid }}'>{{theme.name}}</a>
+                    <a href='/u/course/{{lession.short_name}}/{{ lession.cid }}'>{{lession.name}}</a>
                 </li>
-            {% endfor %}
-            </ul>
-        {% endif %}
-        {% if homeworks %}
-            <div class="homework">Ваши домашние задания</div>
-            <ul class="courseslist">
-            {% for homework in homeworks %}
-                <div class="card">
-                    <a href='/u/homework/{{user.usercourses.course.short_name}}/{{ homework.cid }}'>{{ homework.cid }}. {{homework.name}}</a>
-                </div>
             {% endfor %}
             </ul>
         {% endif %}

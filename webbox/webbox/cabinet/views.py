@@ -7,6 +7,7 @@ from django.urls import reverse
 
 from cabinet.forms import HomeworkForm
 from cabinet.models import Answer
+from lessions.models import Theme
 
 from lessions.models import Lession
 from django.views.decorators.clickjacking import xframe_options_exempt
@@ -22,9 +23,10 @@ def cabinet(request):
         text_button_enter = 'Выход'
     else:
         text_button_enter = 'Вход'
-    listofCourses = Lession.objects.all().filter(short_name=request.user.usercourses.course.short_name).order_by('cid')
+    #listofCourses = Lession.objects.all().filter(short_name=request.user.usercourses.course.short_name).order_by('cid')
+    themes = Theme.objects.all().filter(short_name=request.user.usercourses.course.short_name).order_by('cid')
     homeworks = Homework.objects.all().filter(course=request.user.usercourses.course).order_by('cid')
-    return render(request, 'cabinet/cabinet.html', {'text_button_enter': text_button_enter, 'listofCourses': listofCourses, 'homeworks': homeworks})
+    return render(request, 'cabinet/cabinet.html', {'text_button_enter': text_button_enter, 'themes': themes, 'homeworks': homeworks})
 
 
 @login_required(login_url='/a')
@@ -95,3 +97,9 @@ def course_raw(request, short_name, cid):
             form = HomeworkForm()
             
     return render(request, f'{listofCourses[0].file}', {'form': form, 'lang': request.user.usercourses.course.short_name, 'code': code})
+
+
+def lessions(request,  cid ):
+    lessions = Theme.objects.all().filter(short_name=request.user.usercourses.course.short_name).filter(cid=cid)[0]
+    print(lessions)
+    return render(request, 'cabinet/lessions.html', {'lessions': lessions})

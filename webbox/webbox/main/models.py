@@ -6,13 +6,16 @@ from lessions.models import Theme
 
 # Create your models here.
 
+
+
+
 class Course(models.Model):
     title = models.CharField(max_length=255, verbose_name="Название курса")
     description = models.TextField(verbose_name="Описание курса")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания курса")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата обновления курса")
-    picture_preview = models.CharField(max_length=255, help_text='Эта картинка отображается на главной странице в карточкке курса. Значение - путь к картинке на сервере от папки static', default="webbox/img/placeholders/my_friend.jpg", verbose_name="Картинка курса (маленькая)")
-    picture = models.CharField(max_length=255, help_text='Большая картинка. Значение - путь к картинке на сервере от папки static', default="webbox/img/placeholders/my_friend.jpg", verbose_name="Картинка курса (средняя)")
+    picture_preview = models.ImageField(upload_to='base/img/%Y/%m/%d', help_text='Эта картинка отображается на главной странице в карточкке курса.', default="webbox/img/placeholders/my_friend.jpg", verbose_name="Картинка курса (маленькая)")
+    picture = models.ImageField(upload_to='base/img/%Y/%m/%d', help_text='Большая картинка.', default="webbox/img/placeholders/my_friend.jpg", verbose_name="Картинка курса (средняя)")
     is_published  = models.BooleanField(default=True, verbose_name="Публикация курса")
     short_name = models.CharField(max_length=20, default="none", verbose_name="Сокращенное название курса")
     price=models.CharField(max_length=255, default="none рублей", verbose_name="Цена курса с указанием единиц", help_text="Можно использовать html")
