@@ -1,67 +1,55 @@
-{% load static %}
+
 <!DOCTYPE html>
+{% load static %}
 <html>
 <head>
-    <title>{% block title %}{% endblock %}</title>
-    <link href="{% static "webbox/css/index.css" %}" rel="stylesheet">
+    <title>{{name_course}}</title>
+    <link rel="stylesheet" href="{% static "/webbox/css/index.css" %}"/>    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link rel="icon" type="image/x-icon" href="{% static "favicon.ico" %}">
 </head>
 <body>
-    <div class="wrapper">
-        <header class="header">
-            <div class="header__logo">
-                <p>WebBox</p>
-            </div>
-            <div class="header__nav">
-                <nav>
-                    <ul>
-                        <li><a href="">Компаниям</a></li>
-                        <li><a href="">Медиа</a></li>
-                        <li><a href="#about">О нас</a></li>
-                        {% if user.is_authenticated %}
-                            <li><a href='/u'>Личный кабинет</a></li>
-                            <li><a href='/a/u'>Выйти</a></li>
-                        {% else %}
-                        <li><a href='/a'>Войти</a></li>
-                        {% endif %}
-                    </ul>
-                </nav>
-            </div>
-        </header>
-
-        <main class="coursess">
-            <div class="leftCourse">
-                <h2 class="coursesnowh2">Уроки</h2>
-                <ul class="coursesnow">
-                    {% for item in all_courses%}
-                        <li class="card">
-                            <a href="/u/course/{{item.short_name}}/{{item.cid}}">{{item.name}}</a>
-                        </li>
-                    {% endfor%}
-                </ul>
-                <h2 class="coursesnowh2">ДЗ</h2>
-                <ul class="coursesnow">
-                    {% for item in homeworks %}
-                        <li class="card"><a href='/u/homework/{{user.usercourses.course.short_name}}/{{ item.cid }}'>{{item.name}}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="rightCourse">
-                {% if listofCourses %}
-                    <iframe src="/u/course/{{user.usercourses.course.short_name}}/{{listofCourses.cid}}/raw"></iframe>
-                {% elif listofHomeworks %}
-                    <iframe src="/u/homework/{{user.usercourses.course.short_name}}/{{listofHomeworks.cid}}/raw"></iframe>
-                {% else %}
-                    <p>Вы не можете получить доступ к этой странице или такого урока к курсу не существует</p>
-                {% endif %}
-            </div>
-        </main>
-
-        <footer class="footer">
-            <h5>WebBox</h5>
-            <p>Проект Егора Горгуна и Федосова Никиты.<br>:sunglassses:</p>
-        </footer>
+<header>    
+    <span class="logo">Some header</span>
+    {% if user.is_authenticated %}
+        <a href='/a/u'>Выйти</a>
+    {% else %}
+        <a href='/a'>Войти</a>
+    {% endif %}
+</header>
+<main>
+    <div id="course">
+    <div id="leftListOfCourses">
+        <h2>Уроки</h2>
+        <ul>
+        {% for item in all_courses%}
+            
+                <li><a href="/u/course/{{item.short_name}}/{{item.cid}}">{{item.name}}</a></li>
+        {% endfor%}
+        </ul>
+        <h2>ДЗ</h2>
+        <ul>
+        {% for item in homeworks%}
+            <li><a href='/u/homework/{{user.usercourses.course.short_name}}/{{ item.cid }}'>{{item.name}}</a></li>
+        </ul>
+        {% endfor%}
     </div>
+    <div id="rightCourse">
+    {% if listofCourses %}
+            <iframe src="/u/course/{{user.usercourses.course.short_name}}/{{listofCourses.cid}}/raw"></iframe>
+        
+
+    {% elif listofHomeworks %}
+            <iframe src="/u/homework/{{user.usercourses.course.short_name}}/{{listofHomeworks.cid}}/raw"></iframe>
+    {% else %}
+        <p>Вы не можете получить доступ к этой странице или такого урока к курсу не существует</p>
+    {% endif %}
+    </div>
+</div>
+</main>
+<footer>
+    Some footer
+</footer>
 </body>
 </html>

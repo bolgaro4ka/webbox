@@ -11,6 +11,7 @@
     --background-color: #eee;
     --accent: #999;
     --black: #222;
+    --accent-color: green;
 }
 
 * {
@@ -413,18 +414,24 @@ ul.errorlist li {
     font-family: 'Lato', sans-serif;
     font-size: 16px;
     padding: 4px 8px;
+    margin: 3px;
     background-color: var(--background-color);
-    transition: all 200ms;
+    transition: all 50ms;
 }
 
 .card a:hover {
-    box-sizing: content-box;
+    margin: 0;
     color: var(--background-color);
     background-color: var(--black);
+    border: 3px solid var(--background-color);
 }
 
 .card {
     width: 500px;
+}
+
+.card:last-child {
+    width: auto;
 }
 
 .homework {
@@ -440,51 +447,4 @@ ul.errorlist li {
     justify-content: center;
     gap: 16px;
     list-style: none;
-}
-
-.coursess {
-    display: flex;
-    background-color: var(--black);
-    background-size: 100% auto;
-    box-shadow: 0px 0px 8px var(--black);
-    margin: 16px 0;
-    padding: 8px 16px;
-    justify-content: center;
-    align-items: center;
-    min-height: 80vh;
-    border-radius: 12px;
-    margin-right: 100px;
-    width: 1067px;
-    gap: 32px;
-}
-
-.coursesnowh2 {
-    color: var(--background-color);
-    font-family: 'Dela Gothic One', sans-serif;
-    font-size: 32px;
-    margin-bottom: 16px;
-    margin-top: 16px;
-}
-
-.coursesnow {
-    width: 350px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    list-style: none;
-}
-
-.rightCourse {
-    height: 450px;
-    width: 100%;
-    border: 3px solid var(--background-color);
-    padding: 4px;
-    border-radius: 8px;
-}
-
-.rightCourse iframe {
-    height: 100%;
-    width: 100%;
-    border: none;
-    border-radius: 4px;
 }
