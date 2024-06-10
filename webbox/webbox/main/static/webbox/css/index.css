@@ -451,7 +451,7 @@ ul.errorlist li {
     padding: 8px 16px;
     justify-content: center;
     align-items: center;
-    min-height: 80vh;
+    height: 80vh;
     border-radius: 12px;
     margin-right: 100px;
     width: 1067px;
@@ -467,11 +467,21 @@ ul.errorlist li {
 }
 
 .coursesnow {
-    width: 350px;
+    width: 520px;
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
     list-style: none;
+}
+
+.leftCourse {
+    height: 500px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.leftCourse .card a {
+    width: 300px;
 }
 
 .rightCourse {
