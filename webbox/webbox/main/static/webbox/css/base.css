@@ -1,11 +1,55 @@
-h1,h2 {background-color: green; color: white}
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Lato&display=swap');
+@import url(https://pvinis.github.io/iosevka-webfont/3.4.1/iosevka.css);
+:root {
+    --background-color: #eee;
+    --accent: #999;
+    --black: #222;
+    --veryblack: #000;
+}
 
-body {margin: 0; padding: 2px; }
+h1, h2, h3 {
+    color: var(--background-color);
+    font-family: 'Dela Gothic One', sans-serif;
+}
 
-* {box-sizing: border-box;
-font-family: monospace;}
+h1 { font-size: 32px; }
+h2 { font-size: 28px; }
+h3 { font-size: 24px; }
 
-#id_answer {
-    width: 100%;
-    height: 400px;
-  }
+p {
+    color: var(--background-color);
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+}
+
+ul {
+    list-style: var(--background-color);
+}
+
+ul li {
+    color: var(--background-color);
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+}
+
+code {
+    margin: 4px 0;
+    display: inline-block;
+    font-family: 'Iosevka Web';
+    color: var(--background-color);
+    background-color: var(--veryblack);
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+pre code {
+    font-family: monospace;
+}
+
+.primer {
+    margin: 4px 0;
+    background-color: var(--background-color);
+    width: max-content;
+    padding: 4px 8px;
+    border-radius: 4px;
+}

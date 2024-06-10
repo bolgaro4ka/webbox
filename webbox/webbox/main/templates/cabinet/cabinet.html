@@ -43,9 +43,9 @@
             <p class="username">Текущий курс пользователя {{user.username}}</p>
             <h2 class="coursetitle">{{user.usercourses.course.title}}</h2>
             <p class="coursedesc">{{user.usercourses.course.description}}</p>
-            <div class="homework">Темы</div>
         {% endif%}
         {% if themes %}
+            <div class="homework">Темы</div>
             <ul class="courseslist">
             {% for theme in themes %}
                 <li class="card">
