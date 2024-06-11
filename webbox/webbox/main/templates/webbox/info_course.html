@@ -6,6 +6,7 @@
     <link href="{% static "webbox/css/index.css" %}" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="{% static "favicon.ico" %}">
+    <title>WebBox ~ {{course.title}}</title>
 </head>
 <body>
     <div class="wrapper">
@@ -32,31 +33,32 @@
             </div>
         </header>
 
-        <main>
-            <main>
-                <div>
-                    
-                    <h2>{{course.title}}</h2>
-                    
-                    <img src="{{ course.picture.url }}" width="300" alt="BigImg"/>
-                    <p>{{course.long_description}}</p>
-                    <p>Создан: {{course.created_at}}</p>
-                    <p>Последнее обновление: {{course.updated_at}}</p>
-                    <p>На этом курсе обучается уже <b>{{number_of_users}}</b> человек(а)</p>
-        
-                    
-                    {% if user.usercourses.course.short_name == sh and user.usercourses.course.short_name == 'none' or not user.is_authenticated%}
-                        <p>Вы не зачислины на этот курс.</p>
-                        <a href='/u'>Зачислиться</a>
-                    {% elif user.usercourses.course.short_name == sh and user.usercourses.course.short_name != 'none'%}
-                        <p>Вы уже зачислины на этот курс.</p>
-                        <a href='/u'>Перейти в личный кабинет</a>
-                    {% elif user.usercourses.course.short_name != sh and user.usercourses.course.short_name != 'none' %}
-                        <p>Вы не зачислины на этот курс. Но уже обучаетесь на курсе "{{user.usercourses.course.title}}"</p>
-                        <a href='/u'>Перейти в личный кабинет</a>
-                    {% endif %}
+        <main class="coursecard">
+            <h2>{{course.title}}</h2>
+            
+            <div class="coursesflex">
+                <img src="{{ course.picture.url }}" height="400" alt="BigImg"/>
+                <div class="coursestext">
+                    <div class="ct1">
+                        <p>{{course.long_description}}</p>
+                        <p>Создан: {{course.created_at}}</p>
+                        <p>Последнее обновление: {{course.updated_at}}</p>
+                        <p>На этом курсе обучается уже <b>{{number_of_users}}</b> человек(а)</p>
+                    </div>
+                    <div class="ct2">
+                        {% if user.usercourses.course.short_name == sh and user.usercourses.course.short_name == 'none' or not user.is_authenticated%}
+                            <p>Вы не зачислины на этот курс.</p>
+                            <a href='/u'>Зачислиться</a>
+                        {% elif user.usercourses.course.short_name == sh and user.usercourses.course.short_name != 'none'%}
+                            <p>Вы уже зачислины на этот курс.</p>
+                            <a href='/u'>Перейти в личный кабинет</a>
+                        {% elif user.usercourses.course.short_name != sh and user.usercourses.course.short_name != 'none' %}
+                            <p>Вы не зачислины на этот курс. Но уже обучаетесь на курсе "{{user.usercourses.course.title}}"</p>
+                            <a href='/u'>Перейти в личный кабинет</a>
+                        {% endif %}
+                    </div>
                 </div>
-            </main>
+            </div>
         </main>
 
         <footer class="footer">

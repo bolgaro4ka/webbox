@@ -63,11 +63,9 @@
                 
                 </ul>
             </section>
-            <section>
-                <div class="wrapper"><iframe src='/a/comment' id="commentForm"></iframe></div>
-            </section>
             <section class="comments">
                 <h3>Комментарии</h3>
+                <iframe src='/a/comment' id="commentForm"></iframe>
                 {% for comment in comments %}
                     {%if comment.active%}
                         <div class="comments__comment"> 

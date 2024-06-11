@@ -3,7 +3,7 @@
 {% load static %}
 <head>
     
-    <title>Webbox</title>
+    <title>coms</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="{% static "/webbox/css/index.css" %}"/>
 </head>
@@ -12,10 +12,10 @@
       {% if user.is_authenticated %}
         {% if new_comment%}
         <div class="alert alert-success" role="alert">
-          Your comment is awaiting moderation
+          Модерируем
         </div>
         {% else %}
-        <h3>Оставьте комеентарий</h3>
+        <h3>Оставьте коментарий</h3>
         <form method="post" style="margin-top: 1.3em;">
           {{ comment_form.as_p }}
           {% csrf_token %}

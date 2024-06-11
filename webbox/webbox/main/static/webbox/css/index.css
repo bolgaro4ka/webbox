@@ -131,10 +131,6 @@ a {
     width: 200px;
     padding: 8px;
     margin-right: 16px;
-}
-
-.courses__card li {
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -193,6 +189,8 @@ a {
     background-color: var(--background-color);
     border-radius: 8px;
     padding: 4px 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
 
 .comments__comment_info {
@@ -267,6 +265,8 @@ a {
 
 .login-password,
 .login-username,
+#id_name,
+#id_body,
 #id_username,
 #id_first_name,
 #id_email,
@@ -497,4 +497,113 @@ ul.errorlist li {
     width: 100%;
     border: none;
     border-radius: 4px;
+}
+
+#commentForm {
+    border: none;
+    width: 100%;
+    height: 355px;
+}
+
+.card-body {
+    background-color: var(--black);
+}
+
+.card-body * {
+    color: var(--background-color);
+    font-family: 'Lato', sans-serif;
+}
+
+.card-body button {
+    color: var(--black);
+    background-color: var(--background-color);
+    padding: 4px 8px;
+    margin-top: 4px;
+    border-radius: 16px;
+    margin-bottom: 8px;
+    margin-top: 8px;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    transition: all 200ms;
+}
+
+.card-body button:hover {
+    color: var(--background-color);
+    background-color: var(--black);
+}
+
+.card-body p > input,
+.card-body p > textarea {
+    margin-left: 4px;
+    color: var(--black);
+    font-size: 20px;
+    border-radius: 16px;
+    border: none;
+    padding: 0 8px;
+}
+
+.card-body p > textarea {
+    height: 100px;
+}
+
+.coursecard {
+    background-color: var(--black);
+    background-size: 100% auto;
+    box-shadow: 0px 0px 8px var(--black);
+    margin: 16px 0;
+    padding: 8px 16px;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    border-radius: 12px;
+    margin-right: 100px;
+    width: 1067px;
+}
+
+.coursecard > h2 {
+    color: var(--background-color);
+    font-family: 'Dela Gothic One', sans-serif;
+    font-size: 32px;
+}
+
+.coursesflex {
+    display: flex;
+    flex-direction: row;
+    margin-top: 16px;
+}
+
+.coursesflex img {
+    border-radius: 16px;
+    margin-right: 16px;
+}
+
+.coursestext {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.ct1 * {
+    color: var(--background-color);
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+}
+
+.ct2 * {
+    color: var(--background-color);
+    font-family: 'Dela Gothic One', sans-serif;
+    font-size: 16px;
+}
+
+.ct2 a {
+    text-decoration: underline;
+}
+
+.card-body p {display: flex; flex-direction: column}
+
+#id_course {
+    border: none;
+    border-radius: 16px;
+    color: var(--background-color);
 }
