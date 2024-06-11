@@ -607,3 +607,7 @@ ul.errorlist li {
     border-radius: 16px;
     color: var(--background-color);
 }
+
+.comments-iframe-body {
+    background-color: var(--black);
+}

@@ -40,6 +40,11 @@
             </section>
             <section class="courses">
                 <h3>Курсы которые мы предоставляем</h3>
+                <form method="post">
+                    {{ form.as_p }}
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary  btn-lg">Применить</button>
+                </form>   
                 <ul class="courses__list">
                     {% if courses_list %}
                         {% for cousre in courses_list %}
