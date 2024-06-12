@@ -70,12 +70,13 @@
         <p>Доступные курсы</p>
         <div class="cards">
             {% for course in courses %}
-            <div class="card"></div>
+            <div class="card">
                 <img src="{{ course.image.url }}">
                 <h3>{{ course.title }}</h3>
                 <p class="hint">{{ course.description}}</p>
                 <p>{{ course.price | safe  }}</p>
                 <button onclick="handleBuyButton({{ course.id }})">Купить</button>
+            </div>
             {% endfor %}
         </div>
     </div>
