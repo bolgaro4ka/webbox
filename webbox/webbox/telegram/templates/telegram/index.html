@@ -4,8 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Webbox ~ Telegram</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: var(--tg-theme-text-color);
+        }
+
+        body {
+            background-color: var(--tg-theme-bg-color);
+        }
+
+        .hint {
+            color: var(--tg-theme-hint-color);
+        }
+
+        a {
+            color: var(--tg-theme-button-color);
+            text-decoration: none;
+        }
+
+        button {
+            background-color: var(--tg-theme-button-color);
+            color: var(--tg-theme-button-text-color);
+        }
+
+        .wrapper {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    SUCCESS!
+
+    <div class="wrapper">
+        <h1>🤯</h1>
+        <p>Ай-да Паша Дуров! Ай-да сукин сын.</p>
+        <button onclick="handleOkButton">ОК</button>
+    </div>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        console.log(window.Telegram.WebApp)
+
+        const tg = window.Telegram.WebApp;
+
+        function handleOkButton() {
+            tg.close();
+        }
+    </script>
 </body>
 </html>
