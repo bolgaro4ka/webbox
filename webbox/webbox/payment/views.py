@@ -18,13 +18,18 @@ def index(request):
     return render(request, 'payment/index.html', {'payment_form': user_form})
 @login_required(login_url='/a')
 def pre_success(request):
-    a = Pay.objects.all().filter(user=request.user)[0]
-    print(a)
+    try:
+        a = Pay.objects.all().filter(user=request.user)[0]
+    except:
+        return render(request, 'errors_form.html', {'error': {'name': 'Вы не оплатили курс', 'description': 'Пожалуйста, оплатите курс'}})
     return render(request, 'payment/pre_success.html', {'fromForm': a})
 
 @login_required(login_url='/a')
 def success(request):
-    a = Pay.objects.all().filter(user=request.user)[0]
+    try:
+        a = Pay.objects.all().filter(user=request.user)[0]
+    except:
+        return render(request, 'errors_form.html', {'error': {'name': 'Вы не оплатили курс', 'description': 'Пожалуйста, оплатите курс'}})
     return render(request, 'payment/success.html', {'fromForm': a})
 
 @login_required(login_url='/a')

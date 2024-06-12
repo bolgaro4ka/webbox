@@ -48,14 +48,33 @@
         h1 {
             font-size: 96px;
         }
+
+        .card {
+            background-color: var(--tg-theme-secondary-bg-color);
+            width: 48%;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2%;
+        }
     </style>
 </head>
 <body>
 
     <div class="wrapper">
-        <h1>🤯</h1>
-        <p>Ай-да Паша Дуров! Ай-да сукин сын.</p>
-        <button onclick="handleOkButton">ОК</button>
+        <p>Доступные курсы</p>
+        <div class="cards">
+            {% for course in courses %}
+            <div class="card"></div>
+                <img src="{{ course.image.url }}">
+                <h3>{{ course.title }}</h3>
+                <p class="hint">{{ course.description}}</p>
+                <p>{{ course.price | safe  }}</p>
+                <button onclick="handleBuyButton({{ course.id }})">Купить</button>
+            {% endfor %}
+        </div>
     </div>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
@@ -63,7 +82,7 @@
 
         const tg = window.Telegram.WebApp;
 
-        function handleOkButton() {
+        function handleBuyButton() {
             tg.close();
         }
 
