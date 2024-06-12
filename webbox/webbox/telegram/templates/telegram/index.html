@@ -54,10 +54,12 @@
             max-width: 48%;
             text-align: center;
             padding: 10px;
+            border-radius: 5px;
         }
 
         .card img {
             max-width: 100%;
+            border-radius: 5px;
         }
 
         .cards {
@@ -68,12 +70,19 @@
         }
 
         p {
-            font-size: 8px;
+            font-size: 10px;
 
         }
 
         h3 {
-            font-size: 12px;
+            font-size: 14px;
+        }
+
+        .buy {
+            position: absolute;
+            bottom: 10px;
+            /*left: 50%;
+            transform: translateX(-50%);*/
         }
     </style>
 </head>
@@ -89,7 +98,7 @@
                 <h3>{{ course.title }}</h3>
                 <p class="hint">{{ course.description}}</p>
                 <p>{{ course.price | safe  }}</p>
-                <button onclick="handleBuyButton({{ course.id }})">Купить</button>
+                <button onclick="handleBuyButton({{ course.id }})" class="buy">Купить</button>
             </div>
             {% endif %}
             {% endfor %}
