@@ -28,7 +28,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = True if os.getenv("DEBUG").lower() in ['true', 't', 'yes'] else False
 
 ALLOWED_HOSTS = ['*']
-
+CSRF_TRUSTED_ORIGINS=["https://paia1nik.duckdns.org"]
 
 # Application definition
 
