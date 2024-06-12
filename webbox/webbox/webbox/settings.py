@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'cabinet.apps.CabinetConfig',
     'payment.apps.PaymentConfig',
     'lessions.apps.LessionsConfig',
+    'telegram.apps.TelegramConfig',
 ]
 
 MIDDLEWARE = [
