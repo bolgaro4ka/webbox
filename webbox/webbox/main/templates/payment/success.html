@@ -1,18 +1,45 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
-{% load static %}
 <head>
-    
-    <title>Webbox</title>
-    <meta charset="utf-8"/>
-    <link rel="stylesheet" href="{% static "/webbox/css/index.css" %}"/>
+    <title>{% block title %}{% endblock %}</title>
+    <link href="{% static "webbox/css/index.css" %}" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="{% static "favicon.ico" %}">
-
 </head>
 <body>
-    <div class="card-body">
-        <p>{{fromForm.course.title}}</p>
-        <p>Ожидайте подтверждения</p>
-      </div> 
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__logo">
+                <p>WebBox</p>
+            </div>
+            <div class="header__nav">
+                <nav>
+                    <ul>
+
+                        <li><a href="/#forcomp">Компаниям</a></li>
+                        <li><a href="/#media">Медиа</a></li>
+                        <li><a href="/#about">О нас</a></li>
+                        {% if user.is_authenticated %}
+                            <li><a href='/u'>Личный кабинет</a></li>
+                            <li><a href='/a/u'>Выйти</a></li>
+                        {% else %}
+                        <li><a href='/a'>Войти</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main class="genericsection dopayform">
+            <h3>Ожидание подтверждения...</h3>
+            <p>Курс: {{fromForm.course.title}}</p>
+        </main>
+
+        <footer class="footer">
+            <h5>WebBox</h5>
+            <p>Проект Егора Горгуна и Федосова Никиты.<br>:sunglassses:</p>
+        </footer>
+    </div>
 </body>
 </html>

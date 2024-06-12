@@ -618,9 +618,29 @@ p > label {
     font-size: 18px;
 }
 
+.coursesearch form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
 .coursesearch p {
     display: flex;
-    flex-direction: column;
+    margin-right: 16px;
+}
+
+.coursesearch p:nth-child(2n) {
+    margin-right: 0;
+}
+
+.coursesearch p * {
+    width: 350px;
+}
+
+.coursesearch p label {
+    margin-top: 4px;
+    width: 70px;
+    margin-right: 16px;
 }
 
 #id_field_search,
@@ -697,7 +717,7 @@ p > label {
 
 .payment p input,
 .payment p select {
-    color: var(--black);
+    color: var(--black) !important;
     background-color: var(--background-color);
     font-family: 'Lato', sans-serif;
     font-size: 16px;
@@ -705,6 +725,10 @@ p > label {
     border: none;
     border-radius: 16px;
     transition: all 200ms;
+}
+
+.payment p select option {
+    color: var(--black) !important;
 }
 
 .btn-primary:hover {
@@ -723,4 +747,64 @@ p > label {
     text-shadow: var(--black) 2px 2px 4px;
     font-weight: 100;
     font-size: 18px;
+}
+
+.genericlinks {
+    display: flex;
+    gap: 16px;
+}
+
+.errorform {
+    display: flex;
+    height: 68vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.genericlinks a {
+    text-decoration: underline;
+    color: var(--background-color);
+    font-weight: 100;
+    font-family: 'Lato', sans-serif;
+    text-shadow: var(--black) 2px 2px 4px;
+    font-size: 18px;
+}
+
+.unpayform {
+    display: flex;
+    height: 68vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.unpayform p {
+    color: var(--background-color);
+    font-family: 'Dela Gothic One', sans-serif;
+    font-size: 32px;
+}
+
+.dopayform {
+    display: flex;
+    height: 68vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+td {
+    color: var(--background-color);
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    padding: 6px;
+    border-spacing: 0;
+}
+
+table {
+    margin: 6px;
+}
+
+.tableop p:first-child {
+    margin-right: 16px;
 }
