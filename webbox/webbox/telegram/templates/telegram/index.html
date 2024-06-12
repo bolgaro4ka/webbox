@@ -71,7 +71,7 @@
         <div class="cards">
             {% for course in courses %}
             <div class="card">
-                <img src="{{ course.image.url }}">
+                <img src="{{ course.picture.url }}">
                 <h3>{{ course.title }}</h3>
                 <p class="hint">{{ course.description}}</p>
                 <p>{{ course.price | safe  }}</p>
