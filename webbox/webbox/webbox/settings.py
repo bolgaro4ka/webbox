@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 from pathlib import Path
 from dotenv import load_dotenv
-from ....webbox_bot.config import BASE_URL as MEGA_BASE_URL
 
 load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -93,7 +92,7 @@ DATABASES = {
 }
 
 CORS_ALLOWED_ORIGINS = [
-    MEGA_BASE_URL[:-1],
+    'https://paia1nik.duckdns.org',
 ]
 
 # Password validation
