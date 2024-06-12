@@ -17,9 +17,9 @@
                 <nav>
                     <ul>
 
-                        <li><a href="">Компаниям</a></li>
-                        <li><a href="">Медиа</a></li>
-                        <li><a href="#about">О нас</a></li>
+                        <li><a href="/#forcomp">Компаниям</a></li>
+                        <li><a href="/#media">Медиа</a></li>
+                        <li><a href="/#about">О нас</a></li>
                         <li><a href='/admin'>Админ-панель</a></li>
                         {% if user.is_authenticated %}
                             <li><a href='/u'>Личный кабинет</a></li>
@@ -40,11 +40,13 @@
             </section>
             <section class="courses">
                 <h3>Курсы которые мы предоставляем</h3>
-                <form method="post">
-                    {{ form.as_p }}
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-primary  btn-lg">Применить</button>
-                </form>   
+                <div class="coursesearch">
+                    <form method="post">
+                        {{ form.as_p }}
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary  btn-lg">Применить</button>
+                    </form>   
+                </div>
                 <ul class="courses__list">
                     {% if courses_list %}
                         {% for cousre in courses_list %}
@@ -82,6 +84,18 @@
                         </div>
                     {% endif %}
                 {% endfor %}
+            </section>
+            <section class="genericsection" id="forcomp">
+                <h3>Компаням</h3>
+                <p>мы крч оч крутые бля: Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum laudantium ullam, temporibus debitis ex minus! Ut ex quia magnam, quas, nobis architecto nulla atque quis non vel ducimus, optio quam.</p>
+            </section>
+            <section class="genericsection" id="media">
+                <h3>Медиа</h3>
+                <p>мы крч оч крутые бля: Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum laudantium ullam, temporibus debitis ex minus! Ut ex quia magnam, quas, nobis architecto nulla atque quis non vel ducimus, optio quam.</p>
+            </section>
+            <section class="genericsection" id="about">
+                <h3>О нас</h3>
+                <p>мы крч оч крутые бля: Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum laudantium ullam, temporibus debitis ex minus! Ut ex quia magnam, quas, nobis architecto nulla atque quis non vel ducimus, optio quam.</p>
             </section>
         </main>
 
