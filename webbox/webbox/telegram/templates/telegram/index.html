@@ -93,7 +93,7 @@
             gap: 10px;
         }
 
-        .hero h3 {
+        .hero h2 {
             font-size: 24px;
         }
     </style>
@@ -101,12 +101,12 @@
 <body>
     <section class="hero">
         <h1>🦧</h1>
-        <h3>Webbox - мы учим</h3>
+        <h2>Webbox - мы учим</h2>
         <p class="hint">Прокрутите вниз чтобы выбрать один из наших замечательных курсов</p>
     </section>
     <div class="wrapper">
 
-        <p>Доступные курсы</p>
+        <h2>Доступные курсы</h2>
         <div class="cards">
             {% for course in courses %}
             {% if course.is_published %}
