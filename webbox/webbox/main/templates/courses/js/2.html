@@ -5,16 +5,16 @@
     <title>Webbox</title>
     <link href="{% static "webbox/css/base.css" %}" rel="stylesheet">
     {% if white_theme %}
-    <style>
-        h1, h2, h3, p, ul, li {color: black;}
-    </style>
-{% endif %}
+        <style>
+            h1, h2, h3, p, ul, li {color: black;}
+        </style>
+    {% endif %}
 </head>
 <body>
 <main>
-{% if tg_view %}
-<a href="/t/a/" class="arrow">←</a>
-{% endif %}
+    {% if tg_view %}
+        <a href="/t/a/" class="arrow">←</a>
+    {% endif %}
     <h2>Элементы и атрибуты</h2>
     <p>Прежде чем переходить непосредственно к созданию своих веб-страниц на HTML5, рассмотрим основные строительные блоки, кирпичики, из которых состоит веб-страница.</p>
 
