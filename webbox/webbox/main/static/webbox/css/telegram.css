@@ -102,7 +102,7 @@ h3 {
 }
 
 input {
-    color: var(--tg-theme-text-color);
+    color: var(--tg-theme-text-color) !important;
     background-color: var(--tg-theme-secondary-bg-color);
     border: none;
     overflow: hidden;
@@ -120,5 +120,5 @@ input:hover {
 label {
     font-size: 10px;
     margin-bottom: 5px;
-
+    color: var(--tg-theme-text-color) !important;
 }
