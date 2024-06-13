@@ -8,7 +8,7 @@
     <link href="{% static "webbox/css/base.css" %}" rel="stylesheet">
     {% if white_theme %}
         <style>
-            h1, h2, h3, p, ul, li {color: black;}
+            h1, h2, h3, p, ul, li {color: var(--tg-theme-text-color);}
         </style>
     {% endif %}
 </head>
@@ -54,5 +54,9 @@
         
         <p>И также потребуется веб-браузер для запуска и проверки написанных веб-страничек. В качестве веб-браузера можно взять последнюю версию любого из распространенных браузеров - Google Chrome, Mozilla Firefox, Microsoft Edge, Opera.</p>
 </main>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script>
+    const tg = window.Telegram.WebApp;
+    </script>
 </body>
 </html>
