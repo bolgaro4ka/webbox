@@ -107,7 +107,7 @@ h3 {
 
 input, select {
     color: var(--tg-theme-text-color) !important;
-    background-color: var(--tg-theme-accent-text-color);
+    background-color: var(--tg-theme-secondary-bg-color);
     border: none;
     overflow: hidden;
     outline: none;
