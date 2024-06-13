@@ -55,7 +55,11 @@
             text-align: center;
             padding: 10px;
             border-radius: 5px;
-            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            
+
         }
 
         .card img {
@@ -81,10 +85,7 @@
         }
 
         .buy {
-            position: relative;
-            bottom: 10px;
-            /*left: 50%;
-            transform: translateX(-50%);*/
+
         }
     </style>
 </head>
@@ -96,10 +97,12 @@
             {% for course in courses %}
             {% if course.is_published %}
             <div class="card">
+                <div>
                 <img src="{{ course.picture.url }}">
                 <h3>{{ course.title }}</h3>
                 <p class="hint">{{ course.description}}</p>
                 <p>{{ course.price | safe  }}</p>
+                </div>
                 <button onclick="handleBuyButton({{ course.id }})" class="buy">Купить</button>
             </div>
             {% endif %}
