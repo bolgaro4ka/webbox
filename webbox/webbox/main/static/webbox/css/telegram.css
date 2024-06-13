@@ -1,3 +1,6 @@
+
+
+
 * {
     margin: 0;
     padding: 0;
@@ -80,6 +83,7 @@ h3 {
     flex-direction: column;
     justify-content: center;
     gap: 10px;
+    padding: 10px;
 }
 
 .hero h2 {
@@ -107,10 +111,11 @@ input {
     border: none;
     overflow: hidden;
     outline: none;
-    padding: 10px 20px;
+    padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
+    margin: 5px 0;
 }
 
 input:hover {
@@ -121,4 +126,8 @@ label {
     font-size: 10px;
     margin-bottom: 5px;
     color: var(--tg-theme-text-color) !important;
+}
+
+h2 {
+    text-align: center;
 }
