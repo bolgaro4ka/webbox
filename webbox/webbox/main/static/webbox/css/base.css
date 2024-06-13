@@ -53,3 +53,12 @@ pre code {
     padding: 4px 8px;
     border-radius: 4px;
 }
+
+.arrow {
+    text-decoration: none;
+    font-size: 40px;
+    color: var(--tg-theme-button-color);
+    margin-top: 10px;
+    cursor: pointer;
+    padding: 20px;
+}
