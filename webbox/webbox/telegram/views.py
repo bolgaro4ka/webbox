@@ -76,7 +76,7 @@ def register(request):
 def article(request, id):
     lession = Lession.objects.all().get(id=id)
 
-    return render(request, lession.file, {'id': id})
+    return render(request, lession.file, {'id': id, 'tg_view': True})
 
 @login_required(login_url='/t/l/')
 def lessions(request):
