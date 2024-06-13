@@ -23,12 +23,12 @@
             {% if course.is_published %}
             <div class="card">
                 <div>
-                <img src="{{ course.picture.url }}">
-                <h3>{{ course.title }}</h3>
-                <p class="hint">{{ course.description}}</p>
-                <p>{{ course.price | safe  }}</p>
+                    <img src="{{ course.picture.url }}">
+                    <h3>{{ course.title }}</h3>
+                    <p class="hint">{{ course.description}}</p>
+                    <p>{{ course.price | safe  }}</p>
                 </div>
-                <button onclick="handleBuyButton({{ course.id }})" class="buy">Купить</button>
+                <a href="/t/money/{{course.id}}" class="buy">Купить</a>
             </div>
             {% endif %}
             {% endfor %}
