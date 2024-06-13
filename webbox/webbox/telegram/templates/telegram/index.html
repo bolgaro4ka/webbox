@@ -58,7 +58,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            
+
 
         }
 
@@ -84,14 +84,24 @@
             font-size: 14px;
         }
 
-        .buy {
-
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
         }
     </style>
 </head>
 <body>
-
+    <section class="hero">
+        <h1>🦧</h1>
+        <p>Webbox - мы учим</p>
+        <p class="hint">Прокрутите вниз чтобы выбрать один из наших замечательных курсов</p>
+    </section>
     <div class="wrapper">
+
         <p>Доступные курсы</p>
         <div class="cards">
             {% for course in courses %}
@@ -114,6 +124,7 @@
         console.log(window.Telegram.WebApp)
 
         const tg = window.Telegram.WebApp;
+        tg.expand()
 
         function handleBuyButton() {
             tg.close();
