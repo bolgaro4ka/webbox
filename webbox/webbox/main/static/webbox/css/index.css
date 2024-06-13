@@ -621,12 +621,14 @@ p > label {
 .coursesearch form {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     justify-content: space-between;
 }
 
 .coursesearch p {
     display: flex;
-    margin-right: 16px;
+    align-items: center;
+    justify-content: center;
 }
 
 .coursesearch p:nth-child(2n) {
@@ -638,7 +640,6 @@ p > label {
 }
 
 .coursesearch p label {
-    margin-top: 4px;
     width: 70px;
     margin-right: 16px;
 }
@@ -646,12 +647,21 @@ p > label {
 #id_field_search,
 #id_price_from,
 #id_price_to {
-    margin-top: 4px;
-    margin-bottom: 16px;
+    margin: 11px;
+    
     font-size: 20px;
     border-radius: 16px;
     border: none;
     padding: 0 8px;
+}
+
+
+.coursesearch p:first-child {
+    width: 100% !important;
+}
+
+#id_field_search {
+    width: 100%;
 }
 
 .btn-primary {

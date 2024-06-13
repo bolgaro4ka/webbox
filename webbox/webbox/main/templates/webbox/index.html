@@ -53,10 +53,11 @@
                             {% if cousre.is_published %}
                                 <li class="courses__card">
                                     <img class="courses__card_img" src="{{ cousre.picture_preview.url }}" width="200" height="200" alt="{{ cousre.picture_preview.url }}"/>
-                                    <div class="courses__card_text">
+                                    
                                         <h4>{{cousre.title}}</h4>
                                         <p>{{cousre.description}}</p>
                                         <p>{{cousre.price | safe }}</p>
+                                    <div class="courses__card_text">
                                         <a href="/c/{{cousre.short_name}}">Перейти</a>
                                     </div>
                                 </li>
