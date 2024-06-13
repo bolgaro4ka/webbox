@@ -28,7 +28,7 @@
                 <p class="hint">{{ course.description}}</p>
                 <p>{{ course.price | safe  }}</p>
                 </div>
-                <button onclick="() => {handleBuyButton({{ course.id }})}" class="buy">Купить</button>
+                <button onclick="handleBuyButton({{ course.id }})" class="buy">Купить</button>
             </div>
             {% endif %}
             {% endfor %}
@@ -42,7 +42,7 @@
         tg.expand()
 
         function handleBuyButton(cid) {
-            window.location.href = `/t/money/${cid}/`
+            window.location.href = `/t/money/${cid}`
         }
 
         tg.MainButton.show();
