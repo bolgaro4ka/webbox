@@ -42,8 +42,8 @@ def user_login(request):
             user = authenticate(username=cd['username'], password=cd['password'])
             if user is not None:
                 if user.is_active:
-                    login(request, user)
-                    return redirect("/u")
+                    login(request, user=user)
+                    return redirect("/l/")
                 else:
                     
                     error["name"]="Disabled account"
@@ -56,8 +56,7 @@ def user_login(request):
                 return render(request, 'errors_form.html', {'error': error})
     else:
         form = LoginForm()
-    return render(request, 'account/login.html', {'form': form})
-
+    return render(request, 'telegram/login.html', {'form': form})
 
 def register(request):
     if request.method == 'POST':
@@ -69,10 +68,10 @@ def register(request):
             new_user.set_password(user_form.cleaned_data['password'])
             # Save the User object
             new_user.save()
-            return render(request, 'account/register_done.html', {'new_user': new_user})
+            return render(request, 'telegram/register.html', {'new_user': new_user})
     else:
         user_form = UserRegistrationForm()
-    return render(request, 'account/register.html', {'user_form': user_form})
+    return render(request, 'telegram/register.html', {'user_form': user_form})
 @login_required(login_url='/t/l/')
 def article(request, id):
    
