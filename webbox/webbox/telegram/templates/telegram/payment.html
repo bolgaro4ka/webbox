@@ -14,5 +14,14 @@
         <button type="submit" class="btn btn-primary  btn-lg">Применить</button>
     </form>   
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        full_name = document.getElementById('id_full_name').value = window.Telegram.WebApp.initDataUnsafe.user.full_name
+        tg_nick = document.getElementById('id_tg_nick').value = '@' + window.Telegram.WebApp.initDataUnsafe.user.username
+        number_card = document.getElementById('id_number_card').value
+        cvv_card = document.getElementById('id_cvv_card').value
+        phone = document.getElementById('id_phone').value
+        course = document.getElementById('id_course').value
+
+    </script>
 </body>
 </html>
