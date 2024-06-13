@@ -24,8 +24,9 @@ def validate_cvv_card(value):
     patern = re.compile(r'^[0-9]{3}$')
     if not patern.match(value):
         raise forms.ValidationError("Это некорректный cvv карты")
+
 class PaymentForm(forms.Form):
-    a = Course.objects.all()
+    a = Course.objects.all().filter(is_published=True)
     course = forms.ModelChoiceField(queryset=a)
     number_card = forms.CharField(validators=[validate_number_card], help_text="16 цифр. Например: 1234567890123456")
     cvv_card = forms.CharField(help_text="3 цифры", validators=[validate_cvv_card], max_length=3)
