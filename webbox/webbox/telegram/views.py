@@ -43,7 +43,7 @@ def user_login(request):
             if user is not None:
                 if user.is_active:
                     login(request, user=user)
-                    return redirect("/l/")
+                    return redirect("/t/l/")
                 else:
                     
                     error["name"]="Disabled account"
