@@ -14,24 +14,16 @@
         <h1>🦧</h1>
         <h2>Webbox - мы учим</h2>
         <p class="hint">Прокрутите вниз чтобы выбрать один из наших замечательных курсов</p>
-        <a href="/t/a/">К списку уроков</a>
     </section>
     <div class="wrapper">
 
         <h2 style="margin: 20px 0;">Доступные курсы</h2>
         <div class="cards">
-            {% for course in courses %}
-            {% if course.is_published %}
+            {% for lession in lessions %}
             <div class="card">
-                <div>
-                    <img src="{{ course.picture.url }}">
-                    <h3>{{ course.title }}</h3>
-                    <p class="hint">{{ course.description}}</p>
-                    <p>{{ course.price | safe  }}</p>
-                </div>
-                <a href="/t/money/{{course.id}}" class="buy">Купить</a>
+                <h3>{{lession.name}}</h3>
+                <a href="/t/a/{{lession.id}}" class="buy">Купить</a>
             </div>
-            {% endif %}
             {% endfor %}
         </div>
     </div>
