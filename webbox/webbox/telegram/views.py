@@ -74,8 +74,9 @@ def register(request):
     return render(request, 'telegram/register.html', {'user_form': user_form})
 @login_required(login_url='/t/l/')
 def article(request, id):
-   
-    return render(request, 'telegram/article.html', {'id': id})
+    lession = Lession.objects.all().get(id=id)
+
+    return render(request, lession.file, {'id': id})
 
 @login_required(login_url='/t/l/')
 def lessions(request):
