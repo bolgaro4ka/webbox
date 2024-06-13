@@ -21,8 +21,7 @@
         <div class="cards">
             {% for lession in lessions %}
             <div class="card">
-                <h3>{{lession.name}}</h3>
-                <a href="/t/a/{{lession.id}}" class="buy">Купить</a>
+                <a href="/t/a/{{lession.id}}" class="buy">{{lession.name}}</a>
             </div>
             {% endfor %}
         </div>
