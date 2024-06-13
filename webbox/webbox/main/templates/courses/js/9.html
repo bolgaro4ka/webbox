@@ -4,9 +4,19 @@
 <head>
     <title>Webbox</title>
     <link href="{% static "webbox/css/base.css" %}" rel="stylesheet">
+    {% if white_theme %}
+    <style>
+        h1, h2, h3, p, ul, li {color: black;}
+
+        
+    </style>
+{% endif %}
 </head>
 <body>
 <main>
+{% if tg_view %}
+<a href="/t/a/" class="arrow">←</a>
+{% endif %}
     <h2>Введение в JS</h2>
     <p>{% lorem 1 b random %}</p>
     <p>{% lorem 1900 b random %}</p>
