@@ -20,7 +20,7 @@
         <h2 style="margin: 20px 0;">Доступные курсы</h2>
         <div class="cards">
             {% for lession in lessions %}
-            <div class="card">
+            <div class="card" style="justify-content: center;">
                 <a href="/t/a/{{lession.id}}/" class="buy">{{lession.name}}</a>
             </div>
             {% endfor %}
@@ -34,7 +34,7 @@
         tg.expand()
 
         tg.MainButton.show();
-        tg.MainButton.setText("К главный странице");
+        tg.MainButton.setText("К главной странице");
 
         tg.MainButton.onClick(() => {
             window.location.href = '/t/';
