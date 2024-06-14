@@ -12,12 +12,14 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Count
 from django.http import HttpResponse
 from lessions.models import Lession
+import random
 
 # Create your views here.
 
 def index(request):
     courses = Course.objects.all()
-    return render(request, 'telegram/index.html', {'courses': courses})
+    rand_number = random.randint(0, 9)
+    return render(request, 'telegram/index.html', {'courses': courses, 'rand_number': rand_number})
 
 def pay(request, cid):
     if request.method == 'POST':
