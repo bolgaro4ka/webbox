@@ -42,16 +42,22 @@
         const tg = window.Telegram.WebApp;
         tg.expand()
 
-        function handleBuyButton(cid) {
-            window.location.href = `/t/money/${cid}`
-        }
-
         tg.MainButton.show();
-        tg.MainButton.setText("ОК");
 
-        tg.MainButton.onClick(() => {
-            tg.close();
-        });
+        {% if user.is_authenticated %}
+            tg.MainButton.setText("Выйти из аккаунта");
+
+            tg.MainButton.onClick(() => {
+                window.location.href = '/t/u/'
+            });
+        {% else %}
+            tg.MainButton.setText("Войти в аккаунт");
+            tg.MainButton.onClick(() => {
+                window.location.href = '/t/l/'
+            });
+        {% endif %}
+
+        
     </script>
 </body>
 </html>

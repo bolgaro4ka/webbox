@@ -22,6 +22,16 @@
         phone = document.getElementById('id_phone').value
         course = document.getElementById('id_course').value
 
+        const tg = window.Telegram.WebApp;
+        tg.expand()
+ 
+        tg.MainButton.show();
+        tg.MainButton.setText("К главной странице");
+ 
+        tg.MainButton.onClick(() => {
+            window.location.href = '/t/'
+        });
+
     </script>
 </body>
 </html>

@@ -31,7 +31,7 @@ def pay(request, cid):
 
 def user_logout(request):
     logout(request)
-    return redirect("/")
+    return redirect("/t/")
 
 def user_login(request):
     if request.method == 'POST':
@@ -43,7 +43,7 @@ def user_login(request):
             if user is not None:
                 if user.is_active:
                     login(request, user=user)
-                    return redirect("/t/l/")
+                    return redirect("/t/")
                 else:
                     
                     error["name"]="Disabled account"
@@ -68,7 +68,7 @@ def register(request):
             new_user.set_password(user_form.cleaned_data['password'])
             # Save the User object
             new_user.save()
-            return render(request, 'telegram/register.html', {'new_user': new_user})
+            return redirect("/t/l/")
     else:
         user_form = UserRegistrationForm()
     return render(request, 'telegram/register.html', {'user_form': user_form})

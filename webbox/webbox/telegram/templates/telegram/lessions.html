@@ -33,15 +33,11 @@
         const tg = window.Telegram.WebApp;
         tg.expand()
 
-        function handleBuyButton(cid) {
-            window.location.href = `/t/money/${cid}`
-        }
-
         tg.MainButton.show();
-        tg.MainButton.setText("ОК");
+        tg.MainButton.setText("К главный странице");
 
         tg.MainButton.onClick(() => {
-            tg.close();
+            window.location.href = '/t/';
         });
     </script>
 </body>
