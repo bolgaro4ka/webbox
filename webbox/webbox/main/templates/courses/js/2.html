@@ -4,17 +4,16 @@
 <head>
     <title>Webbox</title>
     <link href="{% static "webbox/css/base.css" %}" rel="stylesheet">
-    {% if white_theme %}
+    {% if tg_view %}
         <style>
-            h1, h2, h3, p, ul, li {color: black;}
+        * {
+            color: var(--tg-theme-text-color) !important;
+        }
         </style>
     {% endif %}
 </head>
 <body>
 <main>
-    {% if tg_view %}
-        <a href="/t/a/" class="arrow">←</a>
-    {% endif %}
     <h2>Элементы и атрибуты</h2>
     <p>Прежде чем переходить непосредственно к созданию своих веб-страниц на HTML5, рассмотрим основные строительные блоки, кирпичики, из которых состоит веб-страница.</p>
 
@@ -114,5 +113,16 @@
     <input type="button" value='Кнопка "Привет мир"'>
 </div>
 </main>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+      const tg = window.Telegram.WebApp;
+
+      tg.MainButton.show();
+      tg.MainButton.setText("Назад");
+
+      tg.MainButton.onClick(() => {
+        window.location.href = "/t/a/";
+      });
+    </script>
 </body>
 </html>
