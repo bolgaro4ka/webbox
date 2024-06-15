@@ -499,6 +499,16 @@ ul.errorlist li {
     border-radius: 4px;
 }
 
+/* chrome&safari */
+.rightCourse iframe::-webkit-scrollbar {
+    display: none;
+}
+
+/* chrome&safari */
+.leftCourse::-webkit-scrollbar {
+    display: none;
+}
+
 #commentForm {
     border: none;
     width: 100%;
