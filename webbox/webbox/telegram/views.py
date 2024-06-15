@@ -40,7 +40,9 @@ def pay(request, cid):
             )
 
             pay.save()
-            return redirect("/t/")
+            info = {'name': f'Ваша оплата прошла успешно!', 'description': f'Ожидайте сообщения в телеграмм по нику {cd["tg_nick"]} об успешном зачислении!'}
+
+            return render(request, 'telegram/info.html', {'info': info})
 
     else:
         form = TelegramGenericForm()

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webbox ~ Telegram</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/webbox/css/telegram.css">
+</head>
+<body>
+    <section class="hero">
+        <h1 style="font-size: 30px;">✅ Всё прошло успешно!</h1>
+        <h2>{{info.name}}</h2>
+        <p class="hint">{{info.description}}</p>
+    </section>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        console.log(window.Telegram.WebApp)
+
+        const tg = window.Telegram.WebApp;
+        tg.expand()
+
+        tg.MainButton.show();
+
+            tg.MainButton.setText("На главную");
+
+            tg.MainButton.onClick(() => {
+                window.location.href = '/t/'
+            });
+
+        tg.BackButton.show();
+        tg.BackButton.onClick(() => {
+            window.location.href = '/t/'
+        });
+
+        
+    </script>
+</body>
+</html>
