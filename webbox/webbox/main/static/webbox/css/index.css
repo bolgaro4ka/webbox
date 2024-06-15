@@ -475,7 +475,7 @@ ul.errorlist li {
 }
 
 .leftCourse {
-    height: 500px;
+    height: 100%;
     overflow-x: hidden;
     overflow-y: scroll;
 }
@@ -485,7 +485,7 @@ ul.errorlist li {
 }
 
 .rightCourse {
-    height: 450px;
+    height: 90%;
     width: 100%;
     border: 3px solid var(--background-color);
     padding: 4px;
