@@ -658,13 +658,11 @@ p > label {
 #id_price_from,
 #id_price_to {
     margin: 11px;
-    
     font-size: 20px;
     border-radius: 16px;
     border: none;
     padding: 0 8px;
 }
-
 
 .coursesearch p:first-child {
     width: 100% !important;
@@ -827,4 +825,76 @@ table {
 
 .tableop p:first-child {
     margin-right: 16px;
+}
+
+/* mobile ui */
+
+@media (max-width: 900px) {
+    .wrapper {
+        width: 95vw;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: normal;
+        padding: 8px 16px;
+    }
+    
+    .header__logo a {
+        font-size: 48px;
+    }
+
+    .header__nav ul {
+        gap: 8px;
+        flex-direction: column;
+    }
+
+    .header__nav ul li a {
+        font-size: 24px;
+    }
+
+    .hero * {
+        text-wrap: balance;
+    }
+    
+    .coursessearch p input {
+        width: 100% !important;
+    }
+
+    .coursessearch {
+        flex-direction: column;
+    }
+
+    .login {
+        align-items: normal;
+        min-height: auto;
+    }
+
+    .login-h1 {
+        font-size: 48px;
+    }
+
+    .login-form {
+        width: 100%;
+    }
+
+    .login form p label {
+        font-size: 24px;
+        width: 100%;
+    }
+
+    .login-register a {
+        font-size: 24px;
+    }
+
+    #id_username,
+    #id_password,
+    .login-btn {
+        font-size: 32px;
+    }
+
+    #id_price_from,
+    #id_price_to {
+        width: 100% !important;
+    }
 }
