@@ -55,7 +55,7 @@ def user_login(request):
             else:
                 error["name"] = "Invalid login"
                 error["description"] = "Неверное имя пользователя или пароль"
-                return render(request, 'errors_form.html', {'error': error})
+                return render(request, 'telegram/errors.html', {'error': error})
     else:
         form = LoginForm()
     return render(request, 'telegram/login.html', {'form': form})
