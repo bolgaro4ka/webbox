@@ -13,6 +13,8 @@ from django.db.models import Count
 from django.http import HttpResponse
 from lessions.models import Lession
 import random
+from payment.models import Pay
+from django.utils import timezone
 
 # Create your views here.
 
@@ -27,6 +29,19 @@ def pay(request, cid):
         form = TelegramGenericForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
+            pay = Pay.objects.create(
+                user=request.user,
+                course = cd['course'],
+                number_card = cd['number_card'],
+                cvv_card = cd['cvv_card'],
+                name_card = cd['full_name'],
+                phone = cd['phone'],
+                tg_nick = cd['tg_nick'],
+            )
+
+            pay.save()
+            return redirect("/t/")
+
     else:
         form = TelegramGenericForm()
     return render(request, 'telegram/payment.html', {'cid': cid, 'form': form})
