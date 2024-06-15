@@ -13,7 +13,7 @@ dp = Dispatcher()
 
 @dp.message(Command('start'))
 async def cmd_start(msg: types.Message):
-    markup = types.ReplyKeyboardMarkup(keyboard=[[types.KeyboardButton(text="Открыть", web_app=WebAppInfo(url=LIST_URL))]])
+    markup = types.InlineKeyboardMarkup(keyboard=[[types.InlineKeyboardButton(text="Открыть", web_app=WebAppInfo(url=LIST_URL))]])
     await msg.answer("Привет!", reply_markup=markup)
 
 

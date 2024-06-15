@@ -4,6 +4,21 @@
 <head>
     <title>Webbox</title>
     <link href="{% static "webbox/css/base.css" %}" rel="stylesheet">
+    {% if tg_view %}
+        <style>
+        * {
+            color: var(--tg-theme-text-color) !important;
+        }
+
+        code {
+            color: white !important;
+        }
+
+        .primer  * {
+            color: black;
+        }
+        </style>
+    {% endif %}
 </head>
 <body>
 <main>
@@ -31,7 +46,7 @@
 <code>&lt;div style="color:red;"&gt;Кнопка&lt;/div&gt;</code>
 <code>&lt;input type="button" value="Нажать"&gt;</code>
 <div class="primer">
-    <div style="color:red;">Кнопка</div> <input type="button" value="Нажать">
+    <div style="color:red !important;">Кнопка</div> <input type="button" value="Нажать">
     </div>
 <p>Здесь определено два элемента: div и input. Элемент div имеет атрибут style. После знака равно в кавычках пишется значение атрибута: style="color:red;". В данном случае значение "color:red;" указывает, что цвет текста будет красным.</p>
 
@@ -106,5 +121,16 @@
     <input type="button" value='Кнопка "Привет мир"'>
 </div>
 </main>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+      const tg = window.Telegram.WebApp;
+
+      tg.MainButton.show();
+      tg.MainButton.setText("Назад");
+
+      tg.MainButton.onClick(() => {
+        window.location.href = "/t/a/";
+      });
+    </script>
 </body>
 </html>

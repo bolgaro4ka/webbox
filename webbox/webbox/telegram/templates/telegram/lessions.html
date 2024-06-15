@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webbox ~ Telegram</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/webbox/css/telegram.css">
+</head>
+<body>
+    <section class="hero">
+        <h1>🦧</h1>
+        <h2>Webbox - мы учим</h2>
+        <p class="hint">Прокрутите вниз чтобы выбрать один из наших замечательных курсов</p>
+    </section>
+    <div class="wrapper">
+
+        <h2 style="margin: 20px 0;">Доступные курсы</h2>
+        <div class="cards">
+            {% for lession in lessions %}
+            <div class="card" style="justify-content: center;">
+                <a href="/t/a/{{lession.id}}/" class="buy">{{lession.name}}</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        console.log(window.Telegram.WebApp)
+
+        const tg = window.Telegram.WebApp;
+        tg.expand()
+
+        tg.MainButton.show();
+        tg.MainButton.setText("К главной странице");
+
+        tg.MainButton.onClick(() => {
+            window.location.href = '/t/';
+        });
+
+        tg.BackButton.show();
+        tg.BackButton.onClick(() => {
+            window.location.href = '/t/'
+        });
+    </script>
+</body>
+</html>

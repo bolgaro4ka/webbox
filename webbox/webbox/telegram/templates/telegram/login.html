@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/webbox/css/telegram.css">
+</head>
+<body class="hero">
+    <h2>Вход</h2>
+    <form method="post" class="genericFormTG">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary  btn-lg">Применить</button>
+    </form>   
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+       // document.getElementById('id_full_name').value = window.Telegram.WebApp.initDataUnsafe.user.first_name +' '+ window.Telegram.WebApp.initDataUnsafe.user.last_name
+       // document.getElementById('id_tg_nick').value = '@' + window.Telegram.WebApp.initDataUnsafe.user.username
+       // number_card = document.getElementById('id_number_card').value
+       // cvv_card = document.getElementById('id_cvv_card').value
+       // phone = document.getElementById('id_phone').value
+       // course = document.getElementById('id_course').value
+       const tg = window.Telegram.WebApp;
+       tg.expand()
+
+       tg.MainButton.show();
+       tg.MainButton.setText("К главной странице");
+
+       tg.MainButton.onClick(() => {
+           window.location.href = '/t/'
+       });
+
+       tg.BackButton.show();
+        tg.BackButton.onClick(() => {
+            window.location.href = '/t/'
+        });
+    </script>
+</body>
+</html>

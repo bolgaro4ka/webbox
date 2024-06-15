@@ -11,9 +11,39 @@
 </head>
 <body>
     <section class="hero">
-        <h1>🦧</h1>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+        {% if rand_number == 1 %}
+        <img src="https://cdn-0.emojis.wiki/emoji-pics-lf/telegram/nerd-face-telegram.gif" alt="ВСЁ СМОЛОСЬ БЫСТРО ЧИНИТЬ">
+        {% elif rand_number == 2 %}
+        <img src="https://cdn-0.emojis.wiki/emoji-pics-lf/telegram/man-technologist-telegram.gif" alt="">
+        {% elif rand_number == 3 %}
+        <img src="https://cdn-0.emojis.wiki/emoji-pics-lf/telegram/mechanical-arm-telegram.gif" alt="">
+        {% elif rand_number == 4 %}
+        <img src="https://cdn-0.emojis.wiki/emoji-pics-lf/telegram/seal-telegram.gif" alt="">
+        {% elif rand_number == 5 %}
+        <img src="https://cdn-0.emojis.wiki/emoji-pics-lf/telegram/party-popper-telegram.gif" alt="">
+        {% elif rand_number == 6 %}
+        <img src="https://cdn-0.emojis.wiki/emoji-pics-lf/telegram/laptop-telegram.gif" alt="">
+        {% elif rand_number == 7 %}
+        <img src="https://cdn-0.emojis.wiki/emoji-pics-lf/telegram/open-book-telegram.gif" alt="">
+        <h1 >📖</h1>
+        {% elif rand_number == 8 %}
+        <img src="https://cdn-0.emojis.wiki/emoji-pics-lf/telegram/chart-increasing-telegram.gif" alt="">
+        {% else %}
+        <img src="https://cdn-0.emojis.wiki/emoji-pics-lf/telegram/cool-button-telegram.gif" alt="">
+        {% endif %}
         <h2>Webbox - мы учим</h2>
         <p class="hint">Прокрутите вниз чтобы выбрать один из наших замечательных курсов</p>
+        <a href="/t/a/">К списку уроков</a>
     </section>
     <div class="wrapper">
 
@@ -41,16 +71,27 @@
         const tg = window.Telegram.WebApp;
         tg.expand()
 
-        function handleBuyButton(cid) {
-            window.location.href = `/t/money/${cid}`
-        }
-
         tg.MainButton.show();
-        tg.MainButton.setText("ОК");
 
-        tg.MainButton.onClick(() => {
-            tg.close();
+        {% if user.is_authenticated %}
+            tg.MainButton.setText("Выйти из аккаунта");
+
+            tg.MainButton.onClick(() => {
+                window.location.href = '/t/u/'
+            });
+        {% else %}
+            tg.MainButton.setText("Войти в аккаунт");
+            tg.MainButton.onClick(() => {
+                window.location.href = '/t/l/'
+            });
+        {% endif %}
+
+        tg.BackButton.show();
+        tg.BackButton.onClick(() => {
+            window.location.href = '/t/'
         });
+
+        
     </script>
 </body>
 </html>
