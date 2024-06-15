@@ -83,4 +83,6 @@ def article(request, id):
 @login_required(login_url='/t/l/')
 def lessions(request):
     lessions = Lession.objects.all().filter(short_name=request.user.usercourses.course.short_name)
-    return render(request, 'telegram/lessions.html', {'lessions': lessions})
+    course = request.user.usercourses.course
+    rand_number = random.randint(0, 9)
+    return render(request, 'telegram/lessions.html', {'lessions': lessions, 'course': course, 'rand_number': rand_number})
