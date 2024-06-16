@@ -12,6 +12,7 @@ from lessions.models import Theme
 from lessions.models import Lession
 from django.views.decorators.clickjacking import xframe_options_exempt
 from django.db import connection
+from main.models import Course
 
 def truncate(model):
     with connection.cursor() as cursor:
@@ -24,7 +25,7 @@ def cabinet(request):
     else:
         text_button_enter = 'Вход'
     #listofCourses = Lession.objects.all().filter(short_name=request.user.usercourses.course.short_name).order_by('cid')
-    themes = Theme.objects.all().filter(short_name=request.user.usercourses.course.short_name).order_by('cid')
+    themes = Course.objects.all().filter(short_name=request.user.usercourses.course.short_name)[0].themes.all().order_by('cid')
     homeworks = Homework.objects.all().filter(course=request.user.usercourses.course).order_by('cid')
     return render(request, 'cabinet/cabinet.html', {'text_button_enter': text_button_enter, 'themes': themes, 'homeworks': homeworks})
 
@@ -44,7 +45,14 @@ def course(request, short_name, cid):
         return render(request, 'errors_form.html', {'error': error})
     
     all_homeworks = Homework.objects.all().filter(course=request.user.usercourses.course).order_by('cid')
-    all_courses = Lession.objects.all().filter(short_name=request.user.usercourses.course.short_name).order_by('cid')
+    #all_courses = Lession.objects.all().filter(short_name=request.user.usercourses.course.short_name).order_by('cid')
+    all_themes = Course.objects.all().filter(short_name=request.user.usercourses.course.short_name)[0].themes.all().order_by('cid')
+    print(all_themes)
+    all_courses = []
+    for item in all_themes:
+        all_courses.append(item.lessions.all().order_by('cid'))
+
+    print(all_courses)
     if 'course' in url:
         listofCourses = Lession.objects.all().filter(short_name=request.user.usercourses.course.short_name).filter(cid=cid)[0]
         listofHomeworks = False

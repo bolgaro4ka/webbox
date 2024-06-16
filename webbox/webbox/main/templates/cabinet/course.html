@@ -34,10 +34,12 @@
             <div class="leftCourse">
                 <h2 class="coursesnowh2">Уроки</h2>
                 <ul class="coursesnow">
-                    {% for item in all_courses%}
+                    {% for theme in all_courses%}
+                    {% for item in theme%}
                     <li class="card">
                         <a href="/u/course/{{item.short_name}}/{{item.cid}}">{{item.name}}</a>
                     </li>
+                    {% endfor%}
                     {% endfor%}
                 </ul>
                 <h2 class="coursesnowh2">ДЗ</h2>

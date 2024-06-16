@@ -28,5 +28,6 @@ urlpatterns = [
     path('u/', include('cabinet.urls')),
     path('p/', include('payment.urls')),
     path('t/', include('telegram.urls')),
+    path('api/', include('api.urls')),
     path('c/<str:short_name>/', views.cardInfo, name='cardInfo'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
