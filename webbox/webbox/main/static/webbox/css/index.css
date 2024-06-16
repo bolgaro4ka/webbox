@@ -512,7 +512,7 @@ ul.errorlist li {
 #commentForm {
     border: none;
     width: 100%;
-    height: 355px;
+    height: 450px;
 }
 
 .card-body {
@@ -855,6 +855,10 @@ table {
 
     .hero * {
         text-wrap: balance;
+    }
+    
+    .hero {
+        padding: 16px;
     }
     
     .hero h1 {
