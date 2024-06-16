@@ -889,6 +889,9 @@ table {
 
     #id_username,
     #id_password,
+    #id_first_name,
+    #id_email,
+    #id_password2,
     .login-btn {
         font-size: 32px;
     }
@@ -896,5 +899,36 @@ table {
     #id_price_from,
     #id_price_to {
         width: 100% !important;
+    }
+
+    .cabinet {
+        min-height: auto;
+        padding: 16px;
+    }
+    
+    .username {
+        font-size: 24px;
+    }
+    .coursetitle,
+    .coursedesc {
+        text-align: center;
+        font-size: 48px;
+    }
+
+    .coursedesc {
+        font-size: 32px;
+    }
+
+    .homework {
+        font-size: 32px;
+    }
+
+    .card a {
+        font-size: 32px;
+    }
+
+    .coursess {
+        flex-direction: column;
+        width: 100%;
     }
 }
