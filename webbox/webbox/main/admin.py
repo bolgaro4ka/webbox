@@ -7,7 +7,7 @@ class CourseAdmin(admin.ModelAdmin):
     list_display_links = ('id', 'title')
     search_fields = ["title", "description", "short_name"]
     list_editable = ('is_published',)
-    filter_horizontal = ('themes',)
+    filter_horizontal = ('themes', 'homeworks')
 
 admin.site.register(Course, CourseAdmin)
 

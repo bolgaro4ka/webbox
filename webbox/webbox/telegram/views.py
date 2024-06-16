@@ -67,6 +67,7 @@ def user_login(request):
                     
                     error["name"]="Disabled account"
                     error["description"] = "Пользователь заблокирован. Обратитесь к администратору"
+                    error["code"] = 432
 
                     return HttpResponse('Disabled account')
             else:

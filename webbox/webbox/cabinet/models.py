@@ -4,13 +4,11 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from main.models import Course
 
 
 class Homework(models.Model):
     name = models.CharField(max_length=255, verbose_name="Название домашнего задания")
     file = models.CharField(max_length=255, verbose_name="Файл домашнего задания")
-    course = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name="Курс")
     points = models.IntegerField(verbose_name="Количество баллов")
     cid = models.IntegerField(verbose_name="CID дз", default=0,)
 

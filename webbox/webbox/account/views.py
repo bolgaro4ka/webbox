@@ -32,6 +32,7 @@ def user_login(request):
             else:
                 error["name"] = "Invalid login"
                 error["description"] = "Неверное имя пользователя или пароль"
+                error["code"] = 403
                 return render(request, 'errors_form.html', {'error': error})
     else:
         form = LoginForm()

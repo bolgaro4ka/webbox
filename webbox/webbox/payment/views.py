@@ -21,7 +21,7 @@ def pre_success(request):
     try:
         a = Pay.objects.all().filter(user=request.user)[0]
     except:
-        return render(request, 'errors_form.html', {'error': {'name': 'Вы не оплатили курс', 'description': 'Пожалуйста, оплатите курс'}})
+        return render(request, 'errors_form.html', {'error': {'name': 'Вы не оплатили курс', 'description': 'Пожалуйста, оплатите курс', "code": 402}})
     return render(request, 'payment/pre_success.html', {'fromForm': a})
 
 @login_required(login_url='/a')
@@ -29,7 +29,7 @@ def success(request):
     try:
         a = Pay.objects.all().filter(user=request.user)[0]
     except:
-        return render(request, 'errors_form.html', {'error': {'name': 'Вы не оплатили курс', 'description': 'Пожалуйста, оплатите курс'}})
+        return render(request, 'errors_form.html', {'error': {'name': 'Вы не оплатили курс', 'description': 'Пожалуйста, оплатите курс', "code": 402}})
     return render(request, 'payment/success.html', {'fromForm': a})
 
 @login_required(login_url='/a')

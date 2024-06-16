@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from lessions.models import Theme
+from cabinet.models import Homework
 
 # Create your models here.
 
@@ -22,6 +23,7 @@ class Course(models.Model):
     clear_price=models.BigIntegerField(default=0, verbose_name="Цена (только число)")
     long_description = models.TextField(default="nn", help_text="Полное описание курса. Отображается на странице курса", verbose_name="Описание курса")
     themes = models.ManyToManyField(Theme, verbose_name="Темы курса")
+    homeworks = models.ManyToManyField(Homework, verbose_name="Домашние задания")
 
     class Meta:
         verbose_name = 'Курс'

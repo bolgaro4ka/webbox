@@ -26,7 +26,7 @@ def cabinet(request):
         text_button_enter = 'Вход'
     #listofCourses = Lession.objects.all().filter(short_name=request.user.usercourses.course.short_name).order_by('cid')
     themes = Course.objects.all().filter(short_name=request.user.usercourses.course.short_name)[0].themes.all().order_by('cid')
-    homeworks = Homework.objects.all().filter(course=request.user.usercourses.course).order_by('cid')
+    homeworks = Course.objects.all().filter(short_name=request.user.usercourses.course.short_name)[0].homeworks.all().order_by('cid')
     return render(request, 'cabinet/cabinet.html', {'text_button_enter': text_button_enter, 'themes': themes, 'homeworks': homeworks})
 
 
@@ -42,9 +42,10 @@ def course(request, short_name, cid):
     else:
         error['name'] = "Курс не существует"
         error['description'] = "Вы не можете получить доступ к этой странице или такого урока к курсу не существует"
+        error['code'] = 404
         return render(request, 'errors_form.html', {'error': error})
     
-    all_homeworks = Homework.objects.all().filter(course=request.user.usercourses.course).order_by('cid')
+    all_homeworks = Course.objects.all().filter(short_name=request.user.usercourses.course.short_name)[0].homeworks.all().order_by('cid')
     #all_courses = Lession.objects.all().filter(short_name=request.user.usercourses.course.short_name).order_by('cid')
     all_themes = Course.objects.all().filter(short_name=request.user.usercourses.course.short_name)[0].themes.all().order_by('cid')
     print(all_themes)
@@ -54,11 +55,22 @@ def course(request, short_name, cid):
 
     print(all_courses)
     if 'course' in url:
-        listofCourses = Lession.objects.all().filter(short_name=request.user.usercourses.course.short_name).filter(cid=cid)[0]
+        try:
+            listofCourses = Lession.objects.all().filter(short_name=request.user.usercourses.course.short_name).filter(cid=cid)[0]
+        except Exception as e:
+            error['name'] = "Курс не существует"
+            error['description'] = f"Вы не можете получить доступ к этой странице или такого урока к курсу не существует ({e})"
+            error['code'] = 404
+            return render(request, 'errors_form.html', {'error': error})
         listofHomeworks = False
     else:
-        
-        listofHomeworks = all_homeworks.filter(cid=cid)[0]
+        try:
+            listofHomeworks = all_homeworks.filter(cid=cid)[0]
+        except Exception as e:
+            error['name'] = "ДЗ не существует"
+            error['description'] = f"Вы не можете получить доступ к этой странице или такого ДЗ к курсу не существует ({e})"
+            error['code'] = 404
+            return render(request, 'errors_form.html', {'error': error})
         listofCourses = False
     
     return render(request, 'cabinet/course.html', {'short_name': request.user.usercourses.course.short_name, 'cid': cid, 'listofCourses': listofCourses, 'all_courses': all_courses, 'name_course': listofCourses.name if listofCourses else listofHomeworks.name, 'listofHomeworks': listofHomeworks, 'homeworks': all_homeworks})
@@ -76,6 +88,7 @@ def course_raw(request, short_name, cid):
     else:
         error['name'] = "Курс не существует"
         error['description'] = "Вы не можете получить доступ к этой странице или такого урока к курсу не существует"
+        error['code'] = 404
         return render(request, 'errors_form.html', {'error': error})
     
     if 'course' in url:
@@ -83,7 +96,7 @@ def course_raw(request, short_name, cid):
         form = False
         code = ''
     else:
-        listofCourses = Homework.objects.all().filter(cid=cid, course=request.user.usercourses.course)
+        listofCourses = Course.objects.all().filter(short_name=request.user.usercourses.course.short_name)[0].homeworks.all().filter(cid=cid).order_by('cid')
         if Answer.objects.all().filter(homework=listofCourses[0], user=request.user):
             
             code = Answer.objects.all().filter(homework=listofCourses[0]).filter(user=request.user)[0].answer
