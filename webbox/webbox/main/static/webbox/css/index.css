@@ -857,6 +857,10 @@ table {
         text-wrap: balance;
     }
     
+    .hero h1 {
+        font-size: 24;
+    }
+    
     .coursessearch p input {
         width: 100% !important;
     }
