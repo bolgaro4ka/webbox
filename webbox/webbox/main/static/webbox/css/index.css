@@ -951,10 +951,20 @@ table {
     .coursess {
         flex-direction: column;
         width: 87vw;
+        height: auto;
     }
 
     .leftCourse {
         width: 100%;
+        text-align: center;
+    }
+
+    .leftCourse .card a {
+        width: 97.5%;
+    }
+
+    .rightCourse iframe {
+        height: 80vh;
     }
 
     /* burger stuff */
