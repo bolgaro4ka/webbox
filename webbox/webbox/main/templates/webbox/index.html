@@ -30,7 +30,7 @@
                     </ul>
             </div>
         </header>
-
+        <script src="/static/webbox/js/hamburger.js"></script>
         <main>
             <section class="hero">
                 <h1>WebBox</h1>
@@ -52,7 +52,6 @@
                             {% if cousre.is_published %}
                                 <li class="courses__card">
                                     <img class="courses__card_img" src="{{ cousre.picture_preview.url }}" width="200" height="200" alt="{{ cousre.picture_preview.url }}"/>
-                                    
                                         <h4>{{cousre.title}}</h4>
                                         <p>{{cousre.description}}</p>
                                         <p>{{cousre.price | safe }}</p>
@@ -104,21 +103,6 @@
             <p>Проект Егора Горгуна и Федосова Никиты.<br>:sunglassses:</p>
         </footer>
     </div>
-    <script>
-        const btn = document.querySelector('#burger-checkbox')
-
-        let open_hamburger = false
-
-        btn.addEventListener('click', () => {
-            if (open_hamburger) {
-                
-                document.body.style.overflow = 'auto'
-            }
-            else {
-                document.body.style.overflow = 'hidden'
-            }
-            open_hamburger = !open_hamburger
-        })
-    </script>
+    
 </body>
 </html>

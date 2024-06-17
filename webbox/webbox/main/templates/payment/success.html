@@ -13,23 +13,24 @@
             <div class="header__logo">
                 <p><a href="/">WebBox</a></p>
             </div>
-            <div class="header__nav">
-                <nav>
-                    <ul>
-
-                        <li><a href="/#forcomp">Компаниям</a></li>
-                        <li><a href="/#media">Медиа</a></li>
-                        <li><a href="/#about">О нас</a></li>
+            <div class="header__nav menu">
+                    <input type="checkbox" id="burger-checkbox" class="burger-checkbox">
+                    <label for="burger-checkbox" class="burger"></label>
+                    <ul class="menu-list">
+                        <li class=""><a href="/#forcomp" class="menu-item">Компаниям</a></li>
+                        <li class=""><a href="/#media" class="menu-item">Медиа</a></li>
+                        <li class=""><a href="/#about" class="menu-item">О нас</a></li>
+                        <li class=""><a href='/admin' class="menu-item">Админ-панель</a></li>
                         {% if user.is_authenticated %}
-                            <li><a href='/u'>Личный кабинет</a></li>
-                            <li><a href='/a/u'>Выйти</a></li>
+                            <li class=""><a href='/u' class="menu-item">Личный кабинет</a></li>
+                            <li class=""><a href='/a/u' class="menu-item">Выйти</a></li>
                         {% else %}
-                        <li><a href='/a'>Войти</a></li>
+                            <li class=""><a href='/a' class="menu-item">Войти</a></li>
                         {% endif %}
                     </ul>
-                </nav>
             </div>
         </header>
+        <script src="/static/webbox/js/hamburger.js"></script>
 
         <main class="genericsection dopayform">
             <h3>Ожидание подтверждения...</h3>
