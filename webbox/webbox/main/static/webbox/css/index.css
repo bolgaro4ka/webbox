@@ -924,31 +924,40 @@ table {
     }
     
     .username {
-        font-size: 24px;
+        font-size: 16px;
     }
+
     .coursetitle,
     .coursedesc {
         text-align: center;
-        font-size: 48px;
+        font-size: 32px;
     }
 
     .coursedesc {
-        font-size: 32px;
+        font-size: 24px;
     }
 
     .homework {
-        font-size: 32px;
+        font-size: 24px;
     }
 
+    .card {
+        width: 85vw;
+    }
     .card a {
-        font-size: 32px;
+        font-size: 16px;
     }
 
     .coursess {
         flex-direction: column;
+        width: 87vw;
+    }
+
+    .leftCourse {
         width: 100%;
     }
 
+    /* burger stuff */
     .burger-checkbox {
         position: absolute;
         visibility: hidden;

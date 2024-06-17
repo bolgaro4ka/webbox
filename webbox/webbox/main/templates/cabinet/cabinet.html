@@ -55,13 +55,15 @@
             {% endfor %}
             </ul>
         {% endif %}
-        {% if homeworks %}
             <div class="homework">Ваши домашние задания</div>
+            {% if homeworks %}
             <ul class="courseslist">
             {% for homework in homeworks %}
                 <div class="card">
                     <a href='/u/homework/{{user.usercourses.course.short_name}}/{{ homework.cid }}'>{{homework.name}}</a>
                 </div>
+            {%else%}
+            <p class="username">Нету! Вы круты :D</p>
             {% endfor %}
             </ul>
         {% endif %}
