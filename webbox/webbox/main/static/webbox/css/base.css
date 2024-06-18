@@ -54,14 +54,6 @@ pre code {
     border-radius: 4px;
 }
 
-.arrow {
-    text-decoration: none !important;
-    font-size: 40px !important;
-    margin-top: 10px !important;
-    cursor: pointer !important;
-    padding: 20px !important;
-    border-radius: 10px;    
-}
 .progress-bar {
     position: fixed;
     left: 0;

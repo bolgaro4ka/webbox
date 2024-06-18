@@ -700,7 +700,20 @@ p > label {
     border-radius: 12px;
 }
 
+.genericsection video {
+    width: 100%;
+}
+
 .genericsection h3 {
+    color: var(--background-color);
+    font-weight: 100;
+    font-family: 'Dela Gothic One', sans-serif;
+    text-shadow: var(--black) 2px 2px 4px;
+    font-weight: 100;
+    font-size: 32px;
+}
+
+.genericsection h2 {
     color: var(--background-color);
     font-weight: 100;
     font-family: 'Dela Gothic One', sans-serif;
@@ -718,6 +731,55 @@ p > label {
     font-size: 18px;
 }
 
+.genericsection ul {
+    list-style: none;
+}
+
+.genericsection li {
+    padding-left: 16px;
+}
+
+.genericsection .ucandoit {
+    font-size: 32px;
+}
+
+.video-history {
+    display: flex;
+    padding-top: 20px;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.video-history__content {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    
+}
+
+.video-history__title {
+    font-size: 20px !important;
+}
+
+.video-history__author {
+    font-size: 16px;
+    font-style: italic;
+    color: var(--accent) !important;
+}   
+
+.motivation {
+    background-color: var(--black);
+    background-size: 100% auto;
+    box-shadow: 0px 0px 8px var(--black);
+    margin: 16px 0;
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-size: 32px !important;
+    color: var(--accent) !important;
+}
 .payment {
     background-color: var(--black);
     background-size: 100% auto;
@@ -836,6 +898,10 @@ table {
     display: none;
 }
 
+.video-history iframe {
+    width: 50%;
+    height: 300px;
+  }
 
 /* mobile ui */
 
@@ -1043,5 +1109,18 @@ table {
       }
       .burger-checkbox:checked ~ .menu-list {
         transform: translateX(0);
+      }
+
+      .video-history__content {
+        width: 100%;
+      }
+
+      .video-history {
+        flex-direction: column;
+      }
+
+      .video-history iframe {
+        width: 100%;
+        height: 50vw;
       }
 }
