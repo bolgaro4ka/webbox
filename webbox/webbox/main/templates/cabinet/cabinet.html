@@ -62,9 +62,10 @@
                 <div class="card">
                     <a href='/u/homework/{{user.usercourses.course.short_name}}/{{ homework.cid }}'>{{homework.name}}</a>
                 </div>
+                {% endfor %}
             {%else%}
             <p class="username">Нету! Вы круты :D</p>
-            {% endfor %}
+           
             </ul>
         {% endif %}
     </main>
