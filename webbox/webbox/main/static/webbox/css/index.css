@@ -16,10 +16,51 @@
 * {
     margin: 0;
     padding: 0;
+    
+    font-family: 'Lato', sans-serif;
 }
 
 body {
     background-color: var(--background-color);
+    overflow-x: hidden;
+}
+
+li, h4 {
+    color: var(--background-color);
+}
+
+#aboutAndForcomp {
+    display: flex;
+    overflow-x: hidden;
+    width: 160vw;
+    gap: 16px;
+}
+
+#aboutAndForcomp section{
+    width: 80vw;
+    padding: 20px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+
+#aboutAndForcomp ol, ul {
+    list-style: none;
+}
+
+li {
+    font-size: 18px;
+}
+
+.motivation span {
+    font-family: 'Dela Gothic One', sans-serif;
+    color: var(--accent);
+}
+
+h4 {
+    font-family: 'Dela Gothic One', sans-serif;
+    font-size: 22px;
 }
 
 a {
@@ -108,6 +149,8 @@ a {
     border-radius: 12px;
 }
 
+
+
 .courses h3 {
     color: var(--background-color);
     font-family: 'Dela Gothic One', sans-serif;
@@ -134,6 +177,7 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    color: var(--black);
 }
 
 .courses__card a {
@@ -1122,5 +1166,16 @@ table {
       .video-history iframe {
         width: 100%;
         height: 50vw;
+      }
+
+      #aboutAndForcomp {
+        width: 100%;
+        flex-direction: column;
+
+      }
+
+      #aboutAndForcomp section {
+        width: 95.5%;
+        height: auto;
       }
 }
