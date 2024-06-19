@@ -21,6 +21,7 @@ class Theme(models.Model):
     lessions = models.ManyToManyField(Lession)
     short_name = models.CharField(max_length=20, default="none", verbose_name="Сокращенное название темы")
     cid = models.IntegerField(verbose_name="CID курса", help_text="значение устанавливает порядок в списке", default=0)
+    image = models.ImageField(upload_to='base/img/themes/%Y/%m/%d', blank=True, null=True, verbose_name="Изображение темы")
 
     def __str__(self):
         return self.name

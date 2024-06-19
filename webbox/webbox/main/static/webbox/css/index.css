@@ -471,11 +471,66 @@ ul.errorlist li {
     width: 500px;
 }
 
+.card-true {
+    width: 200px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-color);
+    background-size: 100% auto;
+    box-shadow: 0px 0px 8px var(--black);
+    border-radius: 10px;
+}
+
+.card-true * {
+    text-decoration: none;
+    color: var(--black);
+    border-radius: 10px;
+}
+
+.content-card-true {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+}
+
+.content-card-true p {
+    font-size: 18px;
+    text-wrap: balance;
+}
+
+.search-form-lession {
+    display: flex;
+    padding: 5px;
+    
+}
+
+
+.search-form-lession input {
+    height: 30px;
+    border-radius: 16px;
+}
+
+.search-form-lession button {
+    height: 30px;
+}
+
+.card-for-lessions {
+    width: 100%;
+}
 .homework {
     color: var(--background-color);
     font-family: 'Dela Gothic One', sans-serif;
     font-size: 24px;
     margin-top: 16px;
+}
+
+.how-many {
+    font-size: 16px;
+    color: var(--accent);
+    font-style: italic;
 }
 
 .courseslist {
@@ -511,7 +566,7 @@ ul.errorlist li {
 }
 
 .coursesnow {
-    width: 520px;
+    width: 100% !important;
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
@@ -951,7 +1006,8 @@ table {
 
 @media (max-width: 1100px) {
     .wrapper {
-        width: 95vw;
+        max-width: 768px;
+        margin: 0 auto;
     }
 
     .header {
@@ -990,6 +1046,10 @@ table {
 
     .coursessearch {
         flex-direction: column;
+    }
+
+    .coursess {
+        width: 100%;
     }
 
     .login {
@@ -1060,7 +1120,7 @@ table {
 
     .coursess {
         flex-direction: column;
-        width: 87vw;
+        width: 100%;
         height: auto;
     }
 
