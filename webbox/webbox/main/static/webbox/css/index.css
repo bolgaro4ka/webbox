@@ -22,7 +22,7 @@
 
 body {
     background-color: var(--background-color);
-    overflow-x: hidden;
+    overflow-x: hidden !important;
 }
 
 li, h4 {
