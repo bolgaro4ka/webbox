@@ -31,14 +31,19 @@
             </div>
         </header>
         <script src="/static/webbox/js/hamburger.js"></script>
-
         <main class="coursess">
             <div class="leftCourse">
                 <h2 class="coursesnowh2">Уроки</h2>
+                <form method="post" class="search-form-lession">
+                    {{ form.as_p }}
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary  btn-lg">Найти</button>
+                </form>  
                 <ul class="coursesnow">
                     {% for theme in all_courses%}
                     {% for item in theme%}
-                    <li class="card">
+                    <li class="card-for-lessions">
+                        
                         <a href="/u/course/{{item.short_name}}/{{item.cid}}">{{item.name}}</a>
                     </li>
                     {% endfor%}
@@ -47,7 +52,7 @@
                 <h2 class="coursesnowh2">ДЗ</h2>
                 <ul class="coursesnow">
                     {% for item in homeworks %}
-                        <li class="card"><a href='/u/homework/{{user.usercourses.course.short_name}}/{{ item.cid }}'>{{item.name}}</a></li>
+                        <li class="card-for-lessions"><a href='/u/homework/{{user.usercourses.course.short_name}}/{{ item.cid }}'>{{item.name}}</a></li>
                     {% endfor %}
                 </ul>
             </div>

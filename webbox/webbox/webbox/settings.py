@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'telegram.apps.TelegramConfig',
     'api.apps.ApiConfig',
     'rest_framework',
+    'django_template_maths',
     'rest_framework.authtoken',
     'djoser',
 ]

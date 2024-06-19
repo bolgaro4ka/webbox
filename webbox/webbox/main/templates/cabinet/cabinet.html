@@ -1,4 +1,5 @@
 {% load static %}
+{% load django_template_maths %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,10 +49,15 @@
         {% if themes %}
             <div class="homework">Темы</div>
             <ul class="courseslist">
-            {% for theme in themes %}
-                <li class="card">
-                    <a href='/u/course/lessions/{{ theme.cid }}'>{{theme.name}}</a>
-                </li>
+            {% for theme, len in themes %}
+                <a class="card-true"  href='/u/course/lessions/{{ theme.cid }}'>
+                    <img src="{{theme.image.url}}" alt="IMAGE" style="width: 100%">
+                    <div class="content-card-true">
+                        <p>{{theme.name}}</p>
+                        <p class="how-many">{{len}} уроков ≈ {{len|mul:5}} минут</p>
+                    </div>
+                    
+                </a>
             {% endfor %}
             </ul>
         {% endif %}
@@ -59,9 +65,10 @@
             {% if homeworks %}
             <ul class="courseslist">
             {% for homework in homeworks %}
-                <div class="card">
+                <li class="card hw">
                     <a href='/u/homework/{{user.usercourses.course.short_name}}/{{ homework.cid }}'>{{homework.name}}</a>
-                </div>
+
+                </li>
                 {% endfor %}
             {%else%}
             <p class="username">Нету! Вы круты :D</p>

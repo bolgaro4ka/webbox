@@ -16,7 +16,7 @@
 * {
     margin: 0;
     padding: 0;
-    
+    box-sizing: border-box;
     font-family: 'Lato', sans-serif;
 }
 
@@ -503,7 +503,7 @@ ul.errorlist li {
 
 .search-form-lession {
     display: flex;
-    padding: 5px;
+    /* flex-direction: column; */
     
 }
 
@@ -511,15 +511,49 @@ ul.errorlist li {
 .search-form-lession input {
     height: 30px;
     border-radius: 16px;
+    width: 100%;
+    padding: 0 5px;
+    box-sizing: border-box;
+    border: none;
+}
+
+.search-form-lession p {
+    width: 60%;
+    border-radius: 16px;
 }
 
 .search-form-lession button {
     height: 30px;
+    width: 40%;
 }
 
 .card-for-lessions {
     width: 100%;
+    background-color: var(--background-color);
+    background-size: 100% auto;
+    border-radius: 10px;
+
+    padding: 5px 5px;
+    transition: all 200ms;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
 }
+.card-for-lessions a {
+    text-decoration: none;
+    color: var(--black);
+    transition: all 200ms;
+}
+
+.card-for-lessions:hover a  {
+    color: white;
+}
+.card-for-lessions:hover {
+    background-color: var(--black);
+    color: white;
+}
+
 .homework {
     color: var(--background-color);
     font-family: 'Dela Gothic One', sans-serif;
@@ -552,8 +586,6 @@ ul.errorlist li {
     align-items: center;
     height: 80vh;
     border-radius: 12px;
-    margin-right: 100px;
-    width: 1067px;
     gap: 32px;
 }
 
@@ -577,6 +609,7 @@ ul.errorlist li {
     height: 100%;
     overflow-x: hidden;
     overflow-y: scroll;
+    width: 30%;
 }
 
 .leftCourse .card a {
@@ -585,7 +618,7 @@ ul.errorlist li {
 
 .rightCourse {
     height: 90%;
-    width: 100%;
+    width: 70%;
     border: 3px solid var(--background-color);
     padding: 4px;
     border-radius: 8px;
@@ -1048,9 +1081,6 @@ table {
         flex-direction: column;
     }
 
-    .coursess {
-        width: 100%;
-    }
 
     .login {
         align-items: normal;
@@ -1120,12 +1150,12 @@ table {
 
     .coursess {
         flex-direction: column;
-        width: 100%;
         height: auto;
     }
 
     .leftCourse {
         width: 100%;
+        max-height: 600px;
         text-align: center;
     }
 
@@ -1235,7 +1265,11 @@ table {
       }
 
       #aboutAndForcomp section {
-        width: 95.5%;
+        width: 100%;
         height: auto;
+      }
+
+      .rightCourse {
+        width: 100%;
       }
 }

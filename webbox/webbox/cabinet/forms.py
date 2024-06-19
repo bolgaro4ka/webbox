@@ -7,3 +7,7 @@ class HomeworkForm(forms.Form):
         self.fields['answer'].widget.attrs['is'] = 'highlighted-code'
         self.fields['answer'].widget.attrs['language'] = 'python'
         self.fields['answer'].widget.attrs['theme'] = 'monokai'
+
+
+class SearchForm(forms.Form):
+    search = forms.CharField(max_length=100, required=False, label='')

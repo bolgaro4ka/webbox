@@ -13,6 +13,7 @@ from lessions.models import Lession
 from django.views.decorators.clickjacking import xframe_options_exempt
 from django.db import connection
 from main.models import Course
+from .forms import SearchForm
 
 def truncate(model):
     with connection.cursor() as cursor:
@@ -26,12 +27,24 @@ def cabinet(request):
         text_button_enter = 'Вход'
     #listofCourses = Lession.objects.all().filter(short_name=request.user.usercourses.course.short_name).order_by('cid')
     themes = Course.objects.all().filter(short_name=request.user.usercourses.course.short_name)[0].themes.all().order_by('cid')
+    lens = [len(theme.lessions.all()) for theme in themes]
     homeworks = Course.objects.all().filter(short_name=request.user.usercourses.course.short_name)[0].homeworks.all().order_by('cid')
-    return render(request, 'cabinet/cabinet.html', {'text_button_enter': text_button_enter, 'themes': themes, 'homeworks': homeworks})
+    return render(request, 'cabinet/cabinet.html', {'text_button_enter': text_button_enter, 'themes': zip(themes, lens), 'homeworks': homeworks})
 
 
 @login_required(login_url='/a')
 def course(request, short_name, cid):
+    all_courses = []
+    if request.method == 'POST':
+            form = SearchForm(request.POST)
+            if form.is_valid():
+                cd = form.cleaned_data
+                print(cd['search'])
+                all_courses = [Lession.objects.all().filter(short_name=request.user.usercourses.course.short_name).filter(name__icontains=cd['search'])]
+                print(all_courses)
+    else:
+        form = SearchForm()
+    
 
     url = (request.path)
     print(Lession.objects.all().filter(short_name=request.user.usercourses.course.short_name).filter(cid=cid), request.user.usercourses.course.short_name)
@@ -49,9 +62,10 @@ def course(request, short_name, cid):
     #all_courses = Lession.objects.all().filter(short_name=request.user.usercourses.course.short_name).order_by('cid')
     all_themes = Course.objects.all().filter(short_name=request.user.usercourses.course.short_name)[0].themes.all().order_by('cid')
     print(all_themes)
-    all_courses = []
-    for item in all_themes:
-        all_courses.append(item.lessions.all().order_by('cid'))
+    if not all_courses:
+    
+        for item in all_themes:
+            all_courses.append(item.lessions.all().order_by('cid'))
 
     print(all_courses)
     if 'course' in url:
@@ -73,7 +87,7 @@ def course(request, short_name, cid):
             return render(request, 'errors_form.html', {'error': error})
         listofCourses = False
     
-    return render(request, 'cabinet/course.html', {'short_name': request.user.usercourses.course.short_name, 'cid': cid, 'listofCourses': listofCourses, 'all_courses': all_courses, 'name_course': listofCourses.name if listofCourses else listofHomeworks.name, 'listofHomeworks': listofHomeworks, 'homeworks': all_homeworks})
+    return render(request, 'cabinet/course.html', {'short_name': request.user.usercourses.course.short_name, 'cid': cid, 'listofCourses': listofCourses, 'all_courses': all_courses, 'name_course': listofCourses.name if listofCourses else listofHomeworks.name, 'listofHomeworks': listofHomeworks, 'homeworks': all_homeworks, 'form': form})
 
 
 @login_required(login_url='/a')
