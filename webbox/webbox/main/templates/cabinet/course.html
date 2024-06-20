@@ -50,6 +50,11 @@
                     {% endfor%}
                 </ul>
                 <h2 class="coursesnowh2">ДЗ</h2>
+                <form method="post" class="search-form-lession">
+                    {{ dz_form.as_p }}
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary  btn-lg">Найти</button>
+                </form>  
                 <ul class="coursesnow">
                     {% for item in homeworks %}
                         <li class="card-for-lessions"><a href='/u/homework/{{user.usercourses.course.short_name}}/{{ item.cid }}'>{{item.name}}</a></li>
