@@ -49,6 +49,7 @@ def course(request, short_name, cid):
                 cdz =dz_form.cleaned_data
                 print(cdz['search'])
                 all_homeworks = Course.objects.all().filter(short_name=request.user.usercourses.course.short_name)[0].homeworks.all().order_by('cid').filter(name__icontains=cdz['search'])
+                if not all_homeworks: all_homeworks = 'none'
                 print(all_homeworks)
                 
     else:
@@ -68,7 +69,8 @@ def course(request, short_name, cid):
         error['code'] = 404
         return render(request, 'errors_form.html', {'error': error})
     
-    if not all_homeworks: all_homeworks = Course.objects.all().filter(short_name=request.user.usercourses.course.short_name)[0].homeworks.all().order_by('cid')
+    if (not all_homeworks) and (all_homeworks != 'none'): all_homeworks = Course.objects.all().filter(short_name=request.user.usercourses.course.short_name)[0].homeworks.all().order_by('cid')
+    elif all_homeworks == 'none': all_homeworks = []
     #all_courses = Lession.objects.all().filter(short_name=request.user.usercourses.course.short_name).order_by('cid')
     all_themes = Course.objects.all().filter(short_name=request.user.usercourses.course.short_name)[0].themes.all().order_by('cid')
     print(all_themes)

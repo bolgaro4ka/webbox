@@ -63,9 +63,19 @@
                     <button type="submit" class="btn btn-primary  btn-lg">Найти</button>
                 </form>  
                 <ul class="coursesnow">
+                    {% if homeworks %}
                     {% for item in homeworks %}
-                        <li class="card-for-lessions"><a href='/u/homework/{{user.usercourses.course.short_name}}/{{ item.cid }}'>{{item.name}}</a></li>
+                    
+                    <li class="card-for-lessions"><a href='/u/homework/{{user.usercourses.course.short_name}}/{{ item.cid }}'>{{item.name}}</a></li>
+
                     {% endfor %}
+                        
+                        
+                    {% else %}
+                        <li class="card-for-lessions"><a>Такого у нас нету</a></li>
+                        
+                    {% endif %}
+                    
                 </ul>
             </div>
             <div class="rightCourse">
