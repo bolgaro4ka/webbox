@@ -108,13 +108,14 @@ a {
 
 .hero {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
     background-color: var(--black);
     background-size: 100% auto;
     box-shadow: 0px 0px 8px var(--black);
     margin: 16px 0;
-    padding: 100px 64px;
+    height: 300px;
+    padding: 40px;
     border-radius: 12px;
 }
 
@@ -123,6 +124,10 @@ a {
     font-family: 'Dela Gothic One', sans-serif;
     text-shadow: var(--black) 2px 2px 4px;
     font-size: 64px;
+}
+
+.big-hero {
+    font-size: 200px !important;
 }
 
 .hero h2 {
@@ -207,7 +212,8 @@ a {
 }
 
 .courses__card_img {
-    border-radius: 8px;
+    width: 100%;
+    height: auto;
 }
 
 .comments {
@@ -532,7 +538,8 @@ ul.errorlist li {
     background-color: var(--background-color);
     background-size: 100% auto;
     border-radius: 10px;
-
+    text-decoration: none;
+    color: var(--black);
     padding: 5px 5px;
     transition: all 200ms;
     align-items: center;
@@ -699,8 +706,6 @@ ul.errorlist li {
     align-items: center;
     min-height: 80vh;
     border-radius: 12px;
-    margin-right: 100px;
-    width: 1067px;
 }
 
 .coursecard > h2 {
@@ -711,7 +716,7 @@ ul.errorlist li {
 
 .coursesflex {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin-top: 16px;
 }
 
@@ -907,6 +912,7 @@ p > label {
     background-size: 100% auto;
     box-shadow: 0px 0px 8px var(--black);
     margin: 16px 0;
+    height: 100px !important;
     padding: 8px 16px;
     border-radius: 12px;
     font-size: 32px !important;
@@ -1035,6 +1041,11 @@ table {
     height: 300px;
   }
 
+  .coursesflex img {
+    width: 100%;
+    
+  }
+
 /* mobile ui */
 
 @media (max-width: 1100px) {
@@ -1067,6 +1078,7 @@ table {
     
     .hero {
         padding: 64px 16px;
+        
     }
     
     .hero h1 {
@@ -1270,6 +1282,18 @@ table {
       }
 
       .rightCourse {
+        width: 100%;
+      }
+
+      .motivation {
+        height: 240px !important;
+      }
+
+      .coursesflex {
+        flex-direction: column;
+      }
+
+      .coursesflex img {
         width: 100%;
       }
 }

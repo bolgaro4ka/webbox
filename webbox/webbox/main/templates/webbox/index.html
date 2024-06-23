@@ -34,9 +34,12 @@
         <script src="/static/webbox/js/hamburger.js"></script>
         <main>
             <section class="hero">
+                <div>
                 <h1>WebBox</h1>
                 <h2>Реально учим.</h2>
                 <p>Мы выпустили уже {{len_users}} человек(-а). Ждём и тебя!</p>
+                </div>
+                <h1 class="big-hero">📦</h1>
             </section>
             <section class="courses">
                 <h3>Курсы которые мы предоставляем</h3>
@@ -52,7 +55,7 @@
                         {% for cousre in courses_list %}
                             {% if cousre.is_published %}
                                 <li class="courses__card">
-                                    <img class="courses__card_img" src="{{ cousre.picture_preview.url }}" width="200" height="200" alt="{{ cousre.picture_preview.url }}"/>
+                                    <img class="courses__card_img" src="{{ cousre.picture_preview.url }}" alt="{{ cousre.picture_preview.url }}"/>
                                         <h4>{{cousre.title}}</h4>
                                         <p>{{cousre.description}}</p>
                                         <p>{{cousre.price | safe }}</p>
