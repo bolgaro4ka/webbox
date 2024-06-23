@@ -45,6 +45,7 @@
                 <a href="/t/a/{{lession.id}}/" class="buy">{{lession.name}}</a>
             </div>
             {% endfor %}
+            <p class="tg-error-no-cards hint"></p>
         </div>
     </div>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
@@ -74,12 +75,26 @@
             cards.forEach(card => {
                 if (card.innerText.toLowerCase().includes(value.toLowerCase())) {
                     card.style.display = 'flex'
-        }
-        else {
-            card.style.display = 'none'
-        }
-            })
+                    card.className = 'card tg-active-s-card'
+                }
+                else {
+                    card.style.display = 'none'
+                    card.className = 'card tg-inactive-s-card'
+                }
+                    })
+            if (document.querySelectorAll('.tg-active-s-card').length == 0) {
+                console.warn('no active cards')
+                const error = document.querySelector('.tg-error-no-cards')
+                error.innerText = 'По вашему запросу ничего не найдено'
+                error.style.display = 'block'
+            }
+            else {
+                const error = document.querySelector('.tg-error-no-cards')
+                error.innerText = ''
+                error.style.display = 'none'
+            }
         })
+
     </script>
 </body>
 </html>
