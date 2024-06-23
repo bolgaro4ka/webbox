@@ -33,48 +33,32 @@
         <script src="/static/webbox/js/hamburger.js"></script>
         <main class="coursess">
             <div class="leftCourse">
+                <input type="text" placeholder="Поиск" name="search" class="search">
+                <p class="error-no-cards" style="text-align: center;"></p>
                 <h2 class="coursesnowh2">Уроки</h2>
-                <form method="post" class="search-form-lession">
-                    {{ form.as_p }}
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-primary  btn-lg">Найти</button>
-                </form>  
+               
+                
                 
                 <ul class="coursesnow">
                     
                         {% for theme in all_courses%}
-                        {% if theme %}
                         {% for item in theme%}
                             
-                            <a  class="card-for-lessions" href="/u/course/{{item.short_name}}/{{item.cid}}">{{item.name}}</a>
+                            <a class="card-for-lessions" href="/u/course/{{item.short_name}}/{{item.cid}}">{{item.name}}</a>
 
                         {% endfor%}
-                        {% else %}
-                        <li class="card-for-lessions"><a>Такого у нас нету</a></li>
                         
-                    {% endif %}
                         {% endfor%}
                     
                 </ul>
                 <h2 class="coursesnowh2">ДЗ</h2>
-                <form method="post" class="search-form-lession">
-                    {{ dz_form.as_p }}
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-primary  btn-lg">Найти</button>
-                </form>  
                 <ul class="coursesnow">
-                    {% if homeworks %}
                     {% for item in homeworks %}
                     
-                    <li class="card-for-lessions"><a href='/u/homework/{{user.usercourses.course.short_name}}/{{ item.cid }}'>{{item.name}}</a></li>
+                    <a class="card-for-lessions" href='/u/homework/{{user.usercourses.course.short_name}}/{{ item.cid }}'>{{item.name}}</a>
 
                     {% endfor %}
-                        
-                        
-                    {% else %}
-                        <li class="card-for-lessions"><a>Такого у нас нету</a></li>
-                        
-                    {% endif %}
+                    
                     
                 </ul>
             </div>
@@ -94,5 +78,49 @@
             <p>Проект Егора Горгуна и Федосова Никиты.<br>:sunglassses:</p>
         </footer>
     </div>
+    <script>
+        let texts_array = ['Уроки', 'ДЗ']
+        const search = document.getElementsByClassName('search')[0]
+        search.addEventListener('input', () => {
+          const value = search.value
+          const cards = document.querySelectorAll('.card-for-lessions')
+          cards.forEach(card => {
+              if (card.innerText.toLowerCase().includes(value.toLowerCase())) {
+                  card.style.display = 'flex'
+                  card.className = 'card-for-lessions active-s-card'
+              }
+              else {
+                  card.style.display = 'none'
+                  card.className = 'card-for-lessions inactive-s-card'
+              }
+          })
+
+          if (document.querySelectorAll('.active-s-card').length == 0) {
+                console.warn('no active cards')
+                const error = document.querySelector('.error-no-cards')
+                error.innerText = 'Такого у нас нету'
+                error.style.display = 'block'
+            }
+            else {
+                const error = document.querySelector('.error-no-cards')
+                error.innerText = ''
+                error.style.display = 'none'
+            }
+        let texts = document.querySelectorAll('.coursesnowh2')
+        if (document.querySelector('.error-no-cards').style.display == 'none') {
+            
+            texts.forEach((text, index) => {
+                text.style.display = 'block'
+                text.innerText = texts_array[index]
+            })
+        } else {
+            texts.forEach((text, index) => {
+                text.style.display = ' none'
+                text.innerText = ''
+            })
+        }
+
+      })
+    </script>
 </body>
 </html>

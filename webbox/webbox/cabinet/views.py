@@ -18,43 +18,20 @@ from .forms import SearchForm
 def truncate(model):
     with connection.cursor() as cursor:
         cursor.execute(f'DROP TABLE "{model._meta.db_table}";')
-# Create your views here.
+
+
 @login_required(login_url='/a')
 def cabinet(request):
-    if request.user.is_authenticated:
-        text_button_enter = 'Выход'
-    else:
-        text_button_enter = 'Вход'
-    #listofCourses = Lession.objects.all().filter(short_name=request.user.usercourses.course.short_name).order_by('cid')
+
     themes = Course.objects.all().filter(short_name=request.user.usercourses.course.short_name)[0].themes.all().order_by('cid')
     lens = [len(theme.lessions.all()) for theme in themes]
     homeworks = Course.objects.all().filter(short_name=request.user.usercourses.course.short_name)[0].homeworks.all().order_by('cid')
-    return render(request, 'cabinet/cabinet.html', {'text_button_enter': text_button_enter, 'themes': zip(themes, lens), 'homeworks': homeworks})
+    return render(request, 'cabinet/cabinet.html', {'themes': zip(themes, lens), 'homeworks': homeworks})
 
 
 @login_required(login_url='/a')
 def course(request, short_name, cid):
     all_courses = []
-    all_homeworks = []
-    if request.method == 'POST':
-            form = SearchForm(request.POST)
-            dz_form = SearchForm(request.POST)
-            if form.is_valid():
-                cd = form.cleaned_data
-                print(cd['search'])
-                all_courses = [Lession.objects.all().filter(short_name=request.user.usercourses.course.short_name).filter(name__icontains=cd['search'])]
-                print(all_courses)
-
-            if dz_form.is_valid():
-                cdz =dz_form.cleaned_data
-                print(cdz['search'])
-                all_homeworks = Course.objects.all().filter(short_name=request.user.usercourses.course.short_name)[0].homeworks.all().order_by('cid').filter(name__icontains=cdz['search'])
-                if not all_homeworks: all_homeworks = 'none'
-                print(all_homeworks)
-                
-    else:
-        form = SearchForm()
-        dz_form = SearchForm()
     
 
     url = (request.path)
@@ -69,17 +46,10 @@ def course(request, short_name, cid):
         error['code'] = 404
         return render(request, 'errors_form.html', {'error': error})
     
-    if (not all_homeworks) and (all_homeworks != 'none'): all_homeworks = Course.objects.all().filter(short_name=request.user.usercourses.course.short_name)[0].homeworks.all().order_by('cid')
-    elif all_homeworks == 'none': all_homeworks = []
-    #all_courses = Lession.objects.all().filter(short_name=request.user.usercourses.course.short_name).order_by('cid')
+    all_homeworks = Course.objects.all().filter(short_name=request.user.usercourses.course.short_name)[0].homeworks.all().order_by('cid')
     all_themes = Course.objects.all().filter(short_name=request.user.usercourses.course.short_name)[0].themes.all().order_by('cid')
-    print(all_themes)
-    if not all_courses:
     
-        for item in all_themes:
-            all_courses.append(item.lessions.all().order_by('cid'))
-
-    print(all_courses)
+    for item in all_themes: all_courses.append(item.lessions.all().order_by('cid'))
     if 'course' in url:
         try:
             listofCourses = Lession.objects.all().filter(short_name=request.user.usercourses.course.short_name).filter(cid=cid)[0]
@@ -99,7 +69,7 @@ def course(request, short_name, cid):
             return render(request, 'errors_form.html', {'error': error})
         listofCourses = False
     
-    return render(request, 'cabinet/course.html', {'short_name': request.user.usercourses.course.short_name, 'cid': cid, 'listofCourses': listofCourses, 'all_courses': all_courses, 'name_course': listofCourses.name if listofCourses else listofHomeworks.name, 'listofHomeworks': listofHomeworks, 'homeworks': all_homeworks, 'form': form, 'dz_form': dz_form})
+    return render(request, 'cabinet/course.html', { 'cid': cid, 'listofCourses': listofCourses, 'all_courses': all_courses, 'name_course': listofCourses.name if listofCourses else listofHomeworks.name, 'listofHomeworks': listofHomeworks, 'homeworks': all_homeworks})
 
 
 @login_required(login_url='/a')
@@ -126,6 +96,7 @@ def course_raw(request, short_name, cid):
         if Answer.objects.all().filter(homework=listofCourses[0], user=request.user):
             
             code = Answer.objects.all().filter(homework=listofCourses[0]).filter(user=request.user)[0].answer
+            code = code.replace('\n', '!!change_str_webbox_hm!!')
             print(f'Yeap {code}')
         else:
             code = ''
@@ -150,5 +121,4 @@ def course_raw(request, short_name, cid):
 def lessions(request,  cid ):
     theme = Theme.objects.all().filter(short_name=request.user.usercourses.course.short_name).filter(cid=cid)[0]
     lessions = theme.lessions.all().order_by('cid')
-    print(lessions)
     return render(request, 'cabinet/lessions.html', {'lessions': lessions, 'theme': theme})

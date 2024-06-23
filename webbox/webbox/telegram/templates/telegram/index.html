@@ -1,101 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Webbox ~ Telegram</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/webbox/css/telegram.css">
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/webbox/css/telegram.css" />
+  </head>
+  <body>
     <section class="hero">
-        
-        
-        
-        
-        
-        
-        
-        
-        
+      {% if rand_number == 1 %}
+      <!-- <img src="https://cdn-0.emojis.wiki/emoji-pics-lf/telegram/nerd-face-telegram.gif" alt="ВСЁ СМОЛОСЬ БЫСТРО ЧИНИТЬ"> -->
+      <h1>🤓</h1>
+      {% elif rand_number == 2 %}
+      <!-- <img src="https://cdn-0.emojis.wiki/emoji-pics-lf/telegram/man-technologist-telegram.gif" alt="">> -->
+      <h1>👨‍💻</h1>
+      {% elif rand_number == 3 %}
+      <!-- <img src="https://cdn-0.emojis.wiki/emoji-pics-lf/telegram/mechanical-arm-telegram.gif" alt="">> -->
+      <h1>🦾</h1>
+      {% elif rand_number == 4 %}
+      <!-- <img src="https://cdn-0.emojis.wiki/emoji-pics-lf/telegram/seal-telegram.gif" alt="">> -->
+      <h1>🤫🧏</h1>
+      {% elif rand_number == 5 %}
+      <!-- <img src="https://cdn-0.emojis.wiki/emoji-pics-lf/telegram/party-popper-telegram.gif" alt="">> -->
+      <h1>🎉</h1>
+      {% elif rand_number == 6 %}
+      <!-- <img src="https://cdn-0.emojis.wiki/emoji-pics-lf/telegram/laptop-telegram.gif" alt="">> -->
+      <h1>💻</h1>
+      {% elif rand_number == 7 %}
+      <!-- <img src="https://cdn-0.emojis.wiki/emoji-pics-lf/telegram/open-book-telegram.gif" alt="">> -->
+      <h1>📖</h1>
+      {% elif rand_number == 8 %}
+      <!-- <img src="https://cdn-0.emojis.wiki/emoji-pics-lf/telegram/chart-increasing-telegram.gif" alt="">> -->
+      <h1>📈</h1>
+      {% else %}
+      <!-- <img src="https://cdn-0.emojis.wiki/emoji-pics-lf/telegram/cool-button-telegram.gif" alt="">> -->
+      <h1>😎</h1>
+      {% endif %}
+      <h2>Webbox - мы учим</h2>
+      <p class="hint">
+        Прокрутите вниз чтобы выбрать один из наших замечательных курсов
+      </p>
 
-        {% if rand_number == 1 %}
-        <!-- <img src="https://cdn-0.emojis.wiki/emoji-pics-lf/telegram/nerd-face-telegram.gif" alt="ВСЁ СМОЛОСЬ БЫСТРО ЧИНИТЬ"> -->
-         <h1>🤓</h1>
-        {% elif rand_number == 2 %}
-        <!-- <img src="https://cdn-0.emojis.wiki/emoji-pics-lf/telegram/man-technologist-telegram.gif" alt="">> -->
-         <h1>👨‍💻</h1>
-        {% elif rand_number == 3 %}
-        <!-- <img src="https://cdn-0.emojis.wiki/emoji-pics-lf/telegram/mechanical-arm-telegram.gif" alt="">> -->
-         <h1>🦾</h1>
-        {% elif rand_number == 4 %}
-        <!-- <img src="https://cdn-0.emojis.wiki/emoji-pics-lf/telegram/seal-telegram.gif" alt="">> -->
-         <h1>🤫🧏</h1>
-        {% elif rand_number == 5 %}
-        <!-- <img src="https://cdn-0.emojis.wiki/emoji-pics-lf/telegram/party-popper-telegram.gif" alt="">> -->
-         <h1>🎉</h1>
-        {% elif rand_number == 6 %}
-        <!-- <img src="https://cdn-0.emojis.wiki/emoji-pics-lf/telegram/laptop-telegram.gif" alt="">> -->
-         <h1>💻</h1>
-        {% elif rand_number == 7 %}
-        <!-- <img src="https://cdn-0.emojis.wiki/emoji-pics-lf/telegram/open-book-telegram.gif" alt="">> -->
-        <h1>📖</h1>
-        {% elif rand_number == 8 %}
-        <!-- <img src="https://cdn-0.emojis.wiki/emoji-pics-lf/telegram/chart-increasing-telegram.gif" alt="">> -->
-        <h1>📈</h1>
-        {% else %}
-        <!-- <img src="https://cdn-0.emojis.wiki/emoji-pics-lf/telegram/cool-button-telegram.gif" alt="">> -->
-        <h1>😎</h1>
-        {% endif %}
-        <h2>Webbox - мы учим</h2>
-        <p class="hint">Прокрутите вниз чтобы выбрать один из наших замечательных курсов</p>
-        <a href="/t/a/">К списку уроков</a>
+      <a href="/t/a/">{% if user.is_authenticated %}К списку уроков{% else %}Войти{% endif%}</a>
     </section>
     <div class="wrapper">
-
-        <h2 style="margin: 20px 0;">Доступные курсы</h2>
-        <div class="cards">
-            {% for course in courses %}
-            {% if course.is_published %}
-            <div class="card">
-                <div>
-                    <img src="{{ course.picture.url }}">
-                    <h3>{{ course.title }}</h3>
-                    <p class="hint">{{ course.description}}</p>
-                    <p>{{ course.price | safe  }}</p>
-                </div>
-                <a href="/t/money/{{course.id}}" class="buy">Купить</a>
-            </div>
-            {% endif %}
-            {% endfor %}
+      <h2 style="margin: 20px 0">Доступные курсы</h2>
+      <div class="cards">
+        <input type="text" id="search" class="tg-search" placeholder="Поиск курсов">
+        {% for course in courses %} {% if course.is_published %}
+        <div class="card">
+          <div>
+            <img src="{{ course.picture.url }}" />
+            <h3>{{ course.title }}</h3>
+            <p class="hint">{{ course.description}}</p>
+            <p>{{ course.price | safe }}</p>
+          </div>
+          <a href="/t/money/{{course.id}}" class="buy">Купить</a>
         </div>
+        {% endif %} {% endfor %}
+        <p class="tg-error-no-cards hint"></p>
+      </div>
     </div>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
-        console.log(window.Telegram.WebApp)
+      console.log(window.Telegram.WebApp)
 
-        const tg = window.Telegram.WebApp;
-        tg.expand()
+      const tg = window.Telegram.WebApp;
+      tg.expand()
 
-        tg.MainButton.show();
+      tg.MainButton.show();
 
-        {% if user.is_authenticated %}
-            tg.MainButton.setText("Выйти из аккаунта");
+      {% if user.is_authenticated %}
+          tg.MainButton.setText("Выйти из аккаунта");
 
-            tg.MainButton.onClick(() => {
-                window.location.href = '/t/u/'
-            });
-        {% else %}
-            tg.MainButton.setText("Войти в аккаунт");
-            tg.MainButton.onClick(() => {
-                window.location.href = '/t/l/'
-            });
-        {% endif %}
-
-
-        
+          tg.MainButton.onClick(() => {
+              window.location.href = '/t/u/'
+          });
+      {% else %}
+          tg.MainButton.setText("Войти в аккаунт");
+          tg.MainButton.onClick(() => {
+              window.location.href = '/t/l/'
+          });
+      {% endif %}
     </script>
-</body>
+    <script>
+      const search = document.getElementById('search')
+      search.addEventListener('input', () => {
+          const value = search.value
+          const cards = document.querySelectorAll('.card')
+          cards.forEach(card => {
+              if (card.innerText.toLowerCase().includes(value.toLowerCase())) {
+                  card.style.display = 'flex'
+                  card.className = 'card tg-active-s-card'
+              }
+              else {
+                  card.style.display = 'none'
+                  card.className = 'card tg-inactive-s-card'
+              }
+          })
+
+          if (document.querySelectorAll('.tg-active-s-card').length == 0) {
+                console.warn('no active cards')
+                const error = document.querySelector('.tg-error-no-cards')
+                error.innerText = 'По вашему запросу ничего не найдено'
+                error.style.display = 'block'
+            }
+            else {
+                const error = document.querySelector('.tg-error-no-cards')
+                error.innerText = ''
+                error.style.display = 'none'
+            }
+      })
+    </script>
+  </body>
 </html>

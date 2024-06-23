@@ -24,4 +24,4 @@ const btn = document.querySelector('#burger-checkbox')
         }
 
 
-console.info('Hamburger! hamburger? hamburger...')
+console.info('%cHamburger! hamburger? hamburger...', 'font-size: 1.5em; color: yellow; font-weight: bold; background-color: black;')

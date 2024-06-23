@@ -36,19 +36,18 @@
     <main class="cabinet">
         {% if user.usercourses.course.short_name == 'none' %}
             <h3 class="nocurses">У вас нету курсов!</h3>
-            <p class="nocursessmall">Приобрести их можно тут:</p>
-            <ul class="nocursesli">
-                <li><a class="nocurses2" href="https://google.com">Телеграм бот</a></li>
-                <li><a class="nocurses3" href="/p">Через сайт</a></li>
+            <p class="nocursessmall">Приобрести их можно тут</p>
+            <ul class="nocursesli" style="display: flex; justify-content: center; text-align: center; flex-direction: column; gap: 16px; padding: 16px;">
+                <a style="width: 150px;" class="nocurses2 card-for-lessions" href="https://t.me/webboxa_bot">Телеграм бот</a>
+                <a class="nocurses3 card-for-lessions" href="/p">Через сайт</a>
             </ul>
         {% else %}
             <p class="username">Текущий курс пользователя {{user.username}}</p>
             <h2 class="coursetitle">{{user.usercourses.course.title}}</h2>
             <p class="coursedesc">{{user.usercourses.course.description}}</p>
-        {% endif%}
-        {% if themes %}
+            {% if themes %}
             <div class="homework">Темы</div>
-            <ul class="courseslist">
+            <div class="courseslist">
             {% for theme, len in themes %}
                 <a class="card-true"  href='/u/course/lessions/{{ theme.cid }}'>
                     <img src="{{theme.image.url}}" alt="IMAGE" style="width: 100%">
@@ -59,7 +58,7 @@
                     
                 </a>
             {% endfor %}
-            </ul>
+            </div>
         {% endif %}
             <div class="homework">Ваши домашние задания</div>
             {% if homeworks %}
@@ -75,6 +74,8 @@
            
             </ul>
         {% endif %}
+        {% endif%}
+        
     </main>
 
     <footer class="footer">
