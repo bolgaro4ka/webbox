@@ -17,9 +17,9 @@
         {% elif rand_number == 1 %}
         <h2>Webbox - ну реально учим</h2>
         {% elif rand_number == 2 %}
-        <h2>Webbox - мичу ым</h2>
+        <h2>Webbox - 200</h2>
         {% elif rand_number == 3 %}
-        <h2>Webbox - &lt;3</h2>
+        <h2>Webbox - :)</h2>
         {% elif rand_number == 4 %}
         <h2>Webbox - &lt;h2&gt;Hello world!&lt;h2&gt;</h2>
         {% elif rand_number == 5 %}
@@ -29,7 +29,7 @@
         {% elif rand_number == 7 %}
         <h2>Webbox - что делать если фронтендер не хочет работать</h2>
         {% elif rand_number == 8 %}
-        <h2>Webbox - лучше линукса нету</h2>
+        <h2>Webbox - лучше линукса пока не придумали</h2>
         {% else %}
         <h2>Webbox - Webbox</h2>
         {% endif %}
@@ -38,6 +38,7 @@
     <div class="wrapper">
 
         <h2 style="margin: 20px 0;">Доступные курсы</h2>
+        <input type="text" id="search" class="tg-search">
         <div class="cards">
             {% for lession in lessions %}
             <div class="card" style="justify-content: center;">
@@ -60,10 +61,25 @@
             window.location.href = '/t/';
         });
 
-        tg.BackButton.show();
-        tg.BackButton.onClick(() => {
-            window.location.href = '/t/'
-        });
+        //tg.BackButton.show();
+        //tg.BackButton.onClick(() => {
+        //    window.location.href = '/t/'
+        //});
+    </script>
+    <script>
+        const search = document.getElementById('search')
+        search.addEventListener('input', () => {
+            const value = search.value
+            const cards = document.querySelectorAll('.card')
+            cards.forEach(card => {
+                if (card.innerText.toLowerCase().includes(value.toLowerCase())) {
+                    card.style.display = 'flex'
+        }
+        else {
+            card.style.display = 'none'
+        }
+            })
+        })
     </script>
 </body>
 </html>
