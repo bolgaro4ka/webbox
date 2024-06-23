@@ -35,15 +35,25 @@ def cabinet(request):
 @login_required(login_url='/a')
 def course(request, short_name, cid):
     all_courses = []
+    all_homeworks = []
     if request.method == 'POST':
             form = SearchForm(request.POST)
+            dz_form = SearchForm(request.POST)
             if form.is_valid():
                 cd = form.cleaned_data
                 print(cd['search'])
                 all_courses = [Lession.objects.all().filter(short_name=request.user.usercourses.course.short_name).filter(name__icontains=cd['search'])]
                 print(all_courses)
+
+            if dz_form.is_valid():
+                cdz =dz_form.cleaned_data
+                print(cdz['search'])
+                all_homeworks = Course.objects.all().filter(short_name=request.user.usercourses.course.short_name)[0].homeworks.all().order_by('cid').filter(name__icontains=cdz['search'])
+                print(all_homeworks)
+                
     else:
         form = SearchForm()
+        dz_form = SearchForm()
     
 
     url = (request.path)
@@ -58,7 +68,7 @@ def course(request, short_name, cid):
         error['code'] = 404
         return render(request, 'errors_form.html', {'error': error})
     
-    all_homeworks = Course.objects.all().filter(short_name=request.user.usercourses.course.short_name)[0].homeworks.all().order_by('cid')
+    if not all_homeworks: all_homeworks = Course.objects.all().filter(short_name=request.user.usercourses.course.short_name)[0].homeworks.all().order_by('cid')
     #all_courses = Lession.objects.all().filter(short_name=request.user.usercourses.course.short_name).order_by('cid')
     all_themes = Course.objects.all().filter(short_name=request.user.usercourses.course.short_name)[0].themes.all().order_by('cid')
     print(all_themes)
@@ -79,7 +89,7 @@ def course(request, short_name, cid):
         listofHomeworks = False
     else:
         try:
-            listofHomeworks = all_homeworks.filter(cid=cid)[0]
+            listofHomeworks = Course.objects.all().filter(short_name=request.user.usercourses.course.short_name)[0].homeworks.all().order_by('cid').filter(cid=cid)[0]
         except Exception as e:
             error['name'] = "ДЗ не существует"
             error['description'] = f"Вы не можете получить доступ к этой странице или такого ДЗ к курсу не существует ({e})"
@@ -87,7 +97,7 @@ def course(request, short_name, cid):
             return render(request, 'errors_form.html', {'error': error})
         listofCourses = False
     
-    return render(request, 'cabinet/course.html', {'short_name': request.user.usercourses.course.short_name, 'cid': cid, 'listofCourses': listofCourses, 'all_courses': all_courses, 'name_course': listofCourses.name if listofCourses else listofHomeworks.name, 'listofHomeworks': listofHomeworks, 'homeworks': all_homeworks, 'form': form})
+    return render(request, 'cabinet/course.html', {'short_name': request.user.usercourses.course.short_name, 'cid': cid, 'listofCourses': listofCourses, 'all_courses': all_courses, 'name_course': listofCourses.name if listofCourses else listofHomeworks.name, 'listofHomeworks': listofHomeworks, 'homeworks': all_homeworks, 'form': form, 'dz_form': dz_form})
 
 
 @login_required(login_url='/a')
