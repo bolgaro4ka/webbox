@@ -23,6 +23,7 @@
                         <li class=""><a href="/#media" class="menu-item">Медиа</a></li>
                         <li class=""><a href="/#about" class="menu-item">О нас</a></li>
                         <li class=""><a href='/admin' class="menu-item">Админ-панель</a></li>
+                        <li class=""><a class="ch-theme-btn menu-item" style="display: flex; align-items: center; gap: 10px; justify-content: center;"><img src="/static/webbox/img/dark.png" alt="No" style="height: 20px;">Сменить тему</a></li>
                         {% if user.is_authenticated %}
                             <li class=""><a href='/u' class="menu-item">Личный кабинет</a></li>
                             <li class=""><a href='/a/u' class="menu-item">Выйти</a></li>
@@ -30,6 +31,7 @@
                             <li class=""><a href='/a' class="menu-item">Войти</a></li>
                         {% endif %}
                     </ul>
+                    
             </div>
         </header>
         <script src="/static/webbox/js/hamburger.js"></script>
@@ -192,7 +194,7 @@
         </div>
         <div class=" wrapper"><footer class="footer">
             <h5>WebBox</h5>
-            <p>Проект Егора Горгуна и Федосова Никиты.<br>:sunglassses:</p>
+            <p>Проект Федосова Никиты и Егора Горгуна.<br>:sunglassses:</p>
         </footer></div>
         
     
@@ -200,10 +202,15 @@
     <script src="/static/webbox/gsap-public/minified/gsap.min.js"></script>
     <script src="/static/webbox/gsap-public/minified/ScrollTrigger.min.js"></script>
     <script src="/static/webbox/gsap-public/minified/TextPlugin.min.js"></script>
+    <!-- <script src="/static/webbox/js/theme.js"></script> -->
     <script>
+        
+
         
         gsap.registerPlugin(ScrollTrigger);
         gsap.registerPlugin(TextPlugin);
+
+
 
         gsap.from(".header__logo p", {
             scrollTrigger: {
@@ -218,7 +225,7 @@
 
         gsap.to('body', {
             
-            backgroundColor: "#222",
+            backgroundColor: window.localStorage.getItem('--black'),
             duration: 0.5,
             scrollTrigger: {
                 trigger: ".courses",
@@ -231,10 +238,10 @@
         })
 
         gsap.from('body', {
-            backgroundColor: "#222",
+            backgroundColor: window.localStorage.getItem('--black'),
         })
         gsap.to('body', {
-            backgroundColor: "white",
+            backgroundColor: window.localStorage.getItem('--background-color'),
             duration: 0.5,
             scrollTrigger: {
                 trigger: "#aboutAndForcomp",

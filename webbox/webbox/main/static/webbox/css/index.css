@@ -9,8 +9,17 @@
 
 :root {
     --background-color: #eee;
-    --accent: #999;
-    --black: #222;
+    --accent: #f09e8c;
+    --black: #7b8937;
+    --card-bg-color: #6b7436;
+    --nigga: black;
+    --text-color: #f4d9c1;
+    --link-color: #111;
+    --btn-color: #f4d9c1;
+    --btn-background-color: #d72f01;
+    --not-very-important: #ad2702;
+    --important: #d72f01;
+
 }
 
 * {
@@ -26,7 +35,7 @@ body {
 }
 
 li, h4 {
-    color: var(--background-color);
+    color: var(--text-color);
 }
 
 #aboutAndForcomp {
@@ -84,7 +93,7 @@ a {
 }
 
 .header__logo a {
-    color: var(--background-color);
+    color: var(--text-color);
     font-family: 'Dela Gothic One', sans-serif;
     font-size: 32px;
 }
@@ -96,7 +105,7 @@ a {
 }
 
 .header__nav a {
-    color: var(--background-color);
+    color: var(--text-color);
     font-family: 'Lato', sans-serif;
     font-size: 16px;
     transition: color 100ms;
@@ -120,7 +129,7 @@ a {
 }
 
 .hero h1 {
-    color: var(--background-color);
+    color: var(--text-color);
     font-family: 'Dela Gothic One', sans-serif;
     text-shadow: var(--black) 2px 2px 4px;
     font-size: 64px;
@@ -131,7 +140,7 @@ a {
 }
 
 .hero h2 {
-    color: var(--background-color);
+    color: var(--text-color);
     font-family: 'Dela Gothic One', sans-serif;
     text-shadow: var(--black) 2px 2px 4px;
     font-size: 32px;
@@ -139,7 +148,7 @@ a {
 }
 
 .hero p {
-    color: var(--background-color);
+    color: var(--text-color);
     font-family: 'Lato', sans-serif;
     text-shadow: var(--black) 2px 2px 4px;
     font-size: 24px;
@@ -157,7 +166,7 @@ a {
 
 
 .courses h3 {
-    color: var(--background-color);
+    color: var(--text-color);
     font-family: 'Dela Gothic One', sans-serif;
     text-shadow: var(--black) 2px 2px 4px;
     font-size: 32px;
@@ -173,7 +182,7 @@ a {
 }
 
 .courses__card {
-    background-color: var(--background-color);
+    background-color: var(--card-bg-color);
     border-radius: 16px;
     margin: 8px 0;
     width: 200px;
@@ -182,31 +191,36 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    color: var(--black);
+    color: var(--text-color);
+}
+
+.courses__card  a:hover {
+    background-color: var(--card-bg-color);
 }
 
 .courses__card a {
     display: block;
     text-align: center;
-    color: var(--background-color);
+    color: var(--text-color);
     font-family: 'Dela Gothic One', sans-serif;
     font-size: 16px;
     font-weight: 100;
-    background-color: var(--black);
+    background-color: var(--btn-background-color);
     padding: 4px 8px;
     margin-top: 4px;
+    transition: all .2s;
     border-radius: 8px;
 }
 
 .courses__card h4 {
-    color: var(--black);
+    color: var(--text-color);
     font-family: 'Dela Gothic One', sans-serif;
     font-size: 16px;
     font-weight: 100;
 }
 
 .courses__card p {
-    color: var(--black);
+    color: var(--text-color);
     font-family: 'Lato', sans-serif;
     font-size: 16px;
 }
@@ -226,7 +240,7 @@ a {
 }
 
 .comments h3 {
-    color: var(--background-color);
+    color: var(--text-color);
     font-weight: 100;
     font-family: 'Dela Gothic One', sans-serif;
     text-shadow: var(--black) 2px 2px 4px;
@@ -236,7 +250,7 @@ a {
 
 .comments__comment {
     display: block;
-    background-color: var(--background-color);
+    background-color: var(--card-bg-color);
     border-radius: 8px;
     padding: 4px 8px;
     margin-top: 8px;
@@ -248,7 +262,7 @@ a {
 }
 
 .comments__comment_info p:first-child {
-    color: var(--black);
+    color: var(--text-color);
     font-family: 'Lato', sans-serif;
     font-size: 24px;
     margin-right: 16px;
@@ -261,7 +275,7 @@ a {
 }
 
 .comments__comment > p {
-    color: var(--black);
+    color: var(--text-color);;
     font-family: 'Lato', sans-serif;
     font-size: 16px;
 }
@@ -279,14 +293,14 @@ a {
 }
 
 .footer h5 {
-    color: var(--background-color);
+    color: var(--text-color);;
     font-weight: 100;
     font-family: 'Dela Gothic One', sans-serif;
     font-size: 32px;
 }
 
 .footer p {
-    color: var(--background-color);
+    color: var(--text-color);;
     font-family: 'Lato', sans-serif;
     font-size: 16px;
     text-align: right;
@@ -307,7 +321,7 @@ a {
 }
 
 .login-h1 {
-    color: var(--background-color);
+    color: var(--text-color);;
     font-weight: 100;
     font-family: 'Dela Gothic One', sans-serif;
     font-size: 32px;
@@ -327,12 +341,13 @@ a {
     font-size: 20px;
     border-radius: 16px;
     border: none;
+    background-color: var(--card-bg-color);
     padding: 0 8px;
 }
 
 .login-btn {
-    color: var(--black);
-    background-color: var(--background-color);
+    color: var(--btn-color);
+    background-color: var(--btn-background-color);
     font-family: 'Dela Gothic One', sans-serif;
     font-size: 16px;
     padding: 4px 8px;
@@ -347,13 +362,13 @@ a {
 
 .login-register a {
     text-decoration: underline;
-    color: var(--background-color);
+    color: var(--accent);
     font-family: 'Dela Gothic One', sans-serif;
     font-size: 16px;
 }
 
 .login form p label {
-    color: var(--background-color);
+    color: var(--text-color);
     font-family: 'Lato', sans-serif;
     font-size: 16px;
 }
@@ -372,26 +387,26 @@ ul.errorlist {
 }
 
 ul.errorlist li {
-    color: var(--background-color);
+    color: var(--text-color);
     font-family: 'Lato', sans-serif;
     font-size: 16px;
 }
 
 .areg {
-    color: var(--background-color);
+    color: var(--text-color);
     font-family: 'Dela Gothic One', sans-serif;
     font-size: 32px;
 }
 
 .areg2 {
-    color: var(--background-color);
+    color: var(--text-color); 
     font-family: 'Lato', sans-serif;
     font-size: 16px;
 }
 
 .areg2 a {
     text-decoration: underline;
-    color: var(--background-color);
+    color: var(--text-color);
     font-family: 'Lato', sans-serif;
     font-size: 16px;
 }
@@ -413,7 +428,7 @@ ul.errorlist li {
 }
 
 .nocurses {
-    color: var(--background-color);
+    color: var(--text-color);
     font-family: 'Dela Gothic One', sans-serif;
     font-size: 32px;
 }
@@ -423,26 +438,26 @@ ul.errorlist li {
 }
 
 .nocursessmall {
-    color: var(--background-color);
+    color: var(--text-color);
     font-family: 'Lato', sans-serif;
     font-size: 16px;
 }
 
 .nocurses2, .nocurses3 {
-    color: var(--background-color);
+    color: var(--text-color);
     font-family: 'Lato', sans-serif;
     font-size: 16px;
     text-decoration: underline;
 }
 
 .coursetitle {
-    color: var(--background-color);
+    color: var(--text-color);
     font-family: 'Dela Gothic One', sans-serif;
     font-size: 32px;
 }
 
 .coursedesc {
-    color: var(--background-color);
+    color: var(--text-color);
     font-family: 'Lato', sans-serif;
     font-size: 16px;
     text-align: center;
@@ -451,24 +466,24 @@ ul.errorlist li {
 }
 
 .username {
-    color: var(--background-color);
+    color: var(--text-color);
     font-family: 'Lato', sans-serif;
     font-size: 12px;
 }
 
 .card a {
-    color: var(--black);
+    color: var(--text-color);
     border-radius: 10px;
     font-family: 'Lato', sans-serif;
     font-size: 16px;
     padding: 4px 8px;
-    background-color: var(--background-color);
+    background-color: var(--card-bg-color);
     transition: all 200ms;
 }
 
 .card a:hover {
     box-sizing: content-box;
-    color: var(--background-color);
+    color: var(--text-hover);
     background-color: var(--black);
 }
 
@@ -481,7 +496,7 @@ ul.errorlist li {
     height: 350px;
     display: flex;
     flex-direction: column;
-    background-color: var(--background-color);
+    background-color: var(--card-bg-color);
     background-size: 100% auto;
     box-shadow: 0px 0px 8px var(--black);
     border-radius: 10px;
@@ -489,7 +504,7 @@ ul.errorlist li {
 
 .card-true * {
     text-decoration: none;
-    color: var(--black);
+    color: var(--text-color);
     border-radius: 10px;
 }
 
@@ -499,6 +514,12 @@ ul.errorlist li {
     justify-content: space-between;
     flex-direction: column;
     height: 100%;
+    
+}
+
+.card-true:hover {
+    transition: all .2s;
+    background-color: var(--black);
 }
 
 .content-card-true p {
@@ -534,11 +555,11 @@ ul.errorlist li {
 
 .card-for-lessions {
     width: 100%;
-    background-color: var(--background-color);
+    background-color: var(--card-bg-color);
     background-size: 100% auto;
     border-radius: 10px;
     text-decoration: none;
-    color: var(--black);
+    color: var(--text-color);
     padding: 5px 5px;
     transition: all 200ms;
     align-items: center;
@@ -558,7 +579,7 @@ ul.errorlist li {
 }
 .card-for-lessions a {
     text-decoration: none;
-    color: var(--black);
+    color: var(--link-color);
     transition: all 200ms;
 }
 
@@ -571,7 +592,7 @@ ul.errorlist li {
 }
 
 .homework {
-    color: var(--background-color);
+    color: var(--important);
     font-family: 'Dela Gothic One', sans-serif;
     font-size: 24px;
     margin-top: 16px;
@@ -607,7 +628,7 @@ ul.errorlist li {
 }
 
 .coursesnowh2 {
-    color: var(--background-color);
+    color: var(--important);
     font-family: 'Dela Gothic One', sans-serif;
     font-size: 32px;
     margin-bottom: 16px;
@@ -631,7 +652,7 @@ ul.errorlist li {
 }
 
 .error-no-cards {
-    color: red;
+    color: var(--important);
     font-family: 'Dela Gothic One', sans-serif;
     font-size: 32px;
     margin-bottom: 16px;
@@ -678,13 +699,13 @@ ul.errorlist li {
 }
 
 .card-body * {
-    color: var(--background-color);
+    color: var(--text-color);
     font-family: 'Lato', sans-serif;
 }
 
 .card-body button {
-    color: var(--black);
-    background-color: var(--background-color);
+    color: var(--btn-color);
+    background-color: var(--btn-background-color);
     padding: 4px 8px;
     margin-top: 4px;
     border-radius: 16px;
@@ -698,13 +719,13 @@ ul.errorlist li {
 
 .card-body button:hover {
     color: var(--background-color);
-    background-color: var(--black);
+    background-color: var(--text-color);
 }
 
 .card-body p > input,
 .card-body p > textarea {
     margin-left: 4px;
-    color: var(--black);
+    color:var(--text-color);;
     font-size: 20px;
     border-radius: 16px;
     border: none;
@@ -728,7 +749,7 @@ ul.errorlist li {
 }
 
 .coursecard > h2 {
-    color: var(--background-color);
+    color: var(--text-color);;
     font-family: 'Dela Gothic One', sans-serif;
     font-size: 32px;
 }
@@ -751,15 +772,19 @@ ul.errorlist li {
 }
 
 .ct1 * {
-    color: var(--background-color);
+    color:var(--text-color);;
     font-family: 'Lato', sans-serif;
     font-size: 18px;
 }
 
 .ct2 * {
-    color: var(--background-color);
+    color: var(--text-color);;
     font-family: 'Dela Gothic One', sans-serif;
     font-size: 16px;
+}
+
+.ct2 p {
+    color: var(--important);
 }
 
 .ct2 a {
@@ -771,7 +796,7 @@ ul.errorlist li {
 #id_course {
     border: none;
     border-radius: 16px;
-    color: var(--background-color);
+    color: var(--text-color);;
 }
 
 .comments-iframe-body {
@@ -779,7 +804,7 @@ ul.errorlist li {
 }
 
 p > label {
-    color: var(--background-color);
+    color: var(--text-color);;
     font-family: 'Lato', sans-serif;
     font-size: 18px;
 }
@@ -829,8 +854,8 @@ p > label {
 }
 
 .btn-primary {
-    color: var(--black);
-    background-color: var(--background-color);
+    color: var(--btn-color);
+    background-color: var(--btn-background-color);
     font-family: 'Dela Gothic One', sans-serif;
     font-size: 16px;
     padding: 4px 8px;
@@ -861,7 +886,7 @@ p > label {
 }
 
 .genericsection h3 {
-    color: var(--background-color);
+    color: var(--btn-color);
     font-weight: 100;
     font-family: 'Dela Gothic One', sans-serif;
     text-shadow: var(--black) 2px 2px 4px;
@@ -870,7 +895,7 @@ p > label {
 }
 
 .genericsection h2 {
-    color: var(--background-color);
+    color: var(--btn-color);
     font-weight: 100;
     font-family: 'Dela Gothic One', sans-serif;
     text-shadow: var(--black) 2px 2px 4px;
@@ -879,7 +904,7 @@ p > label {
 }
 
 .genericsection p {
-    color: var(--background-color);
+    color: var(--btn-color);
     font-weight: 100;
     font-family: 'Lato', sans-serif;
     text-shadow: var(--black) 2px 2px 4px;
@@ -1001,7 +1026,7 @@ p > label {
 
 .genericlinks a {
     text-decoration: underline;
-    color: var(--background-color);
+    color: var(--link-color);;
     font-weight: 100;
     font-family: 'Lato', sans-serif;
     text-shadow: var(--black) 2px 2px 4px;
@@ -1017,7 +1042,7 @@ p > label {
 }
 
 .unpayform p {
-    color: var(--background-color);
+    color: var(--text-color);
     font-family: 'Dela Gothic One', sans-serif;
     font-size: 32px;
 }
@@ -1031,7 +1056,7 @@ p > label {
 }
 
 td {
-    color: var(--background-color);
+    color: var(--text-color);
     font-family: 'Lato', sans-serif;
     font-size: 18px;
     padding: 6px;

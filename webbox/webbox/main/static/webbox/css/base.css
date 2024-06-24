@@ -2,9 +2,16 @@
 @import url(https://pvinis.github.io/iosevka-webfont/3.4.1/iosevka.css);
 :root {
     --background-color: #eee;
-    --accent: #999;
-    --black: #222;
-    --veryblack: #000;
+    --accent: #f09e8c;
+    --black: #7b8937;
+    --card-bg-color: #6b7436;
+    --text-color: #f4d9c1;
+    --link-color: #111;
+    --nigga: black;
+    --btn-color: #f4d9c1;
+    --btn-background-color: #d72f01;
+    --important: #d72f01;
+
 }
 
 h1, h2, h3 {
@@ -49,6 +56,7 @@ pre code {
 .primer {
     margin: 4px 0;
     background-color: var(--background-color);
+    color: var(--nigga);
     width: max-content;
     padding: 4px 8px;
     border-radius: 4px;
@@ -60,5 +68,5 @@ pre code {
     top: 0;
     height: 4px; 
     width: 0%;
-    background: var(--accent); 
+    background: var(--important); 
 }
