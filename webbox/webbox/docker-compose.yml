@@ -1,0 +1,17 @@
+version: '3.10'
+
+services:
+  blts:
+    build: .
+    command: /bin/sh -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "80:8000"
+    container_name: webbox
+  tg-blts:
+    build: .
+    command: /bin/sh -c "python ./../../webbox_bot/main.py"
+    volumes:
+      - .:/usr/src/app
+    container_name: webbox-bot
