@@ -64,9 +64,9 @@
             </div>
             <div class="rightCourse">
                 {% if listofCourses %}
-                    <iframe src="/u/course/{{user.usercourses.course.short_name}}/{{listofCourses.cid}}/raw"></iframe>
+                    <iframe style="border: none;" src="/u/course/{{user.usercourses.course.short_name}}/{{listofCourses.cid}}/raw"></iframe>
                 {% elif listofHomeworks %}
-                    <iframe src="/u/homework/{{user.usercourses.course.short_name}}/{{listofHomeworks.cid}}/raw"></iframe>
+                    <iframe style="border: none;" src="/u/homework/{{user.usercourses.course.short_name}}/{{listofHomeworks.cid}}/raw"></iframe>
                 {% else %}
                     <p>Вы не можете получить доступ к этой странице или такого урока к курсу не существует</p>
                 {% endif %}

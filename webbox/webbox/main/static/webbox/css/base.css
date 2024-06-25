@@ -70,3 +70,20 @@ pre code {
     width: 0%;
     background: var(--important); 
 }
+
+button, input {
+    background-color: var(--btn-background-color);
+    color: var(--btn-color);
+    border: none;
+    padding: 15px 60px;
+    border-radius: 10px;
+}
+
+p, textarea, input {
+    width: 100%;
+    
+}
+
+textarea {
+    height: 400px;
+}

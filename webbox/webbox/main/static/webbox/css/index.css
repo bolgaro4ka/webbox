@@ -574,6 +574,7 @@ ul.errorlist li {
     justify-content: center;
     align-items: center;
     height: 35px;
+    border: none;
     border-radius: 16px;
     padding: 0 5px;
 }
@@ -666,7 +667,6 @@ ul.errorlist li {
 .rightCourse {
     height: 90%;
     width: 70%;
-    border: 3px solid var(--background-color);
     padding: 4px;
     border-radius: 8px;
 }
@@ -822,13 +822,7 @@ p > label {
     justify-content: center;
 }
 
-.coursesearch p:nth-child(2n) {
-    margin-right: 0;
-}
 
-.coursesearch p * {
-    width: 350px;
-}
 
 .coursesearch p label {
     width: 70px;
@@ -843,6 +837,11 @@ p > label {
     border-radius: 16px;
     border: none;
     padding: 0 8px;
+}
+
+.form-wrapper {
+    margin: 0 auto;
+    width: 800px;
 }
 
 .coursesearch p:first-child {
@@ -1171,6 +1170,10 @@ table {
 
     #id_price_from,
     #id_price_to {
+        width: 100% !important;
+    }
+
+    .capibara p {
         width: 100% !important;
     }
 

@@ -77,6 +77,9 @@ def course(request, short_name, cid):
 def course_raw(request, short_name, cid):
     #truncate(Answer)
     #Answer.save()
+
+    hw = ''
+        
     url = (request.path)
     error={}
     if Lession.objects.all().filter(short_name=request.user.usercourses.course.short_name).filter(cid=cid):
@@ -93,6 +96,12 @@ def course_raw(request, short_name, cid):
         code = ''
     else:
         listofCourses = Course.objects.all().filter(short_name=request.user.usercourses.course.short_name)[0].homeworks.all().filter(cid=cid).order_by('cid')
+        if Answer.objects.all().filter(homework=listofCourses[0], user=request.user).exists():
+            if Answer.objects.all().filter(homework=listofCourses[0], user=request.user)[0].checked:
+                hw = Answer.objects.all().filter(homework=listofCourses[0], user=request.user)[0].points
+                print(hw, 'in')
+        
+        
         if Answer.objects.all().filter(homework=listofCourses[0], user=request.user):
             
             code = Answer.objects.all().filter(homework=listofCourses[0]).filter(user=request.user)[0].answer
@@ -102,20 +111,24 @@ def course_raw(request, short_name, cid):
             code = ''
             print('Nope')
 
-        if request.method == 'POST':
-            form = HomeworkForm(request.POST)
-            if form.is_valid():
-                if Answer.objects.all().filter(homework=listofCourses[0]):
-                    Answer.objects.filter(homework=listofCourses[0], user=request.user).update(answer=form.cleaned_data['answer'], checked=False, correct=False)
-                    
-                else:
-                    new_ans = Answer.objects.all().create(answer=form.cleaned_data['answer'], homework=listofCourses[0], checked=False, correct=False, points=Homework.objects.all().filter(cid=cid, course=request.user.usercourses.course)[0].points, user=request.user)
-                    new_ans.save()
-                return HttpResponse('Сохранено')
-        else:
-            form = HomeworkForm()
+    if request.method == 'POST':
+        form = HomeworkForm(request.POST)
+        if form.is_valid():
+            if Answer.objects.all().filter(homework=listofCourses[0], user=request.user):
+                Answer.objects.filter(homework=listofCourses[0], user=request.user).update(answer=form.cleaned_data['answer'], checked=False, correct=False)
+                return HttpResponse('<link rel="stylesheet" href="/static/webbox/css/base.css"/><div style="height: 100vh; display: flex; align-items: center; justify-content: center; flex-direction: column;"><h1 style="color: #f4d9c1">Пересохранено</h1><p style="color: #f4d9c1; align-self: center; text-align: center;">Всё гуд!</p><button onclick=\'window.history.back()\'>Ок</button></div>')
+                
+            else:
+                new_ans = Answer.objects.all().create(answer=form.cleaned_data['answer'], homework=listofCourses[0], checked=False, correct=False, points=Homework.objects.all().filter(cid=cid, course=request.user.usercourses.course)[0].points, user=request.user)
+                new_ans.save()
+                return HttpResponse('<link rel="stylesheet" href="/static/webbox/css/base.css"/><div style="height: 100vh; display: flex; align-items: center; justify-content: center; flex-direction: column;"><h1 style="color: #f4d9c1">Пересохранено</h1><p style="color: #f4d9c1; align-self: center; text-align: center;">Всё гуд! Скоро проверят</p><button onclick=\'window.history.back()\'>Ок</button></div>')
+    else:
+        form = HomeworkForm()
+
+    
+    print(hw)
             
-    return render(request, f'{listofCourses[0].file}', {'form': form, 'lang': request.user.usercourses.course.short_name, 'code': code})
+    return render(request, f'{listofCourses[0].file}', {'form': form, 'lang': request.user.usercourses.course.short_name, 'code': code, 'hw': hw})
 
 
 def lessions(request,  cid ):

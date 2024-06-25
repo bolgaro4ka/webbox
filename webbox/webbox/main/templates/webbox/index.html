@@ -23,7 +23,6 @@
                         <li class=""><a href="/#media" class="menu-item">Медиа</a></li>
                         <li class=""><a href="/#about" class="menu-item">О нас</a></li>
                         <li class=""><a href='/admin' class="menu-item">Админ-панель</a></li>
-                        <li class=""><a class="ch-theme-btn menu-item" style="display: flex; align-items: center; gap: 10px; justify-content: center;"><img src="/static/webbox/img/dark.png" alt="No" style="height: 20px;">Сменить тему</a></li>
                         {% if user.is_authenticated %}
                             <li class=""><a href='/u' class="menu-item">Личный кабинет</a></li>
                             <li class=""><a href='/a/u' class="menu-item">Выйти</a></li>
@@ -47,7 +46,7 @@
             <section class="courses">
                 <h3>Курсы которые мы предоставляем</h3>
                 <div class="coursesearch">
-                    <form method="post">
+                    <form method="post" class="capibara form-wrapper">
                         {{ form.as_p }}
                         {% csrf_token %}
                         <button type="submit" class="btn btn-primary  btn-lg">Применить</button>
@@ -225,7 +224,7 @@
 
         gsap.to('body', {
             
-            backgroundColor: window.localStorage.getItem('--black'),
+            backgroundColor: '#7b8937',
             duration: 0.5,
             scrollTrigger: {
                 trigger: ".courses",
@@ -238,10 +237,10 @@
         })
 
         gsap.from('body', {
-            backgroundColor: window.localStorage.getItem('--black'),
+            backgroundColor: '#7b8937',
         })
         gsap.to('body', {
-            backgroundColor: window.localStorage.getItem('--background-color'),
+            backgroundColor: 'white',
             duration: 0.5,
             scrollTrigger: {
                 trigger: "#aboutAndForcomp",
