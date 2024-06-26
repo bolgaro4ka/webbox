@@ -28,11 +28,11 @@ def validate_cvv_card(value):
 class PaymentForm(forms.Form):
     a = Course.objects.all().filter(is_published=True)
     course = forms.ModelChoiceField(queryset=a)
-    number_card = forms.CharField(validators=[validate_number_card], help_text="16 цифр. Например: 1234567890123456")
-    cvv_card = forms.CharField(help_text="3 цифры", validators=[validate_cvv_card], max_length=3)
-    name_card = forms.CharField(max_length=255, help_text="Например: Иванов Иван Иванович, Ivanov Ivan Ivanov или Ivanov Ivan")
-    phone = forms.CharField(max_length=255, validators=[validate_phone], help_text="Например: +7 (999) 999-99-99 или 8 999 999 99 99")
-    tg_nick = forms.CharField(max_length=255, validators=[validate_tg_nick], help_text="Например: @IvanovIvanIvanov")
+    number_card = forms.CharField(validators=[validate_number_card], widget=forms.TextInput(attrs={'placeholder': "16 цифр. Например: 1234567890123456"}))
+    cvv_card = forms.CharField(validators=[validate_cvv_card], max_length=3, widget=forms.TextInput(attrs={'placeholder': "3 цифры. Например: 123"}))
+    name_card = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'placeholder': "Например: Иванов Иван Иванович, Ivanov Ivan Ivanov или Ivanov Ivan"}))
+    phone = forms.CharField(max_length=255, validators=[validate_phone], widget=forms.TextInput(attrs={'placeholder': "Например: +7 (999) 999-99-99 или 8 999 999 99 99"}))
+    tg_nick = forms.CharField(max_length=255, validators=[validate_tg_nick], widget=forms.TextInput(attrs={'placeholder': "Например: @IvanovIvanIvanov"}))
 
     class Meta:
         model = Pay

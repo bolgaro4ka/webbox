@@ -26,6 +26,7 @@ class Answer(models.Model):
     checked = models.BooleanField(default=False, verbose_name="Проверено")
     points = models.IntegerField(verbose_name="Количество баллов")
     correct = models.BooleanField(default=False, verbose_name="Правильно")
+    comment = models.TextField(null=True, verbose_name="Коментарий к дз", default="Замечательная работа!", help_text="Можно использовать HTML")
 
     def __str__(self):
         return self.answer

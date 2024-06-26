@@ -97,9 +97,8 @@ def course_raw(request, short_name, cid):
     else:
         listofCourses = Course.objects.all().filter(short_name=request.user.usercourses.course.short_name)[0].homeworks.all().filter(cid=cid).order_by('cid')
         if Answer.objects.all().filter(homework=listofCourses[0], user=request.user).exists():
-            if Answer.objects.all().filter(homework=listofCourses[0], user=request.user)[0].checked:
-                hw = Answer.objects.all().filter(homework=listofCourses[0], user=request.user)[0].points
-                print(hw, 'in')
+            hw = Answer.objects.all().filter(homework=listofCourses[0], user=request.user)[0]
+            print(hw, 'in')
         
         
         if Answer.objects.all().filter(homework=listofCourses[0], user=request.user):
