@@ -27,5 +27,5 @@ jobs:
         pip install -r req.txt
     - name: Run Tests
       run: |
-        cd /webbox/webbox
+        cd webbox/webbox
         python manage.py test
