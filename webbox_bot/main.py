@@ -31,17 +31,17 @@ async def cmd_start(msg: types.Message):
     if r.status_code == 200:
         response = r.json()
         print(response)
-    await msg.answer(f"""<b>Сервер</b>: {response['name']}
-<b>Процессор (%)</b>: {response['cpu']}
-<b>Память (%)</b>: {response['memory']}
-<b>Диск (%)</b>: {response['disk']}
-<b>Время запуска</b>: {response['time']}
-<b>Пользователи</b>: {response['users']}
-<b>Python RAM</b>: {response['python_ram']}
-<b>Сеть</b>: {response['network']}
-<b>Всего сети</b>: {response['total_network']}
-<b>Время запуска</b>: {response['time']}
-<b>Ядра</b>: {response['cores']}""", parse_mode='html')
+    await msg.answer(f"""<b>Сервер</b>: {response['name']}:
+    <b>Процессор (%)</b>: {response['cpu']}
+    <b>Память (%)</b>: {response['memory']}
+    <b>Диск (%)</b>: {response['disk']}
+    <b>Время запуска</b>: {response['time']} секунд
+    <b>Пользователи</b>: {response['users']}
+    <b>Python RAM</b>: {response['python_ram']}
+    <b>Сеть</b>: {response['network']}
+    <b>Всего сети</b>: {response['total_network']} MB
+    <b>Время запуска</b>: {response['time']} секунд
+    <b>Ядра</b>: {response['cores']}""", parse_mode='html')
     
 
 
