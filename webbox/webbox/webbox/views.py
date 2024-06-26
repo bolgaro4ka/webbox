@@ -8,6 +8,13 @@ from main.models import Course, UserCourses
 from account.models import Comment
 from main.forms import Filter
 
+def cats(request, code):
+    error = {}
+    error['name'] = 'Ошибочка!'
+    error['description'] = 'Вы нашли секрет!'
+    error['code'] = code
+    print(error)
+    return render(request, 'errors_form.html', {'error': error})
 
 def indexView(request): 
     comments = Comment.objects.all()
