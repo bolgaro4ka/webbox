@@ -14,8 +14,9 @@ router.register(r'user', views.UserViewSet)
 urlpatterns = [
    # path('v1/course/', views.CourseViewSet.as_view({'get': 'list'}), name='index'),
    # path('v1/course/<int:pk>/', views.CourseViewSet.as_view({'put': 'update'}), name='index_pk'),
-
+    path('v2/status/', views.StatusView.as_view(), name='status'),
     path('v1/', include(router.urls)),
+    
     path('v1/drf-auth/', include('rest_framework.urls', namespace='rest_framework')),
     #path('v1/auth/', include('djoser.urls')),
     re_path(r'^auth/', include('djoser.urls.authtoken')),
