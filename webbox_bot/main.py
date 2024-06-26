@@ -23,7 +23,7 @@ async def cmd_start(msg: types.Message):
 
 @dp.message(Command('help'))
 async def cmd_start(msg: types.Message):
-    await msg.answer("/start - приветственное сообщение\n/author - автор проекта\n/help - помощь")
+    await msg.answer("/start - приветственное сообщение\n/author - автор проекта\n/help - помощь\n/status - статус сервера")
 
 @dp.message(Command('status'))
 async def cmd_start(msg: types.Message):
