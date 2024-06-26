@@ -69,10 +69,11 @@ def user_login(request):
                     error["description"] = "Пользователь заблокирован. Обратитесь к администратору"
                     error["code"] = 432
 
-                    return HttpResponse('Disabled account')
+                    return render(request, 'telegram/errors.html', {'error': error})
             else:
                 error["name"] = "Invalid login"
                 error["description"] = "Неверное имя пользователя или пароль"
+                error["code"] = 401
                 return render(request, 'telegram/errors.html', {'error': error})
     else:
         form = LoginForm()

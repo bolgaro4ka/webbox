@@ -27,10 +27,11 @@ def user_login(request):
                     
                     error["name"]="Disabled account"
                     error["description"] = "Пользователь заблокирован. Обратитесь к администратору"
+                    error["code"] = 418
 
-                    return HttpResponse('Disabled account')
+                    return render(request, 'errors_form.html', {'error': error})
             else:
-                error["name"] = "Invalid login"
+                error["name"] = "Беда"
                 error["description"] = "Неверное имя пользователя или пароль"
                 error["code"] = 401
                 return render(request, 'errors_form.html', {'error': error})
