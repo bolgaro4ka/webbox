@@ -1174,7 +1174,7 @@ table {
     }
 
     .capibara p {
-        width: 100% !important;
+        width: 100%;
     }
 
     .cabinet {
@@ -1343,6 +1343,11 @@ table {
       .coursesflex img {
         width: 100%;
       }
+
+      .form-wrapper {
+        width: auto;
+        margin: 0;
+    }
 }
 
 
