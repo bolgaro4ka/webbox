@@ -27,11 +27,21 @@ async def cmd_start(msg: types.Message):
 
 @dp.message(Command('status'))
 async def cmd_start(msg: types.Message):
-    r = requests.get('https://webbox.paia1nik.com/api/v2/status')
+    r = requests.get('https://webbox.paia1nik.ru/api/v2/status/')
     if r.status_code == 200:
         response = r.json()
         print(response)
-    await msg.answer(f"Сервер: {response}")
+    await msg.answer(f"""<b>Сервер</b>: {response['name']}
+<b>Процессор (%)</b>: {response['cpu']}
+<b>Память (%)</b>: {response['memory']}
+<b>Диск (%)</b>: {response['disk']}
+<b>Время запуска</b>: {response['time']}
+<b>Пользователи</b>: {response['users']}
+<b>Python RAM</b>: {response['python_ram']}
+<b>Сеть</b>: {response['network']}
+<b>Всего сети</b>: {response['total_network']}
+<b>Время запуска</b>: {response['time']}
+<b>Ядра</b>: {response['cores']}""", parse_mode='html')
     
 
 

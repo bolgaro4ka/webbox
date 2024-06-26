@@ -34,6 +34,7 @@ class StatusView(generics.GenericAPIView):
     def get(self, request, format=None):
         python_process = psutil.Process()
         return Response({"status": "ok", "cpu": psutil.cpu_percent(), 
+                        'name': 'Main server Paia1nik #1',
                         "memory": psutil.virtual_memory().percent,
                         'cores': psutil.cpu_count(logical=False),
                         "disk": psutil.disk_usage('/').percent, 
