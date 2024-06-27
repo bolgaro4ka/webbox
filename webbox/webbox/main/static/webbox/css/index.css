@@ -19,8 +19,10 @@
     --btn-background-color: #d72f01;
     --not-very-important: #ad2702;
     --important: #d72f01;
+    --tg: #2d9fda;
 
 }
+
 
 * {
     margin: 0;
@@ -351,10 +353,48 @@ a {
     height: 40px;
 }
 
-.bot {
+#bot {
     align-items: center;
     display: flex;
+    background: linear-gradient(
+            to right,
+            #1c92d2,#f2fcfe
+        );
+    background-size: 7000px;
+    box-shadow: var(--tg);
+    padding: 0 50px;
+
+}
+
+#bot div {
+    display: flex;
     flex-direction: column;
+}
+
+#bot h3, #bot p {
+    text-shadow: none;
+    color: white;
+    /* text-wrap:balance; */
+}
+
+.tg-a-btn {
+    padding: 20px 20px;
+    background-color: #0b7cb8;
+    color: white;
+    margin-top: 10px;
+    border-radius: 10px;
+    display: flex;
+    width: 200px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    
+    transition: all .2s;
+    align-self: center;
+}
+
+.tg-a-btn:hover {
+    background-color: #1c8de9; 
 }
 
 .login-btn {
@@ -889,6 +929,7 @@ p > label {
     box-shadow: 0px 0px 8px var(--black);
     margin: 16px 0;
     padding: 8px 16px;
+    padding-bottom: 30px;
     border-radius: 12px;
 }
 
@@ -1367,6 +1408,11 @@ table {
 @media screen and (max-width: 700px) {
     .motivation {
         height: 200px;
+    }
+
+    #bot {
+        flex-direction: column;
+        padding-bottom: 20px;
     }
 }
 

@@ -7,6 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="{% static "favicon.ico" %}">
     <title>WebBox ~ {{course.title}}</title>
+    <style>
+h1 {
+    color: var(--text-color);
+    font-family:  'Dela Gothic One';
+}
+
+        h2 {
+            font-size: 30px !important;
+            font-family:  'Dela Gothic One' !important;
+            margin: 10px 0;
+        }
+
+        h3 {
+            font-size: 20px !important;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
     <div class="wrapper">
@@ -34,13 +52,13 @@
         <script src="/static/webbox/js/hamburger.js"></script>
 
         <main class="coursecard">
-            <h2>{{course.title}}</h2>
+            <h1>{{course.title}}</h1>
             
             <div class="coursesflex">
                 <img src="{{ course.picture.url }}"  alt="BigImg"/>
                 <div class="coursestext">
                     <div class="ct1">
-                        <p>{{course.long_description}}</p>
+                        <p>{{course.long_description | safe}}</p>
                         <p>Создан: {{course.created_at}}</p>
                         <p>Последнее обновление: {{course.updated_at}}</p>
                         <p>На этом курсе обучается уже <b>{{number_of_users}}</b> человек(а)</p>
