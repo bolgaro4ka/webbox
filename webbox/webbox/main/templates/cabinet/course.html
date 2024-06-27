@@ -44,7 +44,7 @@
                         {% for theme in all_courses%}
                         {% for item in theme%}
                             
-                            <a class="card-for-lessions" href="/u/course/{{item.short_name}}/{{item.cid}}">{{item.name}}</a>
+                            <div class="card-for-lessions" onclick="ch_iframe('/u/course/{{item.short_name}}/{{item.cid}}/raw')">{{item.name}}</div>
 
                         {% endfor%}
                         
@@ -55,7 +55,7 @@
                 <ul class="coursesnow">
                     {% for item in homeworks %}
                     
-                    <a class="card-for-lessions" href='/u/homework/{{user.usercourses.course.short_name}}/{{ item.cid }}'>{{item.name}}</a>
+                    <div class="card-for-lessions" onclick="ch_iframe('/u/homework/{{user.usercourses.course.short_name}}/{{ item.cid }}/raw')" >{{item.name}}</div>
 
                     {% endfor %}
                     
@@ -64,9 +64,9 @@
             </div>
             <div class="rightCourse">
                 {% if listofCourses %}
-                    <iframe style="border: none;" src="/u/course/{{user.usercourses.course.short_name}}/{{listofCourses.cid}}/raw"></iframe>
+                    <iframe style="border: none;" src="/u/course/{{user.usercourses.course.short_name}}/{{listofCourses.cid}}/raw" class="iframe"></iframe>
                 {% elif listofHomeworks %}
-                    <iframe style="border: none;" src="/u/homework/{{user.usercourses.course.short_name}}/{{listofHomeworks.cid}}/raw"></iframe>
+                    <iframe style="border: none;" src="/u/homework/{{user.usercourses.course.short_name}}/{{listofHomeworks.cid}}/raw" class="iframe"></iframe>
                 {% else %}
                     <p>Вы не можете получить доступ к этой странице или такого урока к курсу не существует</p>
                 {% endif %}
@@ -79,6 +79,22 @@
         </footer>
     </div>
     <script>
+
+
+        var iframe = document.querySelector('.iframe')
+        
+
+        function ch_iframe(url){
+            iframe.src = url
+        }
+
+
+
+
+
+
+
+
         let texts_array = ['Уроки', 'ДЗ']
         const search = document.getElementsByClassName('search')[0]
         search.addEventListener('input', () => {
@@ -121,6 +137,10 @@
         }
 
       })
+
+
+
+
     </script>
 </body>
 </html>

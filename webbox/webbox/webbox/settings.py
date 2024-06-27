@@ -98,6 +98,7 @@ DATABASES = {
 
 CORS_ALLOWED_ORIGINS = [
     'https://paia1nik.duckdns.org',
+    'http://localhost:3001'
 ]
 
 # Password validation
