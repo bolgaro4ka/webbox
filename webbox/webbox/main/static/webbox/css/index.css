@@ -351,6 +351,12 @@ a {
     height: 40px;
 }
 
+.bot {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
 .login-btn {
     color: var(--btn-color);
     background-color: var(--btn-background-color);
