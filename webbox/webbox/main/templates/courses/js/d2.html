@@ -1,11 +1,40 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Webbox</title>
+    <link href="{% static "webbox/css/base.css" %}" rel="stylesheet">
+    <script src="{% static "webbox/js/hw.js" %}" defer></script>
 </head>
 <body>
-    HELLO WORLD FROM DZ!
+<main>
+    <h2>Время творить!</h2>
+    <p>Сверстайте простенький сайт.</p>
+    {% if code %}
+
+        {% if hw.checked %} 
+            <div class="info-dz">
+                <h3>Работа выполнена {% if hw.correct %}<span class="important">верно</span>, поздравляем!{%else%}<span class="important">не верно</span>, ещё есть что доработать!{%endif%}</h3>
+                <p>Баллов за это задание: {{hw.points}}!</p>
+                <h3>Комментарий к работе:</h3>
+                <p>{{hw.comment | safe}}</p>
+            </div>
+        {% else %} 
+        <h3>Это задание ещё <span class="important">не проверено</span>! Ожидайте </h3>
+        {% endif %}
+
+    {% endif %}
+    {% if form %}
+        <form action="." method="post" allow-script-access="always">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <p><input type="submit" value="Отправить"></p>
+        </form>
+    {% endif %}
+</main>
+<script src="{% static "webbox/js/hw-a.js" %}"></script>
+<script>
+    connect_hw('html', `{{code|safe}}`)
+</script>
 </body>
 </html>

@@ -335,14 +335,20 @@ a {
 #id_first_name,
 #id_email,
 #id_password,
+#id_last_name,
+
 #id_password2 {
     margin-top: 4px;
     margin-bottom: 16px;
-    font-size: 20px;
+    font-size: 30px;
     border-radius: 16px;
     border: none;
     background-color: var(--card-bg-color);
     padding: 0 8px;
+}
+
+#id_last_name {
+    height: 40px;
 }
 
 .login-btn {

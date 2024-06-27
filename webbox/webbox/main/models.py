@@ -35,7 +35,7 @@ class Course(models.Model):
 
 class UserCourses(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="Пользователь")
-    course = models.ForeignKey(Course, on_delete=models.CASCADE, default=4, verbose_name="Курс")
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, default=3, verbose_name="Курс")
 
     @receiver(post_save, sender=User)
     def create_user_usercourses(sender, instance, created, **kwargs):
