@@ -4,12 +4,40 @@
 <head>
     <title>Webbox</title>
     <link href="{% static "webbox/css/base.css" %}" rel="stylesheet">
+    {% if tg_view %}
+        <style>
+        * {
+            color: var(--tg-theme-text-color) !important;
+        }
+
+        code {
+            color: white !important;
+        }
+        .primer  * {
+            color: black !important;
+        }
+        </style>
+    {% endif %}
 </head>
 <body>
+    <div class="progress-bar" id="progressBar"></div>
 <main>
+
     <h2>Введение в JS</h2>
     <p>{% lorem 1 b random %}</p>
     <p>{% lorem 1900 b random %}</p>
 </main>
+<script src="/static/webbox/js/progress.js"></script>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+      const tg = window.Telegram.WebApp;
+
+      tg.MainButton.show();
+      tg.MainButton.setText("Назад");
+
+      tg.MainButton.onClick(() => {
+        window.location.href = "/t/a/";
+      });
+    </script>
 </body>
 </html>
