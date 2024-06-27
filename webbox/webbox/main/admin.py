@@ -14,5 +14,6 @@ admin.site.register(Course, CourseAdmin)
 
 class UserCoursesAdmin(admin.ModelAdmin):
     list_display = ('user', 'course',)
+    search_fields = ('user', 'course')
 
 admin.site.register(UserCourses, UserCoursesAdmin)
