@@ -366,9 +366,15 @@ a {
 
 }
 
+input {
+   background-color: var(--card-bg-color);
+   color: white;
+}
+
 #bot div {
     display: flex;
     flex-direction: column;
+    padding: 20px 0;
 }
 
 #bot h3, #bot p {
