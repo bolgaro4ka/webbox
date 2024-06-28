@@ -5,7 +5,7 @@ from django.urls import reverse
 class Comment(models.Model):
     name = models.CharField(max_length=80, verbose_name='Имя')
     email = models.EmailField(verbose_name='Электронная почта')
-    body = models.TextField(default='Текст комментария', unique=True, verbose_name='Текст комментария')
+    body = models.TextField(unique=True, verbose_name='Текст комментария' )
     created_on = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания комментария')
     active = models.BooleanField(default=False, verbose_name='Публикация комментария')
 
