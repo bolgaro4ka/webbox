@@ -6,8 +6,14 @@ import asyncio
 import logging
 from config import *
 import requests
+import os
+from dotenv import load_dotenv
 
-bot = Bot(token='7248104392:AAFR4NDI3fnwZ6VVpx54KxOBq2A0EH4K-SY')
+load_dotenv()
+
+SITE = os.getenv('SITE')
+
+bot = Bot(token=os.getenv("TG_KEY"))
 logging.basicConfig(level=logging.INFO)
 dp = Dispatcher()
 
@@ -27,7 +33,7 @@ async def cmd_start(msg: types.Message):
 
 @dp.message(Command('status'))
 async def cmd_start(msg: types.Message):
-    r = requests.get('https://webbox.paia1nik.ru/api/v2/status/')
+    r = requests.get(f'{SITE}/api/v2/status/')
     if r.status_code == 200:
         response = r.json()
         print(response)
